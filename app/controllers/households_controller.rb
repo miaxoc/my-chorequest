@@ -1,5 +1,7 @@
 class HouseholdsController < ApplicationController
   def show
+    @household = Household.find(params[:id])
+    #user show
   end
 
   def new
