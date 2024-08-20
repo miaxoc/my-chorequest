@@ -1,0 +1,59 @@
+.request-form-container {
+  border: 1px solid #ccc;
+  padding: 20px;
+  width: 400px;
+  margin: 0 auto;
+  background-color: #ffffff;
+
+  .date-fields {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+
+    .field {
+      flex: 1;
+      text-align: center;
+
+      .input-date {
+        width: 100%;
+        padding: 10px;
+        background-color: #e0e0e0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-top: 5px;
+        margin-right: 8px;
+      }
+    }
+  }
+
+  .cost-summary {
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+    padding-top: 10px;
+
+    .line-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+
+      &.total {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .actions {
+    margin-top: 20px;
+    text-align: center;
+
+    .submit-button {
+      background-color: #e0e0e0;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  }
+}
