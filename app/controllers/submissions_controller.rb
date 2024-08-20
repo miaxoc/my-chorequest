@@ -1,37 +1,33 @@
 class SubmissionsController < ApplicationController
-  # Submission is created at the same time as the Task is created
-  # Submission's defaul status is "incomplete"
-  # When the task is marked as complete, it changes the submission's status to
-  # complete.
 
-  def index
-  end
+  #---------#
+  # click on the "complete"
+  # user goes to the update form
+  # upload the picture
+  # submit
 
-  def show
-  end
-
-  def new
-    @submission = Submission.new
-  end
-
-  def create
-
-  end
+  # def index
+  # end
 
   def edit
   end
 
   def update
+    @submission = Submission.find(params[:id])
+    @user = @submission.user (params[:user_id])
+    @user_tasks = Task.where(user_id: @user)
+    # get the submission from the params
+    # update the status to "complete"
   end
 
   def destroy
   end
 
   private
-
-  # def submission_params
-  #   params.require(:submission).permit(:status, :photo)
-  # end
+  # fix the strong params
+  def submission_params
+    params.require(:submission).permit(:status, :photo)
+  end
 end
 #---------------------#
 
