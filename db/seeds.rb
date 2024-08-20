@@ -8,10 +8,11 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 puts "destroying all stuff..."
+Submission.destroy_all
 Task.destroy_all
+User.update_all(household_id: nil)
 Household.destroy_all
 User.destroy_all
-
 
 task_titles = [
   "Vacuum the living room",
