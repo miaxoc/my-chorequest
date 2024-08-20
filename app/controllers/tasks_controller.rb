@@ -1,6 +1,20 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all
+    # @submissions = Submission.all
+
+    if params[:all_users] == "true"
+      @user_tasks = Task.where(user: current_user.household.users)
+      @user = nil
+    elsif params[:user_id].present?
+      @user = User.find(params[:user_id])
+      @user_tasks = Task.where(user: @user)
+    else
+      @user = current_user
+      @user_tasks = Task.where(user: @user)
+    end
+    house = current_user.household
+    @users = house.users
+
   end
 
   def show
