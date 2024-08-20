@@ -1,2 +1,0 @@
-class Goody < ApplicationRecord
-end

@@ -10,61 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_19_070312) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_20_022605) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "gardens", force: :cascade do |t|
-    t.bigint "household_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["household_id"], name: "index_gardens_on_household_id"
-  end
-
-  create_table "goodies", force: :cascade do |t|
-    t.string "name"
-    t.string "type"
-    t.integer "cost"
-    t.string "location"
-    t.string "placement"
-    t.integer "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "households", force: :cascade do |t|
     t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "progresses", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "goodie_id", null: false
-    t.string "achievements"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["goodie_id"], name: "index_progresses_on_goodie_id"
-    t.index ["user_id"], name: "index_progresses_on_user_id"
+    t.index ["user_id"], name: "index_households_on_user_id"
   end
 
-  create_table "task_lists", force: :cascade do |t|
-    t.bigint "household_id", null: false
+  create_table "submissions", force: :cascade do |t|
+    t.integer "status"
+    t.bigint "task_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["household_id"], name: "index_task_lists_on_household_id"
+    t.index ["task_id"], name: "index_submissions_on_task_id"
+    t.index ["user_id"], name: "index_submissions_on_user_id"
   end
 
   create_table "tasks", force: :cascade do |t|
     t.string "category"
     t.string "title"
-    t.string "description"
-    t.integer "status"
+    t.text "description"
+    t.integer "frequency"
+    t.bigint "household_id", null: false
     t.bigint "user_id", null: false
-    t.bigint "task_list_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["task_list_id"], name: "index_tasks_on_task_list_id"
+    t.index ["household_id"], name: "index_tasks_on_household_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
@@ -76,14 +53,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_19_070312) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "household_id"
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["household_id"], name: "index_users_on_household_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "gardens", "households"
-  add_foreign_key "progresses", "goodies", column: "goodie_id"
-  add_foreign_key "progresses", "users"
-  add_foreign_key "task_lists", "households"
-  add_foreign_key "tasks", "task_lists"
+  add_foreign_key "households", "users"
+  add_foreign_key "submissions", "tasks"
+  add_foreign_key "submissions", "users"
+  add_foreign_key "tasks", "households"
   add_foreign_key "tasks", "users"
+  add_foreign_key "users", "households"
 end
