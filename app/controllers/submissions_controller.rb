@@ -1,4 +1,9 @@
 class SubmissionsController < ApplicationController
+  # Submission is created at the same time as the Task is created
+  # Submission's defaul status is "incomplete"
+  # When the task is marked as complete, it changes the submission's status to
+  # complete.
+
   def index
   end
 
@@ -6,11 +11,11 @@ class SubmissionsController < ApplicationController
   end
 
   def new
-    @tasks = Task.all
     @submission = Submission.new
   end
 
   def create
+
   end
 
   def edit
