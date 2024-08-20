@@ -1,0 +1,73 @@
+.household-show {
+
+  .card-product {
+    overflow: hidden;
+    height: 80px;
+    width: 360px;
+    background: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    margin: 8px;
+    }
+
+  .card-product img {
+    height: 100%;
+    // width: 60px;
+    // height: 60px;
+    // border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .card-product h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .card-product p {
+    font-size: 12px;
+    line-height: 1.4;
+    opacity: .7;
+    margin-bottom: 0;
+    margin-top: 8px;
+  }
+
+  .card-product .card-product-infos {
+    padding: 16px;
+  }
+
+  .household-admin{
+
+    .card-product img {
+    border: 3px red solid
+    }
+  }
+
+  .members {
+    margin-top: 16px;
+    .card-product img {
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+    }
+
+    .card-product {
+      padding: 10px;
+    }
+  }
+
+  .tasks {
+    margin-top: 16px;
+    .card-product {
+      padding: 0px;
+    }
+
+    .card-product img {
+      padding: 0px;
+      width: 80px;
+      height: 80px;
+    }
+
+  }
+}
