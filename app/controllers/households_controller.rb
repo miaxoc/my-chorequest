@@ -22,19 +22,26 @@ class HouseholdsController < ApplicationController
   def edit
     @user = current_user
     @household = @user.household
-    if @household.update(household_params)
   end
 
   def update
+    @user = current_user
+    @household = @user.household
+    if @household.update(household_params)
+      redirect_to household_path
+    else
+      render 'household/form', status: :unprocessable_entity
+    end
   end
 
   def destroy
+
   end
 
   private
 
   def household_params
-
+    params.require(:household).permit(:title)
   end
 
 end
