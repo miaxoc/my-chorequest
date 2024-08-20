@@ -20,6 +20,9 @@ class HouseholdsController < ApplicationController
   end
 
   def edit
+    @user = current_user
+    @household = @user.household
+    if @household.update(household_params)
   end
 
   def update
@@ -27,4 +30,11 @@ class HouseholdsController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def household_params
+
+  end
+
 end
