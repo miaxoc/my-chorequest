@@ -15,6 +15,8 @@ class TasksController < ApplicationController
     house = current_user.household
     @users = house.users
 
+    @user.nil? ? @submissions = Submission.all : @submissions = @user.submissions
+
   end
 
   def show
