@@ -12,9 +12,9 @@ Rails.application.routes.draw do
 
   resources :tasks, only: [:index, :new, :create, :edit, :update, :destroy]
 
-  resources :household, only: [:show, :new, :create]
+  resources :households, only: [:show, :new, :create]
 
-  resources :user, only: [:index, :show]
+  resources :users, only: [:index, :show]
 
 
 
