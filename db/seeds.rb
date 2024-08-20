@@ -14,17 +14,24 @@ User.update_all(household_id: nil)
 Household.destroy_all
 User.destroy_all
 
-task_titles = [
-  "Vacuum the living room",
-  "Wash the dishes",
-  "Mow the lawn",
-  "Take out the trash",
-  "Clean the bathroom",
-  "Do the laundry",
-  "Dust the furniture",
-  "Organize the pantry"
-]
-
+task_titles = {
+  "Vacuum the living room" => "weekly",
+  "Wash the dishes" => "daily",
+  "Mow the lawn" => "monthly",
+  "Take out the trash" => "weekly",
+  "Clean the bathroom" => "weekly",
+  "Do the laundry" => "daily",
+  "Dust the furniture" => "weekly",
+  "Organize the pantry" => "monthly",
+  "Water the plants" => "daily",
+  "Sweep the floors" => "weekly",
+  "Clean the refrigerator" => "monthly",
+  "Change bed linens" => "weekly",
+  "Wipe down kitchen surfaces" => "daily",
+  "Clean the windows" => "monthly",
+  "Feed the pets" => "daily"
+}
+puts "creating users..."
 max = User.create!({
   username: "max",
   email: "max@gmail.com",
@@ -57,15 +64,23 @@ User.create!({
   household: household
 })
 
-30.times do
-  Task.create({
+puts "creating tasks..."
+task_titles.each do |k, v|
+  task = Task.create!({
     category: Task::CATEGORIES.sample,
-    title: task_titles.sample,
+    title: k,
     description: Faker::Lorem.paragraph,
     user: User.all.sample,
     household: household,
-    frequency: rand(1..10)
+    frequency: v
+  })
+
+  Submission.create!({
+    status: rand(1..2),
+    task: task,
+    user: User.all.sample
   })
 end
+
 
 puts "finished seeding! :)"
