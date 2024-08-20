@@ -1,7 +1,10 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+
 
 <div class="user-show">
   <h1><%= @user.username %></h1>
   <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+  <div class="user-show-description">
+    <h5><strong>Household: </strong><%= @user.household.title %></h5>
+    <h5><strong>Achievements: </strong>Show achievements here</h5>
+  </div>
 </div>

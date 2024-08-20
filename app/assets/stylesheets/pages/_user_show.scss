@@ -1,16 +1,29 @@
 .user-show {
+  width: 360px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  text-align: center;
+  padding-top: 16px;
+  padding-right: 24px;
+  padding-left: 24px;
+  padding-bottom: 24px;
+  border: 1px black solid;  //just for now
+  box-sizing: border-box;
 
-  width: 360px;
+
 
   img {
-
     width: 200px;
     height: 200px;
     border-radius: 50%;
     object-fit: cover;
+    margin-bottom: 24px;
+  }
+
+  .user-show-description {
+    text-align: start;
+    margin-left: 24px;
   }
 }
