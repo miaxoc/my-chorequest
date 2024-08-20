@@ -1,2 +1,43 @@
-<h1>Households#show</h1>
-<p>Find me in app/views/households/show.html.erb</p>
+<%# <h1>Households#show</h1>
+<p>Find me in app/views/households/show.html.erb</p> %>
+
+<div class="household-show pt-2">
+  <h1><%= @household.title %>'s house</h1>
+
+  <div class="members">
+    <h2 class="border-top pt-2">Members</h2>
+    <div class="household-admin">
+      <div class="card-product">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <div class="card-product-infos">
+          <h2><%= @household.user.username %> - admin</h2>
+          <p>Product description with <strong>relevant info</strong> only.</p>
+        </div>
+      </div>
+    </div>
+
+    <% @users.each do |user| %>
+      <div class="card-product">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <div class="card-product-infos">
+          <h2><%= user.username %></h2>
+          <p>Product description with <strong>relevant info</strong> only.</p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="tasks">
+    <h2 class="border-top pt-2">Tasks</h2>
+    <% @tasks.each do |task| %>
+      <div class="card-product">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <div class="card-product-infos">
+          <h2><%= task.title %></h2>
+          <p><%= task.description[0,50] %>...</p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>
