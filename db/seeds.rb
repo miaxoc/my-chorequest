@@ -12,6 +12,18 @@ Task.destroy_all
 Household.destroy_all
 User.destroy_all
 
+
+task_titles = [
+  "Vacuum the living room",
+  "Wash the dishes",
+  "Mow the lawn",
+  "Take out the trash",
+  "Clean the bathroom",
+  "Do the laundry",
+  "Dust the furniture",
+  "Organize the pantry"
+]
+
 max = User.create!({
   username: "max",
   email: "max@gmail.com",
@@ -21,7 +33,7 @@ max = User.create!({
 household = Household.create({ title: "ChoreQuest", user: max })
 
 max.household = household
-
+max.save
 
 User.create!({
   username: "mia",
@@ -47,7 +59,7 @@ User.create!({
 30.times do
   Task.create({
     category: Task::CATEGORIES.sample,
-    title: Faker::Book.title,
+    title: task_titles.sample,
     description: Faker::Lorem.paragraph,
     user: User.all.sample,
     household: household,
