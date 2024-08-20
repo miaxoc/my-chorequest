@@ -78,3 +78,4 @@ end
 
 gem "ffi", "< 1.17.0"
 gem "faker"
+gem "cloudinary"
