@@ -1,2 +1,15 @@
-<h1>Submissions#new</h1>
-<p>Find me in app/views/submissions/new.html.erb</p>
+<p>http://localhost:3000/submissions/new</p>
+
+<%= simple_form_for [@tasks] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit 'Submit', class: 'btn btn-danger mt-2' %>
+<% end %>
+
+<ul>
+    <% @tasks.each do |task| %>
+      <li>
+        <%= task.title %>
+      </li>
+    <% end %>
+</ul>

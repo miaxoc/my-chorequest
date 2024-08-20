@@ -43,6 +43,8 @@ Rails.application.routes.draw do
 
   resources :user, only: [:index, :show]
 
+  resources :submissions, only: [:new, :create]
+
 
 
 
