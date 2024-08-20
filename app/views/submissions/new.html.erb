@@ -1,10 +1,9 @@
 <p>http://localhost:3000/submissions/new</p>
 
-<%= simple_form_for [@tasks] do |f| %>
-  <%= f.input :title %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit 'Submit', class: 'btn btn-danger mt-2' %>
-<% end %>
+<%= simple_form_for [@list, @bookmark] do |f| %>
+    <%= f.association :task %>
+    <%= f.submit 'Submit', class: 'btn btn-danger mt-2' %>
+  <% end %>
 
 <ul>
     <% @tasks.each do |task| %>
