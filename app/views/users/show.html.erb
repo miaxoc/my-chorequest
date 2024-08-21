@@ -1,8 +1,17 @@
-
-
 <div class="user-show">
   <h1><%= @user.username %></h1>
   <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+  <h3>Your Points</h3>
+  <p><%= @user.points %></p>
+  <!-- Display User Badges -->
+  <h3>Your Badges</h3>
+  <ul>
+    <% @user.badges.each do |badge| %>
+      <li>
+        <%= badge.name %>: <%= badge.description %>
+      </li>
+    <% end %>
+  </ul>
   <div class="user-show-description">
     <h5><strong>Household: </strong><%= @user.household.title %></h5>
     <h5><strong>Achievements: </strong>Show achievements here</h5>

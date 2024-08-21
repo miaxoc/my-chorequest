@@ -4,7 +4,9 @@
         <img src="https://static.thenounproject.com/png/1569761-200.png" class="img-fluid" />
         <div class="card-product-infos">
           <h2><%= task.title %></h2>
-          <p><%= task.description %></p>
+          <p><%= task.frequency %></p>
+          <p><%= submission.user.username %></p>
+          <p><%= submission.deadline %></p>
         </div>
         <%= link_to edit_submission_path(submission) do %>
           <div class="btn <%= task.submissions.first.status == "completed" ? "btn-success" : "btn-warning" %> mx-2">
