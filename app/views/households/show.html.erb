@@ -1,11 +1,40 @@
 <%# <h1>Households#show</h1>
 <p>Find me in app/views/households/show.html.erb</p> %>
-
 <div class="household-show pt-2">
   <h1><%= @household.title %>'s house</h1>
-  <%= link_to 'edit household', edit_household_path(current_user.household), class: "edit-household-btn" %>
-
+  <%= link_to 'edit house title', edit_household_path(current_user.household), class: "edit-household-btn" %>
   <div class="members">
+    <!-- Modal Button -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#memberModal">
+      <i class="fa-solid fa-circle-plus"></i> Add Member
+    </button>
+    <!-- Modal -->
+    <div class="modal fade" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="memberModalLabel">Add New Member</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= render 'households/member_form' %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
     <h2 class="border-top pt-2">Members</h2>
     <div class="household-admin">
       <div class="card-product">
@@ -16,7 +45,6 @@
         </div>
       </div>
     </div>
-
     <% @users.each do |user| %>
       <div class="card-product">
         <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
@@ -27,15 +55,37 @@
       </div>
     <% end %>
   </div>
-
   <div class="tasks">
+    <!-- Modal Button -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#taskModal">
+      <i class="fa-solid fa-circle-plus"></i> Add Task
+    </button>
+    <!-- Modal -->
+    <div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="taskModalLabel">Add New Task</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= render 'tasks/form', task: @task %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <h2 class="border-top pt-2">Tasks</h2>
     <% @tasks.each do |task| %>
       <div class="card-product">
         <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
         <div class="card-product-infos">
           <h2><%= task.title %></h2>
-          <p><%= task.description[0,50] %>...</p>
+          <p><%= task.description %>...</p>
         </div>
       </div>
     <% end %>

@@ -15,6 +15,11 @@ class TasksController < ApplicationController
     house = current_user.household
     @users = house.users
 
+
+    @user.nil? ? @submissions = Submission.all : @submissions = @user.submissions
+    @task = Task.new
+    # Yu added (Initialize @submission for the form)
+    @submission = Submission.new
   end
 
   def show
