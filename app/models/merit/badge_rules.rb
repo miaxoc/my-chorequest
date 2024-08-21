@@ -44,6 +44,14 @@ module Merit
       #
       #   user.name.length > 4
       # end
+      grant_on 'submissions#update', badge_id: 1, to: :user do |submission|
+        submission.user.submissions.count == 1
+      end
+
+      grant_on 'submissions#update', badge_id: 2, to: :user do |submission|
+        submission.user.submissions.count == 5
+      end
+
     end
   end
 end

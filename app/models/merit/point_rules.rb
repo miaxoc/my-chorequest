@@ -24,7 +24,12 @@ module Merit
       #   'photos#create'
       # ]
       #
-      # score -10, :on => 'comments#destroy'
+      #  score 10, on: 'submissions#update', to: [:current_user]
+      score 10, on: 'submissions#update' do |submission|
+       submission.user
+     end
+
+
     end
   end
 end
