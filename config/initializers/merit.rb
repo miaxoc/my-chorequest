@@ -18,30 +18,15 @@ end
 
 Rails.application.reloader.to_prepare do
 
-Merit::Badge.create!(
-  id: 1,
-  name: "first-submission",
-  description: "Awarded for making your first task submission"
-)
+  Merit::Badge.create(
+    id: 1,
+    name: "first-submission",
+    description: "Awarded for making your first task submission"
+  )
 
-Merit::Badge.create!(
-  id: 2,
-  name: "five-submissions",
-  description: "Awarded for making five task submissions"
-)
+  Merit::Badge.create(
+    id: 2,
+    name: "five-submissions",
+    description: "Awarded for making five task submissions"
+  )
 end
-
-# Create application badges (uses https://github.com/norman/ambry)
-# Rails.application.reloader.to_prepare do
-#   badge_id = 0
-#   [{
-#     id: (badge_id = badge_id+1),
-#     name: 'just-registered'
-#   }, {
-#     id: (badge_id = badge_id+1),
-#     name: 'best-unicorn',
-#     custom_fields: { category: 'fantasy' }
-#   }].each do |attrs|
-#     Merit::Badge.create! attrs
-#   end
-# end
