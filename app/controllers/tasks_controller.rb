@@ -15,8 +15,11 @@ class TasksController < ApplicationController
     house = current_user.household
     @users = house.users
 
-
-    @user.nil? ? @submissions = Submission.all : @submissions = @user.submissions
+    if @user.nil?
+      @submissions = Submission.all
+    else
+       @submissions = @user.all_task_submissions_due
+    end
     @task = Task.new
     # Yu added (Initialize @submission for the form)
     @submission = Submission.new
@@ -36,7 +39,7 @@ class TasksController < ApplicationController
     @task.household = @user.household
 
     if @task.save
-      redirect_to tasks_path
+      redirect_to household_path(current_user.household)
     else
       render 'new', status: :unprocessable_entity
     end
@@ -58,7 +61,7 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    redirect_to tasks_path, notice: 'Task was successfully deleted.'
+    redirect_to household_path(current_user.household), notice: 'Task was successfully deleted.'
   end
 
   private
