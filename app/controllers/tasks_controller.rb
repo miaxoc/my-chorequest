@@ -15,8 +15,6 @@ class TasksController < ApplicationController
     house = current_user.household
     @users = house.users
 
-    @user.nil? ? @submissions = Submission.all : @submissions = @user.submissions
-
   end
 
   def show
@@ -63,4 +61,3 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:title, :frequency, :category)
   end
-end
