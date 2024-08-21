@@ -23,6 +23,7 @@ class SubmissionsController < ApplicationController
     @tasks = Task.where(user_id: current_user.id).where.not(status: 'completed')
     @submission.status = "completed"
     if @submission.save
+      @submission.user.add_points(10, 'Points for updating a submission')
       redirect_to tasks_path, notice: 'Submission was successfully created.'
     else
       render 'edit', status: :unprocessable_entity
