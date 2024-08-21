@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   belongs_to :household, optional: true
   has_many :submissions
-
+  has_merit
 end
