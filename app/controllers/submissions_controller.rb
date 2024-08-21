@@ -30,6 +30,7 @@ class SubmissionsController < ApplicationController
   end
 
   def destroy
+
   end
 
   private
@@ -37,4 +38,8 @@ class SubmissionsController < ApplicationController
   def submission_params
     params.require(:submission).permit(:status, :photo)
   end
+
+  
+
+
 end
