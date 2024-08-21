@@ -1,5 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
+  padding: 16px;
 
 
   // for NAVBAR to stick
@@ -12,15 +13,38 @@
     text-align: end;
   }
 
+  i {
+    margin: 4px;
+    align-content: center;
+    padding: 0px;
+
+  }
+
+  p {
+    margin: 4px;
+    text-align: start;
+    padding: 0;
+  }
+
+  .navbar-coin {
+    padding-left: 8px;
+  }
+
+  .navbar-level {
+    padding-left: 8px;
+  }
+
+  img {
+    align-content: top;
+  }
+
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
-}
+
 
 
 //Navbar FOOTER
