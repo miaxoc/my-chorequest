@@ -1,7 +1,7 @@
 <div class="form container w-50 mt-3" style="background-color: white; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
   <%= simple_form_for [@user] do |f| %>
     <%= f.association :household %>
-    <%= f.input :username, collection: User.all , prompt: 'Select user'%>
+    <%= f.input :username, collection: User.all.pluck(:username, :id) , prompt: 'Select user'%>
     <%= f.submit "Submit", class: " btn btn-primary mb-2" %>
   <% end %>
 </div>
