@@ -9,7 +9,9 @@
 <%= link_to "Make a new chore", new_task_path, class: "btn btn-outline-primary request-filter-buttons" %>
 <div class="d-flex justify-content-center" style="min-height: 100vh;">
   <div class="container d-flex flex-column align-items-center">
+
     <%= render 'submissions/list', submissions: @submissions %>
+
   </div>
 </div>
 
