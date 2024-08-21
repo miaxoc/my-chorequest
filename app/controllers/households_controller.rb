@@ -4,6 +4,7 @@ class HouseholdsController < ApplicationController
     @household = @user.household
     @users = @household.users
     @tasks = Task.all
+    @task = Task.new
   end
 
   def new
