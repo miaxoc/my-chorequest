@@ -1,4 +1,14 @@
 .household-show {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .edit-household-btn {
+    background-color: red;
+    color: white;
+    padding: 8px;
+  }
 
   .card-product {
     overflow: hidden;
@@ -6,8 +16,6 @@
     width: 360px;
     background: white;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    display: flex;
-    align-items: center;
     margin: 8px;
     }
 
@@ -17,6 +25,11 @@
     // height: 60px;
     // border-radius: 50%;
     object-fit: cover;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
   }
 
   .card-product h2 {

@@ -1,2 +1,14 @@
-<h1>Households#edit</h1>
-<p>Find me in app/views/households/edit.html.erb</p>
+
+
+<div class="edit-household-form">
+  <%# <h1>Households#edit</h1>
+  <p>Find me in app/views/households/edit.html.erb</p> %>
+
+  <h2>Edit a household</h2>
+  <%= simple_form_for @household do |f| %>
+    <%= f.input :title %>
+    <div class="edit">
+      <%= f.submit "Edit", :class => "edit-btn" %>
+    </div>
+  <% end %>
+</div>
