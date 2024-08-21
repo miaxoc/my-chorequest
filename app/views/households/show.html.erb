@@ -19,7 +19,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <%= render 'households/member_form' %>
+            <%= render '/users/form' %>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -40,19 +40,22 @@
       <div class="card-product">
         <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
         <div class="card-product-infos">
-          <h2><%= link_to @household.user.username, user_path(@household.user) %> - admin</h2>
+          <h2 style="color: red;"><%= link_to @household.user.username, user_path(@household.user), style: "color: black;" %> - admin</h2>
           <p>Product description with <strong>relevant info</strong> only.</p>
         </div>
       </div>
     </div>
     <% @users.each do |user| %>
-      <div class="card-product">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-        <div class="card-product-infos">
-          <h2><%= link_to user.username, user_path(user) %></h2>
-          <p>Product description with <strong>relevant info</strong> only.</p>
+      <% if user.username == @household.user.username%>
+      <% else %>
+        <div class="card-product">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <div class="card-product-infos">
+            <h2><%= link_to user.username, user_path(user) %></h2>
+            <p>Product description with <strong>relevant info</strong> only.</p>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
   <div class="tasks">
