@@ -1,8 +1,9 @@
-<div class="form container w-50 mt-3" style="background-color: white; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+<div class="form container mt-3" style="background-color: white; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
   <h2>List a task</h2>
   <%= simple_form_for [@task] do |f| %>
     <%# <%= f.association :user %>
     <%= f.input :title %>
+    <%= f.input :description, label: "Comments" %>
     <%= f.input :frequency,  collection: Task.frequencies.keys, prompt: 'Select frequency' %>
     <%= f.input :category, collection:
     Task::CATEGORIES,

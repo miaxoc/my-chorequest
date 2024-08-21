@@ -107,6 +107,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_21_051727) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "deadline"
     t.index ["task_id"], name: "index_submissions_on_task_id"
     t.index ["user_id"], name: "index_submissions_on_user_id"
   end

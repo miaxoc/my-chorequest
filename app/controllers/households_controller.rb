@@ -40,6 +40,11 @@ class HouseholdsController < ApplicationController
 
   end
 
+  def timetable
+    @household = Household.find(params[:id])
+    TimetableService.new(@household).call
+  end
+
   private
 
   def household_params
