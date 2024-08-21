@@ -13,19 +13,22 @@ class SubmissionsController < ApplicationController
   end
 
   def edit
+    @user = current_user
+
     @submission = Submission.find(params[:id])
-    @tasks = Task.where(user_id: current_user.id)
   end
 
   def update
     @submission = Submission.find(params[:id])
-    # @submission.user = current_user
-    @tasks = Task.where(user_id: current_user.id).where.not(status: 'completed')
+    if current_user != @submission.user
+      redirect_to tasks_path, notice: 'You are not the task owner'
+      return
+    end
     @submission.status = "completed"
     if @submission.save
       redirect_to tasks_path, notice: 'Submission was successfully created.'
     else
-      render 'edit', status: :unprocessable_entity
+      render 'edit', status: :unprocessable_entity, notice: 'Submission failed'
     end
   end
 

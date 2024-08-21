@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   def index
-    # @submissions = Submission.all
+    @submissions = Submission.all
 
     if params[:all_users] == "true"
       @user_tasks = Task.where(user: current_user.household.users)
@@ -20,7 +20,9 @@ class TasksController < ApplicationController
     else
        @submissions = @user.all_task_submissions_due
     end
-    @task =  Task.new
+    @task = Task.new
+    # Yu added (Initialize @submission for the form)
+    @submission = Submission.new
   end
 
   def show
@@ -67,4 +69,5 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:title, :frequency, :category)
   end
+
 end
