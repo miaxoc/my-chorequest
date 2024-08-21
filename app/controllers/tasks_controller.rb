@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   def index
-    # @submissions = Submission.all
+    @submissions = Submission.all
 
     if params[:all_users] == "true"
       @user_tasks = Task.where(user: current_user.household.users)
