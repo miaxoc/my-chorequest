@@ -9,16 +9,12 @@
 <%= link_to "Make a new chore", new_task_path, class: "btn btn-outline-primary request-filter-buttons" %>
 <div class="d-flex justify-content-center" style="min-height: 100vh;">
   <div class="container d-flex flex-column align-items-center">
-    <% @submissions.each do |submission| %>
-    <% task = submission.task %>
-      <div class="card-product mb-3" style="width: 400px;">
-        <img src="https://static.thenounproject.com/png/1569761-200.png" class="img-fluid" />
-        <div class="card-product-infos">
-          <h2><%= task.title %></h2>
-          <p><%= task.description %></p>
-        </div>
-        <div class="btn <%= task.submissions.first.status == "completed" ? "btn-success" : "btn-warning" %> mx-2"><i class="<%= task.submissions.first.status == "completed" ? "fa-regular fa-circle-check" : "fa-solid fa-clock" %>"></i></div>
-      </div>
-    <% end %>
+
+    <%= render 'submissions/list', submissions: @submissions %>
+
   </div>
+</div>
+
+<div class="container d-flex flex-column align-items-center">
+  <%= render 'tasks/form' %>
 </div>
