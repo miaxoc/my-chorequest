@@ -1,0 +1,14 @@
+<div class="navbar-footer">
+
+  <%= link_to '#' do %>
+    <i class="fa-solid fa-house-user navbar-footer-btn"></i>
+  <% end %>
+  <%= link_to household_path(current_user) do %>
+    <i class="fa-solid fa-plus navbar-footer-btn"></i>
+  <% end %>
+
+  <%= link_to '/tasks' do %>
+    <i class="fa-solid fa-list navbar-footer-btn"></i>
+  <% end %>
+
+</div>
