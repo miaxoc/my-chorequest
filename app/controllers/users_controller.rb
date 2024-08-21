@@ -27,4 +27,10 @@ class UsersController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def user_param
+    params.require(:user).permit(:household)
+  end
 end
