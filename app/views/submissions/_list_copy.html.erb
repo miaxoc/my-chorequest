@@ -26,7 +26,12 @@
           <%= simple_form_for submission do |f| %>
             <%# <%= f.association :task, collection: @tasks %>
             <%= f.input :photo, as: :file, label: false %>
-            <%= f.submit 'Complete', class: 'btn btn-success mt-2' %>
+            <%= f.submit 'Complete', class: 'btn btn-success mt-2'%>
+            <%# Confetti WIP %>
+            <%= f.submit 'Confetti(WIP)', class: 'btn btn-success mt-2',
+            data: { controller: 'confetti',
+            action: 'click->confetti#spray',
+            confetti_animation_value: 'basic' }%>
           <% end %>
         </div>
     </div>
