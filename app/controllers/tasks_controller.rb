@@ -17,8 +17,9 @@ class TasksController < ApplicationController
 
 
     @user.nil? ? @submissions = Submission.all : @submissions = @user.submissions
-    @task =  Task.new
-
+    @task = Task.new
+    # Yu added (Initialize @submission for the form)
+    @submission = Submission.new
   end
 
   def show
