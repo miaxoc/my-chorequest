@@ -1,10 +1,17 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+
+
   // for NAVBAR to stick
-  // position: fixed;
-  // left: 0;
-  // top: 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+
+  li {
+    text-align: end;
+  }
+
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -22,12 +29,17 @@ body {
   position: relative;
   min-height: 100vh;
 
+  margin: 0; /* Reset margins */
+  padding: 0;
+
   .navbar-footer {
     display: flex;
     justify-content: center;
+    align-items: center;
     position: fixed;
     left: 0;
     bottom: 0;
+    right: 0;
     z-index: 5;
     width: 100%;
     background-color: white;
@@ -36,6 +48,9 @@ body {
     .navbar-footer-btn{
       margin: 8px;
       height: 50px;
+      color: black;
+      width: 50px;
+
     }
   }
 }
