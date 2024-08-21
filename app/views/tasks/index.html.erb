@@ -5,16 +5,12 @@
     <% end %>
   </div>
 </div>
-<%= link_to "All Tasks", tasks_path(all_users: true), class: "btn btn-outline-primary request-filter-buttons #{'active' if params[:all_users] == 'true'}" %>
+
+<%= link_to "All Tasks", tasks_path(all_tasks: true), class: "btn btn-outline-primary request-filter-buttons #{'active' if params[:all_tasks] == 'true'}" %>
 <%= link_to "Make a new chore", new_task_path, class: "btn btn-outline-primary request-filter-buttons" %>
+
 <div class="d-flex justify-content-center" style="min-height: 100vh;">
   <div class="container d-flex flex-column align-items-center">
-
-    <%# <%= render 'submissions/list', submissions: @submissions %>
-    <%# ------Submission Modal Created ----- %>
-    <%= render 'submissions/list_copy', submissions: @submissions %>
-
+    <%= render 'submissions/list', submissions: @submissions %>
   </div>
 </div>
-
-

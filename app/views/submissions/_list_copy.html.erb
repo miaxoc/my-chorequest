@@ -1,39 +1,32 @@
 <% submissions.each do |submission| %>
-      <% task = submission.task %>
-      <div class="card-product mb-3" style="width: 400px;">
-        <img src="https://static.thenounproject.com/png/1569761-200.png" class="img-fluid" />
-        <div class="card-product-infos">
-          <h2><%= task.title %></h2>
-          <p><%= task.description %></p>
-        </div>
-
-        <%# Replasing the button %>
-
-        <div class="btn <%= task.submissions.first.status == "completed" ? "btn-success" : "btn-warning" %> mx-2" data-bs-toggle="modal" data-bs-target="#submissionModal-<%= submission.id %>">
-          <i class="<%= task.submissions.first.status == "completed" ? "fa-regular fa-circle-check" : "fa-solid fa-clock" %>"></i>
-        </div>
-
-        <%# modal %>
-
-        <div class="modal fade" id="submissionModal-<%= submission.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+  <% task = submission.task %>
+  <div class="card-product mb-3" style="width: 400px;">
+    <img src="https://static.thenounproject.com/png/1569761-200.png" class="img-fluid" />
+    <div class="card-product-infos">
+      <h2><%= task.title %></h2>
+      <p><%= task.description %></p>
+    </div>
+    <%# Replasing the button %>
+    <div class="btn <%= task.submissions.first.status == "completed" ? "btn-success" : "btn-warning" %> mx-2" data-bs-toggle="modal" data-bs-target="#submissionModal-<%= submission.id %>">
+      <i class="<%= task.submissions.first.status == "completed" ? "fa-regular fa-circle-check" : "fa-solid fa-clock" %>"></i>
+    </div>
+    <%# modal %>
+    <div class="modal fade" id="submissionModal-<%= submission.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Submit a picture!</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Submit a picture!</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <%= simple_form_for submission do |f| %>
+              <%# <%= f.association :task, collection: @tasks %>
+              <%= f.input :photo, as: :file, label: false %>
+              <%= f.submit 'Complete', class: 'btn btn-success mt-2' %>
+            <% end %>
+          </div>
         </div>
-        <div class="modal-body">
-          <%= simple_form_for submission do |f| %>
-            <%# <%= f.association :task, collection: @tasks %>
-            <%= f.input :photo, as: :file, label: false %>
-            <%= f.submit 'Complete', class: 'btn btn-success mt-2' %>
-          <% end %>
-        </div>
+      </div>
     </div>
   </div>
-</div>
-
-
-
-      </div>
-    <% end %>
+<% end %>
