@@ -1,8 +1,9 @@
-<h1>Submissions#edit</h1>
-<p>Find me in app/views/submissions/edit.html.erb</p>
+<h1>Create a submission</h1>
 
 <%= simple_form_for [@submission] do |f| %>
-  <%= f.association :task, collection: @tasks  %>
-  <%= f.input :photo, as: :file %>
+  <!-- <% f.association :task, collection: @tasks  %> -->
+  <%= f.input :photo, as: :file, label: 'Upload your photo' %>
   <%= f.submit 'Submit', class: 'btn btn-danger mt-2' %>
 <% end %>
+
+<%= link_to "back to task list", tasks_path  %>
