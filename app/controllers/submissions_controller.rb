@@ -26,7 +26,6 @@ class SubmissionsController < ApplicationController
     end
     @submission.status = "completed"
     if @submission.save
-      
       redirect_to tasks_path, notice: 'Submission was successfully created.'
     else
       render 'edit', status: :unprocessable_entity, notice: 'Submission failed'
