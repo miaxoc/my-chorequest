@@ -2,19 +2,18 @@
   <div class="container-fluid">
     <div>
       <div class="row navbar-coin border">
-        <i class="fa-solid fa-coins mx-1 col" style="color: orange;"></i><p class="col"> user.points </p>
+        <i class="fa-solid fa-coins mx-1 col" style="color: orange;"></i>
+        <p class="col"> points: <%= current_user.points %> </p>
       </div>
       <div class="row navbar-level border">
-        <i class="fa-solid fa-trophy mx-1 col" style="color: red;"></i><p class="col"> user.points </p>
+        <i class="fa-solid fa-trophy mx-1 col" style="color: red;"></i>
+        <p class="col">highest-badge: <%= current_user.badges.last.name %>  </p>
       </div>
     </div>
-
-
     <div >
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
       </button>
-
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto">
           <% if current_user != nil %>
@@ -35,8 +34,5 @@
         </ul>
       </div>
     </div>
-
-
-
   </div>
 </div>
