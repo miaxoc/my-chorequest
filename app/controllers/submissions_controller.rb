@@ -24,17 +24,21 @@ class SubmissionsController < ApplicationController
       redirect_to tasks_path, notice: 'You are not the task owner'
       return
     end
+    if @submission.status == "completed"
+      redirect_to tasks_path, notice: 'You have already completed the task!'
+      return
+    end
+
     @submission.status = "completed"
     if @submission.save
-      sleep(1)
-      redirect_to tasks_path, notice: 'Submission was successfully created.'
+      sleep(3)
+      redirect_to tasks_path
     else
       render 'edit', status: :unprocessable_entity, notice: 'Submission failed'
     end
   end
 
   def destroy
-
   end
 
   private

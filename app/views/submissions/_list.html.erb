@@ -28,11 +28,19 @@
           <h1 class="modal-title fs-5" id="exampleModalLabel">Submit a picture!</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+
+        <div class="modal-body" data-controller="show-points">
+          <div id ="form" data-show-points-target="form">
           <%= simple_form_for submission do |f| %>
-            <%# <%= f.association :task, collection: @tasks %>
             <%= f.input :photo, as: :file, label: false %>
+            <div data-action="click->show-points#showPoints">
             <%= f.submit 'Complete', class: 'btn btn-success mt-2'%>
+            </div>
+            </div>
+            <div data-show-points-target="image" class="d-none">
+              <%= render 'submissions/points'%>
+            </div>
+
             <%# Confetti WIP %>
             <%= f.submit 'Confetti(WIP)', class: 'btn btn-success mt-2',
             data: { controller: 'confetti',
