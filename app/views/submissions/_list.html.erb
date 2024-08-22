@@ -17,8 +17,8 @@
 
     <%# Replacing with Modal form ↓ %>
     <%# button %>
-    <div class="btn <%= task.submissions.first.status == "completed" ? "btn-success" : "btn-warning" %> mx-2" data-bs-toggle="modal" data-bs-target="#submissionModal-<%= submission.id %>">
-      <i class="<%= task.submissions.first.status == "completed" ? "fa-regular fa-circle-check" : "fa-solid fa-clock" %>"></i>
+    <div class="btn <%= submission.status == "completed" ? "btn-success" : "btn-warning" %> mx-2" data-bs-toggle="modal" data-bs-target="#submissionModal-<%= submission.id %>">
+      <i class="<%= submission.status == "completed" ? "fa-regular fa-circle-check" : "fa-solid fa-clock" %>"></i>
     </div>
     <%# modal %>
     <div class="modal fade" id="submissionModal-<%= submission.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
