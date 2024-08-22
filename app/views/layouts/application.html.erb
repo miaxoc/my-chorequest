@@ -16,12 +16,16 @@
   </head>
 
   <body>
-    <%= render "shared/navbar" %>
-    <%= render "shared/flashes" %>
-    <%= render "shared/navbar_footer" %>
-
-    <div style="padding-right: 8px; padding-left: 8px; padding-bottom: 56px;">
+    <% if current_page?(root_path) || '/households/new' %>
       <%= yield %>
-    </div>
+    <% else %>
+      <%= render "shared/navbar" %>
+      <%= render "shared/flashes" %>
+      <%= render "shared/navbar_footer" %>
+
+      <div style="padding-right: 8px; padding-left: 8px; padding-bottom: 56px;">
+        <%= yield %>
+      </div>
+    <% end %>
   </body>
 </html>

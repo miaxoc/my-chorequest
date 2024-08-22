@@ -10,7 +10,7 @@
 
   .user-show-container {
 
-    border-bottom: 1px gray solid;
+    border-bottom: 1px lightgray solid;
     width: 100%;
 
     .user-show-container-profile {
@@ -28,11 +28,7 @@
         flex-grow: 1;
         margin: auto 0px;
 
-
         .user-profile-achievements {
-
-
-
 
           .user-profile-coins {
             display: flex;
@@ -48,13 +44,11 @@
               margin: auto 8px;
 
             }
-
           }
 
           .user-profile-badges {
             display: flex;
             margin-bottom: 16px;
-
 
             i {
               margin: auto;
@@ -66,13 +60,54 @@
               margin: auto 8px;
             }
           }
+        }
+      }
+    }
+
+
+    .user-show-container-members {
+      text-align: center;
+      margin-top: 16px;
+
+      .user-show-members {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+
+        .profile-pic-placeholder {
+          width: 50px;
+          height: 50px;
+          background-color: red;
+          border-radius: 50%;
+          margin: 8px;
 
         }
 
-
-
+        .user-show-member-profiles {
+          text-align: center;
+          margin: 0 auto;
+        }
       }
     }
+
+    .user-show-container-badges {
+      text-align: center;
+      margin-top: 16px;
+      margin-bottom: 16px;
+
+
+      .badge-icon-placeholder {
+        width: 80px;
+        height: 80px;
+        background-color: blue;
+        margin: 8px;
+      }
+
+
+    }
+
+
+
   }
 
 

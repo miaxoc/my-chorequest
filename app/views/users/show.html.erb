@@ -9,7 +9,7 @@
         <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
 
       <div class="user-profile-text">
-        <h3 class="mb-3"><%= @user.username %></h3>
+        <h3 class="mb-3"><strong><%= @user.username %></strong></h3>
 
         <div class="user-profile-achievements">
           <div class="user-profile-coins">
@@ -19,7 +19,7 @@
 
           <div class="user-profile-badges">
             <i class="fa-solid fa-trophy" style="color: red;"></i>
-            <h5>badges: <%= @user.badges.sum %></h5>
+            <h5>badges: number <%# @user.badges.sum %></h5>
           </div>
         </div>
       </div>
@@ -30,23 +30,51 @@
 
 
   <div class="user-show-container">
-    <h3><strong>Household: </strong><%= @user.household.title %></h3>
-    <%# member profile pics %>
-    <%= @users.each do |user|%>
-      <h2><%= link_to user.username, user_path(user) %></h2>
-    <% end %>
+    <div class="user-show-container-members">
+      <h3><strong>Household: </strong><%= @user.household.title %></h3>
+      <!-- member profile pics -->
+      <div class="user-show-members">
+        <% @users.each do |user|%>
+          <div class="d-flex">
+            <div class="user-show-member-profiles">
+              <div class="profile-pic-placeholder"></div>
+              <p><%= user.username %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
   </div>
 
   <div class="user-show-container">
-    <!-- Display User Badges -->
-    <h3>Your Badges</h3>
-    <ul>
-      <%# @user.badges.each do |badge| %>
-        <%# <li> %>
-          <%# badge.name %> <%# badge.description %>
-        <%# </li> %>
-      <%# end %>
-    </ul>
+    <div class="user-show-container-badges">
+      <h3><strong>Your Badges</strong></h3>
+      <!-- Display User Badges -->
+      <!-- grid display where badges wrap -->
+      <div class="user-show-badges-icons d-flex justify-content-center">
+        <div class="badge-icon-placeholder">
+        </div>
+        <div class="badge-icon-placeholder">
+        </div>
+        <div class="badge-icon-placeholder">
+        </div>
+        <div class="badge-icon-placeholder">
+        </div>
+
+      </div>
+
+
+
+
+      <%#ul>
+        <%# @user.badges.each do |badge| %>
+          <%# <li> %>
+            <%# badge.name %> <%# badge.description %>
+          <%# </li> %>
+        <%# end %>
+      <%#/ul %>
+    </div>
   </div>
 
 </div>
