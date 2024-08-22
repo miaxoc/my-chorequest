@@ -3,7 +3,7 @@ class HouseholdsController < ApplicationController
     @user = current_user
     @household = @user.household
     @users = @household.users
-    @tasks = Task.all
+    @tasks = @household.tasks.order(created_at: :desc)
     @task = Task.new
     @members = User.all
 
@@ -41,6 +41,7 @@ class HouseholdsController < ApplicationController
   def timetable
     @household = Household.find(params[:id])
     TimetableService.new(@household).call
+    redirect_to household_path(@household)
   end
 
   private

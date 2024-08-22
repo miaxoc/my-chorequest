@@ -8,14 +8,27 @@ class TasksController < ApplicationController
       @user = current_user
       @user_tasks = Task.where(user: @user)
       @submissions = Submission.where(user: @user)
-    elsif params[:user_id].present?
-      @user = User.find(params[:user_id])
-      @user_tasks = Task.where(user: @user)
-      @submissions = @user.submissions.where(deadline: Date.today)
-    else
+    # elsif params[:user_id].present?
+    #   @user = User.find(params[:user_id])
+    #   @user_tasks = Task.where(user: @user)
+    #   @submissions = @user.submissions.where(deadline: Date.today)
+    elsif params[:daily] == "true"
       @user = current_user
       @user_tasks = Task.where(user: @user)
       @submissions = @user.submissions.where(deadline: Date.today)
+    elsif params[:weekly] == "true"
+      @user = current_user
+      @user_tasks = Task.where(user: @user)
+      @submissions = @user.submissions.joins(:task).where(deadline: Date.today..Date.today.end_of_week, tasks: { frequency: "weekly" })
+
+    elsif params[:monthly] == "true"
+      @user = current_user
+      @user_tasks = Task.where(user: @user)
+      @submissions = @user.submissions.joins(:task).where(deadline: Date.today..Date.today.end_of_month, tasks: { frequency: "monthly" })
+    else
+      @user = current_user
+      @user_tasks = Task.where(user: @user)
+      @submissions = Submission.where(user: @user)
     end
 
     @task = Task.new
