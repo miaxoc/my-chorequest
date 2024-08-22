@@ -3,7 +3,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = User.find(params[:id])
+    @household = @user.household
+    @users = @household.users
   end
 
   def new

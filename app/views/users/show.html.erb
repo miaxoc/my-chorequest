@@ -1,19 +1,52 @@
 <div class="user-show">
-  <h1><%= @user.username %></h1>
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-  <h3>Your Points</h3>
-  <p><%= @user.points %></p>
-  <!-- Display User Badges -->
-  <h3>Your Badges</h3>
-  <ul>
-    <% @user.badges.each do |badge| %>
-      <li>
-        <%= badge.name %>: <%= badge.description %>
-      </li>
-    <% end %>
-  </ul>
-  <div class="user-show-description">
-    <h5><strong>Household: </strong><%= @user.household.title %></h5>
-    <h5><strong>Achievements: </strong>Show achievements here</h5>
+  <div class="user-show-container">
+    <p><%= Date.today %></p>
   </div>
+
+  <div class="user-show-container">
+    <div class="user-show-container-profile">
+
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+
+      <div class="user-profile-text">
+        <h3 class="mb-3"><%= @user.username %></h3>
+
+        <div class="user-profile-achievements">
+          <div class="user-profile-coins">
+            <i class="fa-solid fa-coins" style="color: orange;"></i>
+            <h5>points: <%= @user.points %></h5>
+          </div>
+
+          <div class="user-profile-badges">
+            <i class="fa-solid fa-trophy" style="color: red;"></i>
+            <h5>badges: <%= @user.badges.sum %></h5>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+
+  <div class="user-show-container">
+    <h3><strong>Household: </strong><%= @user.household.title %></h3>
+    <%# member profile pics %>
+    <%= @users.each do |user|%>
+      <h2><%= link_to user.username, user_path(user) %></h2>
+    <% end %>
+  </div>
+
+  <div class="user-show-container">
+    <!-- Display User Badges -->
+    <h3>Your Badges</h3>
+    <ul>
+      <%# @user.badges.each do |badge| %>
+        <%# <li> %>
+          <%# badge.name %> <%# badge.description %>
+        <%# </li> %>
+      <%# end %>
+    </ul>
+  </div>
+
 </div>

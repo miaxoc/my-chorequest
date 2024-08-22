@@ -64,16 +64,25 @@ User.create!({
   household: household
 })
 
-# puts "creating tasks..."
-# task_titles.each do |k, v|
-#   task = Task.create!({
-#     category: Task::CATEGORIES.sample,
-#     title: k,
-#     description: Faker::Lorem.paragraph,
-#     user: User.all.sample,
-#     household: household,
-#     frequency: v
-#   })
+puts "do you want to create tasks? [y/n]"
+input = gets.chomp.downcase
+if input == 'y'
+  puts "creating tasks..."
+  task_titles.first(6).each do |k, v|
+    Task.create!({
+      category: Task::CATEGORIES.sample,
+      title: k,
+      description: Faker::Lorem.paragraph,
+      user: User.all.sample,
+      household: household,
+      frequency: v
+    })
+  end
+
+  puts "distributing tasks"
+  timetable = TimetableService.new(household)
+  timetable.call
+end
 
 #   Submission.create!({
 #     status: rand(0..1),
