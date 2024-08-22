@@ -42,7 +42,7 @@ class SubmissionsController < ApplicationController
     params.require(:submission).permit(:status, :photo)
   end
 
-  
+
 
 
 end

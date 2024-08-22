@@ -1,0 +1,46 @@
+/* Constrain Calendar Width */
+.simple-calendar {
+  max-width: 90%; /* Constrain width to 90% of its container */
+  margin: 0 auto; /* Center the calendar */
+  font-size: 12px; /* Smaller font size */
+}
+
+/* Calendar Header */
+.simple-calendar th {
+  padding: 5px;
+  font-size: 12px; /* Smaller font size */
+}
+
+/* Day Cells */
+.simple-calendar td {
+  padding: 5px;
+  height: 60px; /* Smaller height for each cell */
+  font-size: 12px; /* Smaller font size */
+  vertical-align: top;
+}
+
+/* Tasks/Events */
+.simple-calendar .task {
+  background-color: #28a745;
+  color: white;
+  padding: 3px;
+  margin-bottom: 3px;
+  border-radius: 3px;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+/* Ensure Other Components Don’t Affect Calendar */
+.household-show .members {
+  padding: 0;
+  margin: 0;
+}
+
+.household-show .day {
+  margin-bottom: 5px; /* Space between days */
+}
+
+.household-show .task {
+  display: block;
+}
+

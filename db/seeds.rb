@@ -64,23 +64,23 @@ User.create!({
   household: household
 })
 
-puts "creating tasks..."
-task_titles.each do |k, v|
-  task = Task.create!({
-    category: Task::CATEGORIES.sample,
-    title: k,
-    description: Faker::Lorem.paragraph,
-    user: User.all.sample,
-    household: household,
-    frequency: v
-  })
+# puts "creating tasks..."
+# task_titles.each do |k, v|
+#   task = Task.create!({
+#     category: Task::CATEGORIES.sample,
+#     title: k,
+#     description: Faker::Lorem.paragraph,
+#     user: User.all.sample,
+#     household: household,
+#     frequency: v
+#   })
 
-  Submission.create!({
-    status: rand(1..2),
-    task: task,
-    user: User.all.sample
-  })
-end
+#   Submission.create!({
+#     status: rand(0..1),
+#     task: task,
+#     user: User.all.sample
+#   })
+# end
 
 
 puts "finished seeding! :)"

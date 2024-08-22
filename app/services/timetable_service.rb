@@ -23,7 +23,7 @@ class TimetableService
   private
 
   def distribute_daily_tasks(daily_tasks)
-    dates = (Date.today.beginning_of_month..Date.today.end_of_month)
+    dates = (Date.today..Date.today.next_month.end_of_month)
     user_index = 0
 
     daily_tasks.each do |task|
@@ -42,16 +42,17 @@ class TimetableService
   end
 
   def distribute_weekly_tasks(weekly_tasks)
-    weeks = (1..4).to_a # Assuming 4 weeks in a month
     user_index = 0
 
+    sundays = (Date.today..Date.today.next_month.end_of_month).select { |day| day.wday.zero? }
+
     weekly_tasks.each do |task|
-      weeks.each do |week|
+      sundays.each do |sunday|
         Submission.create({
           status: "given",
           task: task,
           user: @users[user_index], # Assign the task to the user
-          deadline: Date.today.beginning_of_month + (week - 1).weeks
+          deadline: sunday
         })
 
         # Cycle to the next user
