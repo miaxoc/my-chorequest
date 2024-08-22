@@ -19,6 +19,7 @@
 
   <body>
     <% if current_page?(root_path) || (controller_name == 'households' && action_name == 'new') %>
+      <%= render "shared/flashes" %>
       <%= yield %>
     <% else %>
       <%= render "shared/navbar" %>
