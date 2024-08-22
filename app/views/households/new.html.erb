@@ -5,8 +5,11 @@
   <h2>Create a household</h2>
   <%= simple_form_for @household do |f| %>
     <%= f.input :title %>
+    <%= f.input :users, collection: User.all.pluck(:username, :id) , prompt: 'Add members'%>
+    <%= f.association :users, collection: User.all.pluck(:username, :id), prompt: 'Add members' %>
     <div class="submit">
       <%= f.submit "Submit", :class => "submit-btn" %>
     </div>
   <% end %>
+
 </div>
