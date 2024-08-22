@@ -1,0 +1,14 @@
+.progress {
+  height: 25px;
+  background-color: #e9ecef;
+  border-radius: 5px;
+  overflow: hidden;
+  width: 60%;
+}
+
+.progress-bar {
+  background-color: #28a745;
+  text-align: center;
+  color: white;
+  line-height: 25px; /* Ensures the text is vertically centered */
+}

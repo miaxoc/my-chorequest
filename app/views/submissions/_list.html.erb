@@ -29,7 +29,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <%= simple_form_for submission do |f| %>
+          <%= simple_form_for submission, url: submission_path(submission, frequency: params[:frequency])  do |f| %>
             <%# <%= f.association :task, collection: @tasks %>
             <%= f.input :photo, as: :file, label: false %>
             <%= f.submit 'Complete', class: 'btn btn-success mt-2'%>

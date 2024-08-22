@@ -12,16 +12,16 @@ class TasksController < ApplicationController
     #   @user = User.find(params[:user_id])
     #   @user_tasks = Task.where(user: @user)
     #   @submissions = @user.submissions.where(deadline: Date.today)
-    elsif params[:daily] == "true"
+    elsif params[:frequency] == "daily"
       @user = current_user
       @user_tasks = Task.where(user: @user)
       @submissions = @user.submissions.where(deadline: Date.today)
-    elsif params[:weekly] == "true"
+    elsif params[:frequency] == "weekly"
       @user = current_user
       @user_tasks = Task.where(user: @user)
       @submissions = @user.submissions.joins(:task).where(deadline: Date.today..Date.today.end_of_week, tasks: { frequency: "weekly" })
 
-    elsif params[:monthly] == "true"
+    elsif params[:frequency] == "monthly"
       @user = current_user
       @user_tasks = Task.where(user: @user)
       @submissions = @user.submissions.joins(:task).where(deadline: Date.today..Date.today.end_of_month, tasks: { frequency: "monthly" })
@@ -29,6 +29,13 @@ class TasksController < ApplicationController
       @user = current_user
       @user_tasks = Task.where(user: @user)
       @submissions = Submission.where(user: @user)
+    end
+    total_tasks = @submissions.count
+    completed_tasks = @submissions.where(status: "completed").count
+    @progress_percentage = if total_tasks > 0
+      (completed_tasks.to_f / total_tasks * 100).round(2)
+    else
+      0
     end
 
     @task = Task.new
