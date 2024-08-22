@@ -16,12 +16,7 @@ class HouseholdsController < ApplicationController
   end
 
   def create
-    @household = Household.new(household_params)
-    if @household.save
-      redirect_to household_path(@household)
-    else
-      render 'new', status: :unprocessable_entity
-    end
+    redirect_to household_path(current_user.household)
   end
 
   def edit
@@ -51,7 +46,7 @@ class HouseholdsController < ApplicationController
   private
 
   def household_params
-    params.require(:household).permit(:title, user_ids: [])
+    params.require(:household).permit(:title)
   end
 
 end
