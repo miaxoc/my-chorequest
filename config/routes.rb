@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :tasks, only: [:index, :new, :create, :edit, :update, :destroy]
 
-  resources :households, only: [:show, :new, :create, :edit, :update] do
+  resources :households, only: [:show, :new, :create, :edit, :update, :show] do
     member do
       post :timetable
     end

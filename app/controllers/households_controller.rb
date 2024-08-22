@@ -16,12 +16,7 @@ class HouseholdsController < ApplicationController
   end
 
   def create
-    @household = Household.new(household_params)
-    if @household.save
-      redirect_to households_path(@household)
-    else
-      render '/households/new', status: :unprocessable_entity
-    end
+    redirect_to household_path(current_user.household)
   end
 
   def edit

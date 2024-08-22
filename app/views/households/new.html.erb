@@ -3,10 +3,22 @@
   <p>Find me in app/views/households/new.html.erb</p> %>
 
   <h2>Create a household</h2>
-  <%= simple_form_for @household do |f| %>
-    <%= f.input :title %>
-    <div class="submit">
-      <%= f.submit "Submit", :class => "submit-btn" %>
-    </div>
-  <% end %>
+  <div class="new-household-container">
+    <%= form_with url: households_path, method: :post do |form| %>
+      <div class="household-form-group">
+        <%= form.label :name, "Household Name" %>
+        <%= form.text_field :name %>
+      </div>
+
+      <div class="household-form-group">
+        <%= form.label :user_id, "Select User" %>
+        <%= form.select :user_id, options_for_select(User.all.pluck(:username, :id)), {}, multiple: true %>
+      </div>
+
+      <%= form.submit "Create Household" %>
+    <% end %>
+  </div>
+
+
+
 </div>
