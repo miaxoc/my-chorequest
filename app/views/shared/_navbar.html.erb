@@ -5,7 +5,7 @@
       <div class="user-profile-coins d-flex">
         <i class="fa-solid fa-coins" style="color: orange;"></i>
         <!-- <h5>points: <%= @user.points %></h5> -->
-        <p> points: <% if current_user.present? %>
+        <p> points: <% if current_user.present? && current_user.present?  %>
             <%= current_user.points %>
           <% end %>
         </p>
@@ -14,7 +14,7 @@
       <div class="user-profile-badges d-flex">
         <i class="fa-solid fa-trophy" style="color: red;"></i>
         <!-- <h5>badges: number <%# @user.badges.sum %></h5> -->
-        <p>highest-badge: <% if current_user.present? and current_user.badges.present? %>
+        <p>highest-badge: <% if current_user.present? && current_user.badges.present? %>
             <%= current_user.badges.last.name %>
           <% end %>
         </p>
