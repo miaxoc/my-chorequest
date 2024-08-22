@@ -6,6 +6,9 @@ class HouseholdsController < ApplicationController
     @tasks = Task.all
     @task = Task.new
     @members = User.all
+
+    @my_calendar_tasks = current_user.submissions.where(deadline: Date.today.beginning_of_month..Date.today.next_month.end_of_month)
+    @all_calendar_tasks = current_user.household.submissions.where(deadline: Date.today.beginning_of_month..Date.today.next_month.end_of_month)
   end
 
   def new
@@ -15,9 +18,9 @@ class HouseholdsController < ApplicationController
   def create
     @household = Household.new(household_params)
     if @household.save
-      redirect_to household_path(@household)
+      redirect_to households_path(@household)
     else
-      render 'new', status: :unprosessable_entity
+      render '/households/new', status: :unprocessable_entity
     end
   end
 

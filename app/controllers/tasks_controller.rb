@@ -1,27 +1,24 @@
 class TasksController < ApplicationController
   def index
-    @submissions = Submission.all
-
-    if params[:all_users] == "true"
-      @user_tasks = Task.where(user: current_user.household.users)
-      @user = nil
-    elsif params[:user_id].present?
-      @user = User.find(params[:user_id])
-      @user_tasks = Task.where(user: @user)
-    else
-      @user = current_user
-      @user_tasks = Task.where(user: @user)
-    end
     house = current_user.household
     @users = house.users
 
-    if @user.nil?
-      @submissions = Submission.all
+    # Determine which user to show tasks for
+    if params[:all_tasks] == "true"
+      @user = current_user
+      @user_tasks = Task.where(user: @user)
+      @submissions = Submission.where(user: @user)
+    elsif params[:user_id].present?
+      @user = User.find(params[:user_id])
+      @user_tasks = Task.where(user: @user)
+      @submissions = @user.submissions.where(deadline: Date.today)
     else
-       @submissions = @user.all_task_submissions_due
+      @user = current_user
+      @user_tasks = Task.where(user: @user)
+      @submissions = @user.submissions.where(deadline: Date.today)
     end
+
     @task = Task.new
-    # Yu added (Initialize @submission for the form)
     @submission = Submission.new
   end
 

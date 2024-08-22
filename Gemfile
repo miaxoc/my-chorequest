@@ -80,3 +80,4 @@ gem "ffi", "< 1.17.0"
 gem "faker"
 gem "cloudinary"
 gem 'merit'
+gem "simple_calendar", "~> 2.4"
