@@ -7,7 +7,9 @@
       </div>
       <div class="row navbar-level border">
         <i class="fa-solid fa-trophy mx-1 col" style="color: red;"></i>
-        <p class="col">highest-badge: <%= current_user.badges.last.name %>  </p>
+        <p class="col">highest-badge: <% if current_user.badges.present? %>
+            <%= current_user.badges.last.name %>
+          <% end %>  </p>
       </div>
     </div>
     <div >
