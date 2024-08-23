@@ -1,10 +1,4 @@
 class SubmissionsController < ApplicationController
-  #---------#
-  # click on the "complete"
-  # user goes to the update form
-  # upload the picture
-  # submit
-
   def index
   end
 
@@ -28,7 +22,7 @@ class SubmissionsController < ApplicationController
     @submission.status = "completed"
 
     if @submission.save
-      # sleep(1)
+      sleep(4)
       redirect_to tasks_path(frequency: params[:frequency]), notice: 'Submission was successfully created.'
     else
       render 'edit', status: :unprocessable_entity, notice: 'Submission failed'
@@ -36,7 +30,6 @@ class SubmissionsController < ApplicationController
   end
 
   def destroy
-
   end
 
   private

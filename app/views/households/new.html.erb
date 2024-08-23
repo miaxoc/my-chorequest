@@ -5,6 +5,7 @@
       <%= f.input :title, placeholder: "Enter the household name", class: "form-control" %>
     </div>
 
+
     <div class="form-group">
       <%= f.label :user_ids, "Add Members", style: "font-weight:bold;" %>
       <%= collection_check_boxes(:household, :user_ids, @users, :id, :username) do |b| %>
