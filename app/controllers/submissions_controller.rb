@@ -24,7 +24,9 @@ class SubmissionsController < ApplicationController
       redirect_to tasks_path, notice: 'You are not the task owner'
       return
     end
+
     @submission.status = "completed"
+
     if @submission.save
       # sleep(1)
       redirect_to tasks_path(frequency: params[:frequency]), notice: 'Submission was successfully created.'

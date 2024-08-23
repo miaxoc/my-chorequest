@@ -1,0 +1,10 @@
+<% if flash.now[:badges_granted].present? %>
+  <script>
+    Swal.fire({
+      title: 'Congratulations!',
+      text: 'You have earned the following badges: <%= flash.now[:badges_granted].join(", ") %>',
+      icon: 'success',
+      confirmButtonText: 'Awesome!'
+    });
+  </script>
+<% end %>
