@@ -1,22 +1,24 @@
+<div class="household-new-style">
+  <%= simple_form_for @household do |f| %>
+    <div class="form-group mb-3">
+      <%= f.label :title, "Household Name", style: "font-weight:bold;" %>
+      <%= f.input :title, placeholder: "Enter the household name", class: "form-control" %>
+    </div>
 
-<%= simple_form_for @household do |f| %>
-  <div class="form-group">
-    <%= f.label :title, "Household Name" %>
-    <%= f.input :title, placeholder: "Enter the household name", class: "form-control" %>
-  </div>
 
-  <div class="form-group">
-    <%= f.label :user_ids, "Add Members" %>
-    <%= collection_check_boxes(:household, :user_ids, @users, :id, :username) do |b| %>
-      <div class="checkbox">
-        <label>
-          <%= b.check_box %> <%= b.text %>
-        </label>
-      </div>
-    <% end %>
-  </div>
+    <div class="form-group">
+      <%= f.label :user_ids, "Add Members", style: "font-weight:bold;" %>
+      <%= collection_check_boxes(:household, :user_ids, @users, :id, :username) do |b| %>
+        <div class="checkbox">
+          <label>
+            <%= b.check_box %> <%= b.text %>
+          </label>
+        </div>
+      <% end %>
+    </div>
 
-  <div class="form-group">
-    <%= f.submit "Create Household", class: "btn btn-primary" %>
-  </div>
-<% end %>
+    <div class="form-group" style="display: flex; justify-content: center;">
+      <%= f.submit "Create Household", class: "btn btn-primary", style: "border-radius: 32px; border: 1px black solid;" %>
+    </div>
+  <% end %>
+</div>
