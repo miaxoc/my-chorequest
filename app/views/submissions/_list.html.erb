@@ -1,55 +1,59 @@
-<% submissions.each do |submission| %>
-  <% task = submission.task %>
-  <div class="card-product mb-3" style="width: 400px;">
-    <img src="https://static.thenounproject.com/png/1569761-200.png" class="img-fluid" />
-    <div class="card-product-infos">
-      <h2><%= task.title %></h2>
-      <p><%= task.frequency %></p>
-      <p><%= submission.user.username %></p>
-      <p><%= submission.deadline %></p>
-    </div>
-    <%# Replacing ↓ %>
-    <!-- <%= link_to edit_submission_path(submission) do %>
+<% if submissions.first.nil? %>
+  <h5 style="color: grey;"><em>No <%= params[:frequency] %> tasks to complete.</em></h5>
+<% else %>
+  <% submissions.each do |submission| %>
+    <% task = submission.task %>
+    <div class="card-product mb-3" style="width: 400px;">
+      <img src="https://static.thenounproject.com/png/1569761-200.png" class="img-fluid" />
+      <div class="card-product-infos">
+        <h2><%= task.title %></h2>
+        <p><%= task.frequency %></p>
+        <p><%= submission.user.username %></p>
+        <p><%= submission.deadline %></p>
+      </div>
+      <%# Replacing ↓ %>
+      <!-- <%= link_to edit_submission_path(submission) do %>
       <div class="btn <%= submission.status == "completed" ? "btn-success" : "btn-warning" %> mx-2"> -->
-    <!--    <i class="<%= submission.status == "completed" ? "fa-regular fa-circle-check" : "fa-solid fa-clock" %>"></i> -->
-    <!--  </div> -->
-    <%# Replacing ↑ %>
-    <%# Replacing with Modal form ↓ %>
-    <%# button %>
-    <div class="btn <%= submission.status == "completed" ? "btn-success" : "btn-warning" %> mx-2" data-bs-toggle="modal" data-bs-target="#submissionModal-<%= submission.id %>">
-      <i class="<%= submission.status == "completed" ? "fa-regular fa-circle-check" : "fa-solid fa-clock" %>"></i>
-    </div>
-    <%# modal %>
-    <div class="modal fade" id="submissionModal-<%= submission.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Submit a picture!</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <%= simple_form_for submission, url: submission_path(submission, frequency: params[:frequency])  do |f| %>
-              <%# <%= f.association :task, collection: @tasks %>
-              <%= f.input :photo, as: :file, label: false %>
-              <% if submission.status == "completed" %>
-                <div class="alert alert-danger">
-                  Submission already completed. You cannot update it.
-                </div>
-                <%= f.submit 'Complete', class: 'btn btn-success mt-2', disabled: true %>
-              <% else %>
-                <%= f.submit 'Complete', class: 'btn btn-success mt-2' %>
-              <% end %>
-              <%# Confetti WIP %>
-              <%= f.submit 'Confetti(WIP)', class: 'btn btn-success mt-2',
+      <!--    <i class="<%= submission.status == "completed" ? "fa-regular fa-circle-check" : "fa-solid fa-clock" %>"></i> -->
+      <!--  </div> -->
+      <%# Replacing ↑ %>
+      <%# Replacing with Modal form ↓ %>
+      <%# button %>
+      <div class="btn <%= submission.status == "completed" ? "btn-success" : "btn-warning" %> mx-2" data-bs-toggle="modal" data-bs-target="#submissionModal-<%= submission.id %>">
+        <i class="<%= submission.status == "completed" ? "fa-regular fa-circle-check" : "fa-solid fa-clock" %>"></i>
+      </div>
+      <%# modal %>
+      <div class="modal fade" id="submissionModal-<%= submission.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Submit a picture!</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= simple_form_for submission, url: submission_path(submission, frequency: params[:frequency])  do |f| %>
+                <%# <%= f.association :task, collection: @tasks %>
+                <%= f.input :photo, as: :file, label: false %>
+                <% if submission.status == "completed" %>
+                  <div class="alert alert-danger">
+                    Submission already completed. You cannot update it.
+                  </div>
+                  <%= f.submit 'Complete', class: 'btn btn-success mt-2', disabled: true %>
+                <% else %>
+                  <%= f.submit 'Complete', class: 'btn btn-success mt-2' %>
+                <% end %>
+                <%# Confetti WIP %>
+                <%= f.submit 'Confetti(WIP)', class: 'btn btn-success mt-2',
             data: { controller: 'confetti',
             action: 'click->confetti#spray',
             confetti_animation_value: 'basic' }%>
-            <% end %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <%# Replacing with Modal form ↑ %>
-  <% end %>
-</div>
+      <%# Replacing with Modal form ↑ %>
+    <% end %>
+  </div>
+<% end %>
 <% end %>
