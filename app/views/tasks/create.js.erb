@@ -1,3 +1,6 @@
 <% if @task.persisted? %>
-  $("#task-<%= @task.title.parameterize %>").remove();
+  // Remove the entire card from the DOM
+  document.getElementById("task-<%= @task.title.parameterize %>").remove();
+<% else %>
+  alert("There was an error creating the task.");
 <% end %>
