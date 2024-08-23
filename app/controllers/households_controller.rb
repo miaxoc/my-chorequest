@@ -13,10 +13,24 @@ class HouseholdsController < ApplicationController
 
   def new
     @household = Household.new
+    @users = User.all
   end
 
   def create
-    redirect_to household_path(current_user.household)
+    @household = Household.new(household_params)
+    @household.user = current_user
+
+    User.all.each do |user|
+      user.household = @household
+      user.save
+    end
+
+    if @household.save
+      redirect_to household_path(@household), notice: 'Household was successfully created.'
+    else
+      @users = User.all
+      render :new
+    end
   end
 
   def edit

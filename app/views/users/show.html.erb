@@ -1,80 +1,78 @@
-<div class="user-show">
-  <div class="user-show-container">
-    <p><%= Date.today %></p>
-  </div>
-
-  <div class="user-show-container">
-    <div class="user-show-container-profile">
-
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-
-      <div class="user-profile-text">
-        <h3 class="mb-3"><strong><%= @user.username %></strong></h3>
-
-        <div class="user-profile-achievements">
-          <div class="user-profile-coins">
-            <i class="fa-solid fa-coins" style="color: orange;"></i>
-            <h5>points: <%= @user.points %></h5>
-          </div>
-
-          <div class="user-profile-badges">
-            <i class="fa-solid fa-trophy" style="color: red;"></i>
-            <h5>badges: number <%# @user.badges.sum %></h5>
-          </div>
-        </div>
-      </div>
-
-
+<div class="d-flex justify-content-center align-items-center vh-100 mb-custom ">
+  <div class="user-show ">
+    <div class="user-show-container">
+      <p><%= Date.today %></p>
     </div>
-  </div>
-
-
-  <div class="user-show-container">
-    <div class="user-show-container-members">
-      <h3><strong>Household: </strong><%= @user.household.title %></h3>
-      <!-- member profile pics -->
-      <div class="user-show-members">
-        <% @users.each do |user|%>
-          <div class="d-flex">
-            <div class="user-show-member-profiles">
-              <div class="profile-pic-placeholder"></div>
-              <p><%= user.username %></p>
+    <div class="user-show-container">
+      <div class="user-show-container-profile">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <div class="user-profile-text">
+          <h3 class="mb-3"><strong><%= @user.username %></strong></h3>
+          <div class="user-profile-achievements">
+            <div class="user-profile-coins">
+              <i class="fa-solid fa-coins" style="color: orange;"></i>
+              <h5>points: <%= @user.points %></h5>
+            </div>
+            <div class="user-profile-badges">
+              <i class="fa-solid fa-trophy" style="color: red;"></i>
+              <h5>badges: <%= current_user.badges.count  %></h5>
             </div>
           </div>
-        <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="d-flex  col-12">
+          <div style="width: 100%;">
+            <%= render 'shared/progress_bar', progress_percentage: @progress_percentage %>
+          </div>
+        </div>
       </div>
     </div>
-
-  </div>
-
-  <div class="user-show-container">
-    <div class="user-show-container-badges">
-      <h3><strong>Your Badges</strong></h3>
-      <!-- Display User Badges -->
-      <!-- grid display where badges wrap -->
-      <div class="user-show-badges-icons d-flex justify-content-center">
-        <div class="badge-icon-placeholder">
+    <div class="user-show-container">
+      <div class="user-show-container-members">
+        <h3><strong>Household: </strong><%= @user.household.title %></h3>
+        <!-- member profile pics -->
+        <div class="user-show-members">
+          <% @users.each do |user|%>
+            <div class="d-flex">
+              <div class="user-show-member-profiles">
+                <div class="profile-pic-placeholder">
+                  <img src="https://th.bing.com/th/id/OIP.52T8HHBWh6b0dwrG6tSpVQHaFe?w=264&h=195&c=7&r=0&o=5&dpr=1.5&pid=1.7" alt="Profile Picture" class="profile-pic">
+                </div>
+                <p><%= user.username %></p>
+              </div>
+            </div>
+          <% end %>
         </div>
-        <div class="badge-icon-placeholder">
-        </div>
-        <div class="badge-icon-placeholder">
-        </div>
-        <div class="badge-icon-placeholder">
-        </div>
-
       </div>
-
-
-
-
-      <%#ul>
+    </div>
+    <div class="user-show-container">
+      <div class="user-show-container-badges">
+        <h3><strong>Your Badges</strong></h3>
+        <!-- Display User Badges -->
+        <!-- grid display where badges wrap -->
+        <div class="user-show-badges-icons d-flex justify-content-center">
+          <% @user.badges.each do |badge| %>
+            <div class="badge">
+              <% # Extract image URL from description %>
+              <% description_parts = badge.description.split("Image: ") %>
+              <% image_path = description_parts.last.strip if description_parts.size > 1 %>
+              <% # Display image if URL is present %>
+              <div class="badge-icon-placeholder">
+                <%= image_tag(image_path,  class: 'badge-image') if image_path.present? %>
+              </div>
+              <p class="badge-name"><%= badge.name %></p>
+            </div>
+          <% end %>
+        </div>
+        <%#ul>
         <%# @user.badges.each do |badge| %>
           <%# <li> %>
-            <%# badge.name %> <%# badge.description %>
+          <%# badge.name %> <%# badge.description %>
           <%# </li> %>
-        <%# end %>
-      <%#/ul %>
+          <%# end %>
+          <%#/ul %>
+        </div>
+      </div>
     </div>
   </div>
-
-</div>

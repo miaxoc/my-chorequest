@@ -55,12 +55,17 @@ class TasksController < ApplicationController
     @task.user = @user
     @task.household = @user.household
 
-    if @task.save
-      redirect_to household_path(current_user.household)
-    else
-      render 'new', status: :unprocessable_entity
+    respond_to do |format|
+      if @task.save
+        format.html { redirect_to household_path(current_user.household)}
+        format.js   # Handle the AJAX response for the task creation
+      else
+        format.html { render 'new', status: :unprocessable_entity }
+        format.js   # In case of failure, handle the AJAX response
+      end
     end
   end
+
 
   def edit
     @task = Task.find(params[:id])

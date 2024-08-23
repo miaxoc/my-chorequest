@@ -6,6 +6,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @household = @user.household
     @users = @household.users
+    total_tasks = current_user.submissions.count
+    completed_tasks = current_user.submissions.where(status: "completed").count
+    @progress_percentage = if total_tasks > 0
+      (completed_tasks.to_f / total_tasks * 100).round(2)
+    else
+      0
+    end
   end
 
   def new
