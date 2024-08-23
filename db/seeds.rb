@@ -37,11 +37,17 @@ max = User.create!({
   email: "max@gmail.com",
   password: "maxmaxmax"
 })
-
-household = Household.create({ title: "ChoreQuest", user: max })
-
-max.household = household
-max.save
+puts "do you want to create a household? [y/n]"
+input = gets.chomp.downcase
+house = false
+if input == "y"
+  household = Household.create({ title: "ChoreQuest", user: max })
+  house = true
+  max.household = household
+  max.save
+else
+  household = nil
+end
 
 User.create!({
   username: "mia",
@@ -63,9 +69,10 @@ User.create!({
   password: "akitaka",
   household: household
 })
-
-puts "do you want to create tasks? [y/n]"
-input = gets.chomp.downcase
+unless house == false
+  puts "do you want to create tasks? [y/n]"
+  input = gets.chomp.downcase
+end
 if input == 'y'
   puts "creating tasks..."
   task_titles.first(6).each do |k, v|
