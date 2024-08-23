@@ -26,8 +26,9 @@ module Merit
       #
       #  score 10, on: 'submissions#update', to: [:current_user]
       score 10, on: 'submissions#update' do |submission|
-       submission.user
-     end
+        submission.user
+      end
+
 
 
     end
