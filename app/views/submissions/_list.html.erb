@@ -20,7 +20,7 @@
       <i class="<%= submission.status == "completed" ? "fa-regular fa-circle-check" : "fa-solid fa-clock" %>"></i>
     </div>
     <%# modal %>
-    <div class="modal fade" id="submissionModal-<%= submission.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade  modal-ku" id="submissionModal-<%= submission.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
         <div class="modal-header">
@@ -34,23 +34,17 @@
               <%= f.input :photo, as: :file, label: false %>
               <div data-action="click->show-points#showPoints">
                 <%= f.submit 'Complete', class: 'btn btn-success mt-2'%>
+              <% end %>
               </div>
           </div>
         <div data-show-points-target="image" class="d-none">
           <%= render 'submissions/points'%>
         </div>
-
-            <%# Confetti WIP %>
-            <%= f.submit 'Confetti(WIP)', class: 'btn btn-success mt-2',
-            data: { controller: 'confetti',
-            action: 'click->confetti#spray',
-            confetti_animation_value: 'basic' }%>
-            <% end %>
           </div>
         </div>
       </div>
     </div>
     <%# Replacing with Modal form ↑ %>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 <% end %>

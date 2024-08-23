@@ -2,12 +2,11 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="show-points"
 export default class extends Controller {
-  static targets =["image"]
+  static targets =["image", "form"]
 
   showPoints() {
-
-    const formElement = document.getElementById("form");
-    formElement.classList.add("d-none");
+    console.log("connected")
+    this.formTarget.classList.add("d-none");
     this.imageTarget.classList.remove("d-none")
 
 
