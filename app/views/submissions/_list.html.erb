@@ -25,21 +25,21 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Submit a picture!</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Submit picture & complete the task!</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
-        <div class="modal-body" data-controller="show-points">
+        <div class="modal-body text-center" data-controller="show-points">
           <div id ="form" data-show-points-target="form">
-          <%= simple_form_for submission do |f| %>
-            <%= f.input :photo, as: :file, label: false %>
-            <div data-action="click->show-points#showPoints">
-            <%= f.submit 'Complete', class: 'btn btn-success mt-2'%>
-            </div>
-            </div>
-            <div data-show-points-target="image" class="d-none">
-              <%= render 'submissions/points'%>
-            </div>
+            <%= simple_form_for submission do |f| %>
+              <%= f.input :photo, as: :file, label: false %>
+              <div data-action="click->show-points#showPoints">
+                <%= f.submit 'Complete', class: 'btn btn-success mt-2'%>
+              </div>
+          </div>
+        <div data-show-points-target="image" class="d-none">
+          <%= render 'submissions/points'%>
+        </div>
 
             <%# Confetti WIP %>
             <%= f.submit 'Confetti(WIP)', class: 'btn btn-success mt-2',
