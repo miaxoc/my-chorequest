@@ -10,6 +10,17 @@ $headings-font-family:   $headers-font;
 $body-bg:                $light-gray;
 $font-size-base:         1rem;
 
+//BACKGROUND COLOR <- made by us
+body {
+  background-color: #FFCD20;
+    background-image:  radial-gradient(#C29F4D 2px, transparent 0.5px), radial-gradient(#C29F4D 2px, #FFCD20 2px);
+    background-size: 30px 30px;
+  background-position: 0 0,30px 30px;
+  line-height: 30px;
+}
+
+
+
 // Colors
 $body-color: $gray;
 $primary:    $blue;
