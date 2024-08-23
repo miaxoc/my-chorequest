@@ -1,25 +1,31 @@
 <div class="d-flex justify-content-center">
-  <% if params[:all_tasks] == 'true' || (params[:all_tasks].nil? && params[:daily].nil? && params[:weekly].nil? && params[:monthly].nil?) %>
+  <% if params[:all_tasks] == 'true' || (params[:frequency].nil?) %>
   <h2>All Your Tasks</h2>
-<% elsif params[:daily] == 'true' %>
+<% elsif params[:frequency] == 'daily' %>
   <h2>Today's Tasks</h2>
-<% elsif params[:weekly] == 'true' %>
+<% elsif params[:frequency] == 'weekly' %>
   <h2>This Week's Tasks</h2>
-<% elsif params[:monthly] == 'true' %>
+<% elsif params[:frequency] == 'monthly' %>
   <h2>This Month's Tasks</h2>
 <% end %>
 
-
 </div>
+<div class="container">
 <div class="d-flex justify-content-center">
   <div class="request-filter-bar btn-group btn-group-toggle mb-3">
     <%= link_to "All Tasks", tasks_path(all_tasks: true), class: "btn btn-outline-primary request-filter-buttons #{'active' if params[:all_tasks] == 'true'}" %>
-    <%= link_to "Daily", tasks_path(daily: true), class: "btn btn-outline-primary request-filter-buttons #{'active' if params[:daily] == 'true'}" %>
-    <%= link_to "Weekly", tasks_path(weekly: true), class: "btn btn-outline-primary request-filter-buttons #{'active' if params[:weekly] == 'true'}" %>
-    <%= link_to "Monthly", tasks_path(monthly: true), class: "btn btn-outline-primary request-filter-buttons #{'active' if params[:monthly] == 'true'}" %>
+    <%= link_to "Daily", tasks_path(frequency: "daily"), class: "btn btn-outline-primary request-filter-buttons #{'active' if params[:frequency] == 'daily'}" %>
+    <%= link_to "Weekly", tasks_path(frequency: "weekly"), class: "btn btn-outline-primary request-filter-buttons #{'active' if params[:frequency] == 'weekly'}" %>
+    <%= link_to "Monthly", tasks_path(frequency: "monthly"), class: "btn btn-outline-primary request-filter-buttons #{'active' if params[:frequency] == 'monthly'}" %>
   </div>
 </div>
 
+<div class="d-flex justify-content-center m-3">
+  <div style="width: 50%;">
+    <%= render 'shared/progress_bar', progress_percentage: @progress_percentage %>
+  </div>
+</div>
+</div>
 
 <div class="d-flex justify-content-center" style="min-height: 100vh;">
   <div class="container d-flex flex-column align-items-center">

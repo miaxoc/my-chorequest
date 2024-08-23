@@ -18,10 +18,17 @@ class SubmissionsController < ApplicationController
       redirect_to tasks_path, notice: 'You are not the task owner'
       return
     end
+
     @submission.status = "completed"
+
     if @submission.save
+<<<<<<< HEAD
       sleep(4)
       redirect_to tasks_path
+=======
+      # sleep(1)
+      redirect_to tasks_path(frequency: params[:frequency]), notice: 'Submission was successfully created.'
+>>>>>>> master
     else
       render 'edit', status: :unprocessable_entity, notice: 'Submission failed'
     end
