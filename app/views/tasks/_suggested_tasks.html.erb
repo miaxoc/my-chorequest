@@ -7,24 +7,23 @@
     "Clean the bathroom" => "weekly",
     "Do the laundry" => "daily"
   } %>
-
   <% suggested_tasks.each do |title, frequency| %>
-    <div class="card-product d-flex justify-content-between align-items-center p-3 mb-2" id="task-<%= title.parameterize %>">
-      <div class="card-content">
-        <h2 class="task-title"><%= title %></h2>
-        <p class="task-frequency text-muted"><%= frequency.capitalize %></p>
-      </div>
-
-      <%= form_with model: Task.new, url: tasks_path, remote: true, html: { id: "form-#{title.parameterize}" } do |f| %>
-        <%= f.hidden_field :title, value: title %>
-        <%= f.hidden_field :description, value: "This task is to #{title.downcase}" %>
-        <%= f.hidden_field :frequency, value: frequency %>
-        <%= f.hidden_field :household_id, value: params[:household_id] %>
-
-        <%= f.submit '', class: "btn btn-success", data: { disable_with: "Adding..." } do %>
-          <i class="fa-solid fa-plus"></i> <!-- Font Awesome Icon -->
+    <% if Task.find_by(title: title).nil? %>
+      <div class="card-product d-flex justify-content-between align-items-center p-3 mb-2" id="task-<%= title.parameterize %>">
+        <div class="card-content">
+          <h2 class="task-title"><%= title %></h2>
+          <p class="task-frequency text-muted"><%= frequency.capitalize %></p>
+        </div>
+        <%= form_with model: Task.new, url: tasks_path, remote: true, html: { id: "form-#{title.parameterize}" } do |f| %>
+          <%= f.hidden_field :title, value: title %>
+          <%= f.hidden_field :description, value: "This task is to #{title.downcase}" %>
+          <%= f.hidden_field :frequency, value: frequency %>
+          <%= f.hidden_field :household_id, value: params[:household_id] %>
+          <%= f.submit '', class: "btn btn-success", data: { disable_with: "Adding..." } do %>
+            <i class="fa-solid fa-plus"></i> <!-- Font Awesome Icon -->
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   <% end %>
 </div>

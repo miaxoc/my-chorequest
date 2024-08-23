@@ -57,7 +57,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to household_path(current_user.household), notice: 'Task was successfully created.' }
+        format.html { redirect_to household_path(current_user.household)}
         format.js   # Handle the AJAX response for the task creation
       else
         format.html { render 'new', status: :unprocessable_entity }
