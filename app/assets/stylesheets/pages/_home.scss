@@ -1,12 +1,12 @@
-body.home_background {
-  background-image: url("background_temp.png");
-  // background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  justify-content: center;
-  position: relative;
-}
+// body.home_background {
+//   background-image: url("background_temp.png");
+//   // background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   background-position: center;
+//   justify-content: center;
+//   position: relative;
+// }
 
 // .green_flower_position {
 //   position: absolute;
@@ -22,17 +22,24 @@ body.home_background {
 //     // color: white;
 //     // opacity: 1;
 //   }
+.homebody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
 
 .title {
-  font-size: 100px;
-  font-family: "Jersey 10", sans-serif;
+  font-size: 80px;
+  // font-family: "Jersey 10", sans-serif;
   // text-transform: uppercase;
   text-align: center;
-  background: linear-gradient(to right, #c29f4d 0, #ded658 10%, #c29f4d 20%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: animate 4s linear infinite;
-  margin: -85px;
+  // background: linear-gradient(to right, #c29f4d 0, #ded658 10%, #c29f4d 20%);
+  // -webkit-background-clip: text;
+  // -webkit-text-fill-color: transparent;
+  // animation: animate 4s linear infinite;
+  // margin: -85px;
 }
 
 
@@ -46,4 +53,22 @@ body.home_background {
   100% {
     background-position: 450px;
   }
+}
+
+.homecard{
+  width: 90%;
+  max-width: 400px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Optional: subtle shadow for depth
+  padding: 20px; // Optional: internal padding for content
+  text-align: center;
+  border: 4px solid black;
+}
+
+.homebutton{
+  border-radius: 24px!important;
+  border: 3px solid black;
+
+
 }
