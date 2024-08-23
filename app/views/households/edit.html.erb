@@ -1,14 +1,14 @@
 
 
-<div class="edit-household-form">
+<div class="household-edit-style">
   <%# <h1>Households#edit</h1>
   <p>Find me in app/views/households/edit.html.erb</p> %>
 
   <h2>Edit a household</h2>
   <%= simple_form_for @household do |f| %>
     <%= f.input :title %>
-    <div class="edit">
-      <%= f.submit "Edit", :class => "edit-btn" %>
+    <div class="edit" style="display: flex; justify-content: center;">
+      <%= f.submit "Confirm Edit", class: "btn btn-primary", style: "border-radius: 32px; border: 1px black solid;"%>
     </div>
   <% end %>
 </div>

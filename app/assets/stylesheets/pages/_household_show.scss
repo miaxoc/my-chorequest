@@ -1,21 +1,24 @@
 .household-show {
+  margin: 8px;
+  padding: 16px;
+  background-color: white;
+  border: 1px black solid;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  .edit-household-btn {
-    background-color: red;
-    color: white;
-    padding: 8px;
-  }
+
 
   .card-product {
     overflow: hidden;
     height: 80px;
-    width: 360px;
+
     background: white;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border: 1px black solid;
+    border-radius: 8px;
+    box-shadow: none;
     margin: 8px;
     }
 
