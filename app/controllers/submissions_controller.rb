@@ -1,10 +1,4 @@
 class SubmissionsController < ApplicationController
-  #---------#
-  # click on the "complete"
-  # user goes to the update form
-  # upload the picture
-  # submit
-
   def index
   end
 
@@ -24,14 +18,9 @@ class SubmissionsController < ApplicationController
       redirect_to tasks_path, notice: 'You are not the task owner'
       return
     end
-    if @submission.status == "completed"
-      redirect_to tasks_path, notice: 'You have already completed the task!'
-      return
-    end
-
     @submission.status = "completed"
     if @submission.save
-      sleep(3)
+      sleep(4)
       redirect_to tasks_path
     else
       render 'edit', status: :unprocessable_entity, notice: 'Submission failed'
