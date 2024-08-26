@@ -58,15 +58,6 @@ class HouseholdsController < ApplicationController
     redirect_to household_path(@household)
   end
 
-  def tasks_for_date
-    @household = current_user.household
-    selected_date = Date.parse(params[:date])
-    @tasks_for_date = @household.submissions.where(deadline: selected_date.all_day)
-    respond_to do |format|
-      format.html { render partial: 'tasks_for_date', locals: { tasks: @tasks_for_date } }
-    end
-  end
-
   private
 
   def household_params
