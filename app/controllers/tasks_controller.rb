@@ -33,7 +33,7 @@ class TasksController < ApplicationController
     total_tasks = @submissions.count
     completed_tasks = @submissions.where(status: "completed").count
     @progress_percentage = if total_tasks > 0
-      (completed_tasks.to_f / total_tasks * 100).round(2)
+      (completed_tasks.to_f / total_tasks * 100).round(0)
     else
       0
     end
