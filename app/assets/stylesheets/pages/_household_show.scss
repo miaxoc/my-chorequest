@@ -117,3 +117,46 @@
 .add-task-categories {
   border-top: 1px black solid;
 }
+
+
+.suggested-tasks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* Space between each pill */
+}
+
+.suggested-task-pill {
+  display: block;
+  background-color: #f5f5f5; /* Light grey background */
+  border-radius: 50px; /* Creates the pill shape */
+  padding: 15px 25px; /* Adds padding inside the pill */
+  text-align: center;
+  text-decoration: none; /* Removes underline from the link */
+  color: black; /* Text color */
+  border: 2px solid #ccc; /* Light border */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition on hover */
+
+  &:hover {
+    background-color: #e0e0e0; /* Darker grey on hover */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+  }
+
+  .card-content {
+    margin: 0;
+
+    h2 {
+      font-size: 18px; /* Smaller font for titles */
+      margin-bottom: 5px;
+    }
+
+    p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .task-frequency {
+      font-size: 12px;
+    }
+  }
+}
