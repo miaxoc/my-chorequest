@@ -35,12 +35,12 @@
     <% @tasks.each do |task| %>
       <div class="card-product d-flex align-items-center p-3">
         <% if task.submissions.first.nil? %>
-          <span class="badge bg-danger rounded-circle p-2 ms-auto">
-            <i class="fa-regular fa-calendar-xmark"></i>
+          <span class="badge bg-danger rounded-circle p-3 ms-auto" style="font-size: 1.5em;">
+            <i class="fa-regular fa-calendar-xmark" style="font-size: 1.2em;"></i>
           </span>
         <% else %>
-          <span class="badge bg-success rounded-circle p-2 ms-auto">
-            <i class="fa-solid fa-calendar-check"></i>
+          <span class="badge bg-success rounded-circle p-3 ms-auto" style="font-size: 1.5em;">
+            <i class="fa-solid fa-calendar-check" style="font-size: 1.2em;"></i>
           </span>
         <% end %>
         <div class="card-product-infos flex-grow-1">
