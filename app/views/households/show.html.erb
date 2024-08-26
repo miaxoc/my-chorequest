@@ -11,27 +11,75 @@
     </div>
   </div>
 
-
-  <!-- Calendar -->
-  <div class="household-show-calendar" style=" width: 100%; padding-bottom: 16px;">
-    <div class="accordion">
-      <h1 class="mt-2" >Calendar</h1>
-    </div>
-    <div class="panel">
-      <div class="household-show-calendar mt-3">
-        <%= month_calendar(events: @all_calendar_tasks, attribute: :deadline) do |date, submissions| %>
-          <div class="day">
-            <%= date.day %>
-            <% submissions.each  do |submission| %>
-              <div class="task">
-
-                <%= submission.user.username %>
-              </div>
-            <% end %>
+<!-- ORIGINAL Calendar -->
+  <!-- <h1 class="mt-2" >Calendar</h1>
+  <div class="household-show-calendar mt-3">
+    <%= month_calendar(events: @all_calendar_tasks, attribute: :deadline) do |date, submissions| %>
+      <div class="day">
+        <%= date.day %>
+        <% submissions.each  do |submission| %>
+          <div class="task">
+            <%= submission.task.title %>
+            <%= submission.user.username %>
           </div>
         <% end %>
       </div>
-    </div>
+    <% end %>
+  </div>
+< ORIGINAL Calendar END-->
+
+  
+  <!-- Updated Calendar -->
+  <h1 class="mt-2" >Calendar</h1>
+  <div class="household-show-calendar mt-3">
+    <%= month_calendar(events: @all_calendar_tasks, attribute: :deadline) do |date, submissions| %>
+      <div class="day" data-bs-toggle="modal" data-bs-target="#modal-<%= date.to_s%>">
+        <%= date.day %>
+
+         <% if submissions.any? %>
+        <% unique_users = submissions.map(&:user).uniq %>
+        <% unique_users.each do |user| %>
+          <div class="task">
+            <%= user.username %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <!-- Modal -->
+      <div class="modal fade" id="modal-<%= date.to_s%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel"><%= date %></h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+            <% if submissions.any? %>
+              <% submissions.group_by(&:user).each do |user, user_submissions| %>
+                <div class="user-tasks">
+                  <strong><%= user.username.capitalize %></strong>
+                  <ul>
+                    <% user_submissions.each do |submission| %>
+                      <li><%= submission.task.title %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+            <% else %>
+              <p>No tasks for this date.</p>
+            <% end %>
+
+
+            </div>
+            <div class="modal-footer">
+              <%# <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style= "border-radius: 32px; border: 1px black solid; margin-bottom: 26px;">Close</button> %>
+              <%= link_to 'See your tasks', tasks_path(current_user.tasks), class: "btn btn-primary", style: "border-radius: 32px; border: 1px black solid; margin-bottom: 26px;" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 
   <!-- Members -->
