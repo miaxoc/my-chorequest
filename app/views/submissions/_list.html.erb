@@ -3,7 +3,7 @@
 <% else %>
   <% submissions.each do |submission| %>
     <% task = submission.task %>
-    <div class="card-product mb-3" style="width: 400px;">
+    <div class="card-product mb-3" style="width: 400px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#submissionModal-<%= submission.id %>">
       <img src="https://static.thenounproject.com/png/1569761-200.png" class="img-fluid" />
       <div class="card-product-infos">
         <h2><%= task.title %></h2>
@@ -11,44 +11,35 @@
         <p><%= submission.user.username %></p>
         <p><%= submission.deadline %></p>
       </div>
-      <%# Replacing ↓ %>
-      <!-- <%= link_to edit_submission_path(submission) do %>
-      <div class="btn <%= submission.status == "completed" ? "btn-success" : "btn-warning" %> mx-2"> -->
-    <!--    <i class="<%= submission.status == "completed" ? "fa-regular fa-circle-check" : "fa-solid fa-clock" %>"></i> -->
-    <!--  </div> -->
-    <%# Replacing ↑ %>
-    <%# Replacing with Modal form ↓ %>
-    <%# button %>
-    <div class="btn <%= submission.status == "completed" ? "btn-success" : "btn-warning" %> mx-2" data-bs-toggle="modal" data-bs-target="#submissionModal-<%= submission.id %>">
-      <i class="<%= submission.status == "completed" ? "fa-regular fa-circle-check" : "fa-solid fa-clock" %>"></i>
+      <div class="btn <%= submission.status == "completed" ? "btn-success" : "btn-warning" %> mx-2">
+        <i class="<%= submission.status == "completed" ? "fa-regular fa-circle-check" : "fa-solid fa-clock" %>"></i>
+      </div>
     </div>
-    <%# modal %>
+
+    <%# Modal for Submission %>
     <div class="modal fade  modal-ku" id="submissionModal-<%= submission.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Submit picture & complete the task!</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-
-        <div class="modal-body text-center" data-controller="show-points">
-          <div id ="form" data-show-points-target="form">
-            <%= simple_form_for submission do |f| %>
-              <%= f.input :photo, as: :file, label: false %>
-              <div data-action="click->show-points#showPoints">
-                <%= f.submit 'Complete', class: 'btn btn-success mt-2'%>
-              <% end %>
-              </div>
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Submit picture & complete the task!</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-        <div data-show-points-target="image" class="d-none">
-          <%= render 'submissions/points'%>
-        </div>
+
+          <div class="modal-body text-center" data-controller="show-points">
+            <div id="form" data-show-points-target="form">
+              <%= simple_form_for submission do |f| %>
+                <%= f.input :photo, as: :file, label: false %>
+                <div data-action="click->show-points#showPoints">
+                  <%= f.submit 'Complete', class: 'btn btn-success mt-2'%>
+                <% end %>
+              </div>
+            </div>
+            <div data-show-points-target="image" class="d-none">
+              <%= render 'submissions/points'%>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <%# Replacing with Modal form ↑ %>
-    <% end %>
-  </div>
-<% end %>
+  <% end %>
 <% end %>
