@@ -4,7 +4,7 @@
       <div class="user-profile-coins d-flex">
         <i class="fa-solid fa-coins" style="color: orange;"></i>
         <!-- <h5>points: <%= @user.points %></h5> -->
-        <p> points: <% if current_user.present? && current_user.present?  %>
+        <p> points: <% if current_user.present? && current_user.points.present?  %>
             <%= current_user.points %>
           <% end %>
         </p>
