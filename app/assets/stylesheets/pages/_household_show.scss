@@ -26,8 +26,16 @@
 
   .active, .accordion:hover {
     background-color: $warning;
-
   }
+
+  #add-task-btn, #view-task-btn{
+    opacity: 40%;
+  }
+
+  .active, #add-task-btn:hover, #view-task-btn:hover {
+    opacity: 100%;
+  }
+
 
   .panel {
     padding: 0px;
@@ -35,6 +43,9 @@
     background-color: white;
     overflow: hidden;
   }
+
+
+
 
 
   .card-product {
