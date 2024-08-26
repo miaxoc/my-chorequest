@@ -108,7 +108,7 @@
     </div>
   </div>
   <div class="panel">
-    <!-- RENDERING FOR NOW -->
+    <!-- RENDER buttons -->
     <div class="accordion" id="add-task-btn" style="background-color: white;">
       <button type="button" class="btn m-1", style="border-radius: 8px;; border: 1px black solid; width: 100%;">
         Add tasks
@@ -186,21 +186,4 @@
       <% end %>
     </div>
   </div>
-
-
-  <script>
-    var acc = document.getElementsByClassName("accordion");
-    var i;
-
-    for (i = 0; i < acc.length; i++) {
-      acc[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var panel = this.nextElementSibling;
-        if (panel.style.display === "block") {
-          panel.style.display = "none";
-        } else {
-          panel.style.display = "block";
-        }
-      });
-    }
-  </script>
+</div>
