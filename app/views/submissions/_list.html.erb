@@ -1,15 +1,18 @@
-<% submissions.each do |submission| %>
-  <% task = submission.task %>
-  <div class="card-product mb-3" style="width: 400px;">
-    <img src="https://static.thenounproject.com/png/1569761-200.png" class="img-fluid" />
-    <div class="card-product-infos">
-      <h2><%= task.title %></h2>
-      <p><%= task.frequency %></p>
-      <p><%= submission.user.username %></p>
-      <p><%= submission.deadline %></p>
-    </div>
-    <%# Replacing ↓ %>
-    <!-- <%= link_to edit_submission_path(submission) do %>
+<% if submissions.first.nil? %>
+  <h5 style="color: grey;"><em>No <%= params[:frequency] %> tasks to complete.</em></h5>
+<% else %>
+  <% submissions.each do |submission| %>
+    <% task = submission.task %>
+    <div class="card-product mb-3" style="width: 400px;">
+      <img src="https://static.thenounproject.com/png/1569761-200.png" class="img-fluid" />
+      <div class="card-product-infos">
+        <h2><%= task.title %></h2>
+        <p><%= task.frequency %></p>
+        <p><%= submission.user.username %></p>
+        <p><%= submission.deadline %></p>
+      </div>
+      <%# Replacing ↓ %>
+      <!-- <%= link_to edit_submission_path(submission) do %>
       <div class="btn <%= submission.status == "completed" ? "btn-success" : "btn-warning" %> mx-2"> -->
     <!--    <i class="<%= submission.status == "completed" ? "fa-regular fa-circle-check" : "fa-solid fa-clock" %>"></i> -->
     <!--  </div> -->
@@ -20,7 +23,7 @@
       <i class="<%= submission.status == "completed" ? "fa-regular fa-circle-check" : "fa-solid fa-clock" %>"></i>
     </div>
     <%# modal %>
-    <div class="modal fade" id="submissionModal-<%= submission.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade  modal-ku" id="submissionModal-<%= submission.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
         <div class="modal-header">
@@ -37,7 +40,7 @@
               <% end %>
               </div>
           </div>
-        <div data-show-points-target="image" class="d-none modal-ku">
+        <div data-show-points-target="image" class="d-none">
           <%= render 'submissions/points'%>
         </div>
           </div>
@@ -47,4 +50,5 @@
     <%# Replacing with Modal form ↑ %>
     <% end %>
   </div>
+<% end %>
 <% end %>
