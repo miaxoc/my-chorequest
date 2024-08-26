@@ -4,7 +4,7 @@
   padding-right: 8px;
   padding-top: 0px;
   background-color: $orange;
-
+  z-index: 1000;
 
 
   // for NAVBAR to stick
@@ -51,18 +51,16 @@
 
 
 
-//Navbar FOOTER
-
+// Navbar FOOTER
 body {
   position: relative;
   min-height: 100vh;
-
-  margin: 0; /* Reset margins */
+  margin: 0;
   padding: 0;
 
   .navbar-footer {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     position: fixed;
     left: 0;
@@ -74,10 +72,40 @@ body {
     border-top: 1px black solid;
     height: 56px;
 
-    .navbar-footer-btn{
-      color: black;
+    .navbar-footer-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 33.3%; // Ensures each item takes up equal width
+      position: relative;
+      padding: 10px 0;
 
+      // Adds vertical lines between icons
+      &:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 80%; // Vertical line height relative to the icon
+        width: 1px;
+        background-color: rgba(0, 0, 0, 0.1); // Faint grey line
+      }
 
+      .navbar-footer-btn {
+        color: black;
+      }
+
+      // Style for the selected tab to create a background change
+      &.active {
+        background-color: darken($orange, 15%); // Slightly lighter background
+        box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.2); // Concave effect
+        border-radius: 8px; // Optional: Add some rounding
+
+        .navbar-footer-btn {
+          color: black; // Maintain icon color or adjust if necessary
+        }
+      }
     }
   }
 }

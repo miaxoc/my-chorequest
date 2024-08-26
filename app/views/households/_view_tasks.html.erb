@@ -1,0 +1,14 @@
+<div style="border: 1px red solid">
+  <h1>Today's tasks</h1>
+  <%= Date.today %>
+  <div class="view-task-categories py-3">
+  <p>okokokok</p>
+  </div>
+    <div class="border">
+      <% @users.each do |user|%>
+        <img style="width: 40px;" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <% user.username %>
+      <% end %>
+    </div>
+
+</div>

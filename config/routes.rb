@@ -12,15 +12,20 @@ Rails.application.routes.draw do
 
   resources :tasks, only: [:index, :new, :create, :edit, :update, :destroy]
 
-  resources :households, only: [:show, :new, :create, :edit, :update, :show] do
+  resources :households, only: [:show, :new, :create, :edit, :update, :destroy] do
     member do
       post :timetable
     end
+    collection do
+      get :search_users
+    end
   end
+
 
   resources :users, only: [:index, :show]
 
   resources :submissions, only: [:new, :create, :edit, :update,]
+
 
 
 

@@ -22,7 +22,7 @@ class SubmissionsController < ApplicationController
     @submission.status = "completed"
 
     if @submission.save
-      sleep(4)
+      sleep(2)
       redirect_to tasks_path(frequency: params[:frequency]), notice: 'Submission was successfully created.'
     else
       render 'edit', status: :unprocessable_entity, notice: 'Submission failed'

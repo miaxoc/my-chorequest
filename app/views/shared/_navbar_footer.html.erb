@@ -1,29 +1,22 @@
 <div class="navbar-footer">
-
-  <% if current_user != nil %>
+  <!-- Seedling Icon -->
+  <div class="navbar-footer-item <%= 'active' if current_page?('#mygarden') %>">
     <%= link_to '#mygarden' do %>
-      <i class="fa-solid fa-house-user navbar-footer-btn" style="font-size: 24px; margin: 8px;"></i>
+      <i class="fa-solid fa-seedling navbar-footer-btn" style="font-size: 24px;"></i>
     <% end %>
+  </div>
 
+  <!-- House Icon -->
+  <div class="navbar-footer-item <%= 'active' if current_page?(household_path(current_user)) %>">
     <%= link_to household_path(current_user) do %>
-      <i class="fa-solid fa-plus navbar-footer-btn" style="font-size: 24px; margin: 8px;"></i>
+      <i class="fa-solid fa-house-user navbar-footer-btn" style="font-size: 24px;"></i>
     <% end %>
+  </div>
 
+  <!-- Task List Icon -->
+  <div class="navbar-footer-item <%= 'active' if current_page?('/tasks') %>">
     <%= link_to '/tasks' do %>
-      <i class="fa-solid fa-list navbar-footer-btn" style="font-size: 24px; margin: 8px;"></i>
+      <i class="fa-solid fa-list navbar-footer-btn" style="font-size: 24px;"></i>
     <% end %>
-  <% else %>
-    <%= link_to '#' do %>
-      <i class="fa-solid fa-house-user navbar-footer-btn" style="font-size: 24px; margin: 8px;"></i>
-    <% end %>
-
-    <%= link_to '#' do %>
-      <i class="fa-solid fa-plus navbar-footer-btn" style="font-size: 24px; margin: 8px;"></i>
-    <% end %>
-
-    <%= link_to '#' do %>
-      <i class="fa-solid fa-list navbar-footer-btn" style="font-size: 24px; margin: 8px;"></i>
-    <% end %>
-  <% end %>
-
+  </div>
 </div>

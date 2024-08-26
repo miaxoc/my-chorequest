@@ -49,6 +49,14 @@ else
   household = nil
 end
 
+10.times do
+  User.create({
+    username: Faker::Internet.username,
+    email: Faker::Internet.email,
+    password: Faker::Internet.password
+  })
+end
+
 User.create!({
   username: "mia",
   email: "mia@gmail.com",

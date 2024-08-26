@@ -2,7 +2,7 @@ class HouseholdsController < ApplicationController
   def show
     @user = current_user
     @household = @user.household
-    @users = @household.users
+    @users = @household.users || []
     @tasks = @household.tasks.order(created_at: :desc)
     @task = Task.new
     @members = User.all
@@ -20,12 +20,14 @@ class HouseholdsController < ApplicationController
     @household = Household.new(household_params)
     @household.user = current_user
 
-    User.all.each do |user|
-      user.household = @household
-      user.save
-    end
-
     if @household.save
+      # Assign selected users to the household
+      selected_users = User.where(id: params[:household][:user_ids])
+      selected_users.each do |user|
+        user.household = @household
+        user.save
+      end
+
       redirect_to household_path(@household), notice: 'Household was successfully created.'
     else
       @users = User.all
@@ -58,10 +60,30 @@ class HouseholdsController < ApplicationController
     redirect_to household_path(@household)
   end
 
+  def search_users
+    Rails.logger.debug "Search action called with query: #{params[:query]}"
+
+    if params[:query].present?
+      @users = User.where("username LIKE ?", "%#{params[:query]}%")
+    else
+      @users = User.none
+    end
+
+    Rails.logger.debug "Users found: #{@users.pluck(:username)}"
+
+    respond_to do |format|
+      format.json { render json: @users.pluck(:id, :username) }
+    end
+  end
+
+  def view_tasks
+    @users = User.all
+  end
+
   private
 
   def household_params
-    params.require(:household).permit(:title)
+    params.require(:household).permit(:title, user_ids: [])
   end
 
 end
