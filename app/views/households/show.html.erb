@@ -102,16 +102,32 @@
 
   <!-- Tasks -->
   <div class="accordion">
-    <div class="d-flex">
+    <div>
       <h1>Tasks</h1>
+
     </div>
   </div>
   <div class="panel">
     <!-- RENDERING FOR NOW -->
-    <h1 style="color: red;">TEMPORARY RENDER</h1>
+    <div class="accordion" id="add-task-btn" style="background-color: white;">
+      <button type="button" class="btn m-1", style="border-radius: 8px;; border: 1px black solid; width: 100%;">
+        Add tasks
+      </button>
+    </div>
+    <div class="panel">
+      <%= render '/households/add_tasks' %>
+    </div>
 
-    <%= render '/households/add_tasks' %>
-    <%= render '/households/view_tasks' %>
+    <div class="accordion" id="view-task-btn" style="background-color: white;">
+      <button type="button" class="btn m-1", style="border-radius: 8px; border: 1px black solid; width: 100%;">
+        View tasks
+      </button>
+    </div>
+    <div class="panel">
+      <%= render '/households/view_tasks' %>
+    </div>
+
+
     <div class="tasks">
       <div class="d-flex justify-content-start">
         <!-- Make the timetable -->
