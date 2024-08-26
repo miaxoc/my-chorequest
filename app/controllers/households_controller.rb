@@ -76,7 +76,9 @@ class HouseholdsController < ApplicationController
     end
   end
 
-
+  def view_tasks
+    @users = User.all
+  end
 
   private
 
