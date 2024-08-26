@@ -42,6 +42,14 @@
     display: none;
     background-color: white;
     overflow: hidden;
+    width: 100%
+  }
+
+  .semi-panel {
+    padding: 0px;
+    display: none;
+    background-color: $light-gray;
+    overflow: hidden;
   }
 
 
