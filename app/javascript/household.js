@@ -14,6 +14,7 @@ document.addEventListener("turbo:load", function() {
 
     if (query.length === 0) {
       userResults.innerHTML = ''; // Clear the results if the input is empty
+      userResults.classList.remove('show');
       return;
     }
 
@@ -25,14 +26,19 @@ document.addEventListener("turbo:load", function() {
     .then(response => response.json())
     .then(users => {
       userResults.innerHTML = ''; // Clear previous results
+      userResults.classList.add('show'); // Show the dropdown
+
       users.forEach(user => {
-        const userElement = document.createElement('div');
+        const userElement = document.createElement('li');
         userElement.textContent = user[1]; // user[1] is the username
-        userElement.classList.add('user-result');
+        userElement.classList.add('dropdown-item');
         userElement.dataset.userId = user[0]; // user[0] is the ID
+
         userElement.addEventListener('click', function() {
           addUser(user);
+          userResults.classList.remove('show'); // Hide dropdown after selection
         });
+
         userResults.appendChild(userElement);
       });
     })
@@ -50,7 +56,7 @@ document.addEventListener("turbo:load", function() {
     // Add user to selected users list
     const userElement = document.createElement('div');
     userElement.textContent = user[1];
-    userElement.classList.add('selected-user');
+    userElement.classList.add('selected-user', 'badge', 'bg-primary', 'me-2');
     selectedUsers.appendChild(userElement);
 
     // Add user ID to hidden input field for form submission
