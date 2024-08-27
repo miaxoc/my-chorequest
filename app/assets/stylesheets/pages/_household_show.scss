@@ -10,6 +10,71 @@
   align-items: center;
   text-align: center;
 
+  .household-show-members {
+    width: 100%;
+    // border: 1px black solid;
+    padding: 8px;
+    background-color: $light-gray;
+    border-radius: 16px;
+
+    .section-title {
+      width: 100%;
+      padding: 8px;
+      background-color: $warning;
+    }
+
+    .user-show-members{
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .profile-pic-placeholder {
+      width: 40px;
+      height: 40px;
+      // background-color: red;
+      border: 1px black solid;
+      border-radius: 50%;
+      margin-left: 12px;
+      margin-right: 12px;
+
+    }
+    .profile-pic {
+      width: 100%; /* Ensure image fills the container */
+      height: 100%; /* Ensure image fills the container */
+      object-fit: cover; /* Cover the container without distortion */
+      border-radius: 50%; /* Makes the image circular */
+    }
+
+    .user-show-member-profiles {
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    p {
+      font-size: 12px;
+    }
+  }
+
+  .household-show-tasks {
+    width: 100%;
+    border-radius: 16px;
+  }
+
+
+  .household-show-calendar {
+    width: 100%;
+    border-radius: 16px;
+
+    .section-title {
+      padding: 8px;
+      width: 100%;
+      background-color: $warning;
+    }
+  }
+
+
   .accordion {
     background-color: $light-gray;
     color: #000000;
@@ -24,25 +89,33 @@
     border-radius: 16px;
   }
 
-  .active, .accordion:hover {
-    background-color: $warning;
-  }
-
-  #add-task-btn, #view-task-btn{
-    opacity: 40%;
-  }
-
-  .active, #add-task-btn:hover, #view-task-btn:hover {
-    opacity: 100%;
-  }
-
-
   .panel {
     padding: 0px;
     display: none;
     background-color: white;
     overflow: hidden;
     width: 100%
+  }
+
+  .active, .accordion:hover {
+    background-color: $warning;
+  }
+
+  #add-task-btn, #view-task-btn{
+    .btn {
+      border-radius: 50px;
+      border: 1px black solid;
+      width: 100%;
+      background-color: $light-gray;
+    }
+
+  }
+
+  .active, #add-task-btn:hover, #view-task-btn:hover {
+    .btn {
+      background-color: $warning;
+      border: 1px black solid;
+    }
   }
 
   .semi-panel {
