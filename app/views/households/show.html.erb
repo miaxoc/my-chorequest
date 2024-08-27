@@ -127,7 +127,7 @@
 
         <div class="household-admin">
           <div class="card-product">
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+            <%= cl_image_tag(@household.user.photo.key) %>
             <div class="card-product-infos">
               <h2 style="color: red;"><%= link_to @household.user.username, user_path(@household.user), style: "color: black;" %> - admin</h2>
               <p>Product description with <strong>relevant info</strong> only.</p>
@@ -138,7 +138,7 @@
           <% if user.username == @household.user.username%>
           <% else %>
             <div class="card-product">
-              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+              <%= cl_image_tag(user.photo.key) %>
               <div class="card-product-infos">
                 <h2><%= link_to user.username, user_path(user) %></h2>
                 <p>Product description with <strong>relevant info</strong> only.</p>
