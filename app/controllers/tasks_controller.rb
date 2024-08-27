@@ -2,6 +2,7 @@ class TasksController < ApplicationController
   def index
     house = current_user.household
     @users = house.users
+    @my_calendar_tasks = current_user.submissions.where(deadline: Date.today.beginning_of_month..Date.today.next_month.end_of_month)
 
     # Determine which user to show tasks for
     if params[:all_tasks] == "true"
