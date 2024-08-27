@@ -4,4 +4,4 @@ import "controllers"
 import "@popperjs/core"
 import "bootstrap"
 import "./household"
-import "./controllers/household-show"
+
