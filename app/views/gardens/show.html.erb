@@ -1,4 +1,38 @@
-<div class="garden-page">
-<img src="<%= asset_path('yellow-living-room-2.webp') %>" alt="room" style="width: 300px">
+<div class="user-show">
+  <div class="garden-page">
+    <img src="<%= asset_path('yellow-living-room-2.webp') %>" alt="room" style="width: 300px">
+  </div>
+  <%#= render 'pages/flower_animation'%>
+  <div class="user-show-container" style="border:none;">
+  <div class="user-show-container-badges">
+    <h3><strong>Your Plants</strong></h3>
+    <div class="user-show-badges-icons d-flex justify-content-center">
+      <% @user.badges.each do |badge| %>
+        <div class="badge">
+          <% # Extract image paths from description %>
+          <% description_parts = badge.description.split("Images: ") %>
+          <% images = description_parts.last.strip.split(",") if description_parts.size > 1 %>
+
+          <% if images.present? && images.size > 1 %>
+            <!-- Display the animated images -->
+            <div class="container">
+              <div data-controller="image-animation"
+                   data-image-animation-images="<%= images.map { |img| asset_path(img.strip) }.to_json %>">
+                <img src="<%= asset_path(images.first.strip) %>" data-image-animation-target="image" alt="Flower animation">
+              </div>
+            </div>
+          <% else %>
+            <!-- Fallback to a static image -->
+            <% image_path = description_parts.last.strip if description_parts.size > 1 %>
+            <div class="badge-icon-placeholder">
+              <%= image_tag(image_path, class: 'badge-image') if image_path.present? %>
+            </div>
+          <% end %>
+
+          <p class="badge-name"><%= badge.name %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
-<%= render 'pages/flower_animation'%>
+
