@@ -2,37 +2,29 @@ class TasksController < ApplicationController
   def index
     house = current_user.household
     @users = house.users
+    @user = current_user
+    @user_tasks = Task.where(user: @user)
     @my_calendar_tasks = current_user.submissions.where(deadline: Date.today.beginning_of_month..Date.today.next_month.end_of_month)
 
     # Determine which user to show tasks for
-    if params[:all_tasks] == "true"
-      @user = current_user
-      @user_tasks = Task.where(user: @user)
-      @submissions = Submission.where(user: @user)
+    if params[:my_tasks] == "true"
+      @today = Submission.where(user: @user, deadline: Date.today)
+      @this_week = Submission.joins(:task).where(user: @user, deadline: Date.today..Date.today.end_of_week, tasks: { frequency: "weekly" })
+      @this_month = Submission.joins(:task).where(user: @user, deadline: Date.today..Date.today.end_of_week, tasks: { frequency: "monthly" })
+      @submissions = @today + @this_week + @this_month
+
     # elsif params[:user_id].present?
     #   @user = User.find(params[:user_id])
     #   @user_tasks = Task.where(user: @user)
     #   @submissions = @user.submissions.where(deadline: Date.today)
-    elsif params[:frequency] == "daily"
-      @user = current_user
-      @user_tasks = Task.where(user: @user)
-      @submissions = @user.submissions.where(deadline: Date.today)
-    elsif params[:frequency] == "weekly"
-      @user = current_user
-      @user_tasks = Task.where(user: @user)
-      @submissions = @user.submissions.joins(:task).where(deadline: Date.today..Date.today.end_of_week, tasks: { frequency: "weekly" })
-
-    elsif params[:frequency] == "monthly"
-      @user = current_user
-      @user_tasks = Task.where(user: @user)
-      @submissions = @user.submissions.joins(:task).where(deadline: Date.today..Date.today.end_of_month, tasks: { frequency: "monthly" })
+    elsif params[:calendar] == "true"
+      @submissions = @user.submissions
     else
-      @user = current_user
       @user_tasks = Task.where(user: @user)
       @submissions = Submission.where(user: @user)
     end
     total_tasks = @submissions.count
-    completed_tasks = @submissions.where(status: "completed").count
+    completed_tasks = @submissions.select{|submission| submission.status == "completed"}.count
     @progress_percentage = if total_tasks > 0
       (completed_tasks.to_f / total_tasks * 100).round(0)
     else
