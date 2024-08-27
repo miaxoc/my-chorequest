@@ -1,19 +1,97 @@
+
 <div class="household-show pt-2">
   <!-- title -->
   <div class="household-show-title" style=" width: 100%; padding-bottom: 16px;">
     <h1><%= @household.title %>'s</h1>
     <div class="d-flex justify-content-center">
       <h1>house</h1>
-      <div class="btn btn-primary" style="border-radius: 32px; border: 1px black solid; margin-left: 8px; ">
+      <div class="btn btn-warning" style="border-radius: 32px; border: 1px black solid; margin-left: 8px; ">
         <%= link_to '', edit_household_path(current_user.household), class: "fa-solid fa-pen-to-square", style: "font-size: 18px;" %>
       </div>
     </div>
   </div>
 
+  <!-- Members section -->
+  <div class="household-show-members">
+    <%# <div class="section-title"></div> %>
+    <%# <h5 class="section-title">Members</h5> %>
+    <div class="">
+      <div class="user-show-members">
+        <% @users.each do |user|%>
+          <div class="d-flex">
+            <div class="user-show-member-profiles">
+              <div class="profile-pic-placeholder">
+                <%= cl_image_tag(user.photo.key, class: "profile-pic") %>
+              </div>
+              <p class="mb-0" ><%= user.username %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <!-- member add modal button -->
+    <div class="d-flex justify-content-center">
+      <button type="button" class="btn btn-warning p-1" data-toggle="modal" data-target="#memberModal", style="width: 40%; border-radius: 32px; border: 1px black solid; align-content: center; ">
+        <i class="fa-solid fa-plus" style="font-size: 18px; text-align: center;"></i>
+      </button>
+    </div>
+
+    <!-- member add modal form -->
+    <div class="modal fade mt-3" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="memberModalLabel">Add New Member</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= render '/users/form' %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tasks -->
+  <div class="household-show-tasks mt-3" style=" width: 100%; padding-bottom: 16px;">
+    <div class="accordion d-flex text-center">
+      <div class="flex-grow-1">
+        <h2>Tasks</h2>
+      </div>
+    </div>
+    <div class="panel">
+      <!-- RENDER buttons -->
+      <div class="accordion" id="add-task-btn" style="background-color: white;">
+        <button type="button" class="btn">
+          Add tasks <i class="fa-solid fa-plus mx-2"></i>
+        </button>
+      </div>
+      <div class="semi-panel">
+        <%= render '/households/add_tasks' %>
+      </div>
+      <div class="accordion" id="view-task-btn" style="background-color: white;">
+        <button type="button" class="btn">
+          View tasks <i class="fa-solid fa-eye mx-2"></i>
+        </button>
+      </div>
+      <div class="semi-panel">
+        <%= render '/households/view_tasks' %>
+      </div>
+    </div>
+  </div>
+
+
+
   <!-- Updated Calendar -->
   <div class="household-show-calendar mt-3" style=" width: 100%; padding-bottom: 16px;">
-    <div class="accordion">
-      <h1 class="mt-2" >Calendar</h1>
+    <div class="accordion text-center">
+      <h2 class="mt-2" >Calendar</h2>
     </div>
     <div class="panel">
       <%= month_calendar(events: @all_calendar_tasks, attribute: :deadline) do |date, submissions| %>
@@ -63,87 +141,8 @@
       <% end %>
     </div>
   </div>
-  <!-- Members -->
-  <div class="household-show-members" style=" width: 100%; padding-bottom: 16px;">
-    <!-- Modal Button -->
-    <div class="accordion">
-      <h1>Members
-      </div>
-      <div class="panel">
-        <div class="d-flex justify-content-between mt-3">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#memberModal", style="width: 100%; border-radius: 32px; border: 1px black solid; align-content: center; margin-left: 8px; margin-right: 8px;">
-            <i class="fa-solid fa-circle-plus" style="font-size: 18px; text-align: center;"></i>
-          </button>
-        </div>
 
-        <!-- Modal -->
-        <div class="modal fade mt-3" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="memberModalLabel">Add New Member</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <%= render '/users/form' %>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
 
-      </div>
-      <div class="members">
-        <div class="household-admin">
-          <div class="card-product">
-            <%= cl_image_tag(@household.user.photo.key) %>
-            <div class="card-product-infos">
-              <h2 style="color: red;"><%= link_to @household.user.username, user_path(@household.user), style: "color: black;" %> - admin</h2>
-              <p>Product description with <strong>relevant info</strong> only.</p>
-              </div>
-            </div>
-          </div>
-          <% @users.each do |user| %>
-            <% if user.username == @household.user.username%>
-            <% else %>
-              <div class="card-product">
-                <%= cl_image_tag(user.photo.key) %>
-                <div class="card-product-infos">
-                  <h2><%= link_to user.username, user_path(user) %></h2>
-                  <p>Product description with <strong>relevant info</strong> only.</p>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <!-- Tasks -->
-    <div class="accordion d-flex">
-      <div class="flex-grow-1">
-        <h1>Tasks</h1>
-      </div>
-    </div>
-    <div class="panel">
-      <!-- RENDER buttons -->
-      <div class="accordion" id="add-task-btn" style="background-color: white;">
-        <button type="button" class="btn m-1", style="border-radius: 8px;; border: 1px black solid; width: 100%;">
-          Add tasks
-        </button>
-      </div>
-      <div class="semi-panel">
-        <%= render '/households/add_tasks' %>
-      </div>
-      <div class="accordion" id="view-task-btn" style="background-color: white;">
-        <button type="button" class="btn m-1", style="border-radius: 8px; border: 1px black solid; width: 100%;">
-          View tasks
-        </button>
-      </div>
-      <div class="semi-panel">
-        <%= render '/households/view_tasks' %>
-      </div>
-    </div>
-  </div>
+
+
+</div>
