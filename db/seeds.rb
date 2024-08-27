@@ -7,6 +7,10 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+require 'open-uri'
+require 'nokogiri'
+
 puts "destroying all stuff..."
 Submission.destroy_all
 Task.destroy_all
@@ -50,11 +54,25 @@ else
 end
 
 10.times do
-  User.create({
+  user = User.create({
     username: Faker::Internet.username,
     email: Faker::Internet.email,
     password: Faker::Internet.password
   })
+
+  # gender options: 'all' or 'male' or 'female'
+  gender = ['male', 'female'].sample
+  # age options: 'all' or '12-18' or '19-25' or '26-35' or '35-50' or '50+'
+  age = ['19-25', '26-35', '35-50', '50+'].sample
+  # ethnicity options: 'all' or 'asian' or 'white' or 'black' or 'indian' or 'middle_eastern' or 'latino_hispanic'
+  ethnicity = 'all'
+
+  url = "https://this-person-does-not-exist.com/new?gender=#{gender}&age=#{age}&ethnic=#{ethnicity}"
+  json = URI.open(url).string
+  src = JSON.parse(json)['src']
+  photo_url = "https://this-person-does-not-exist.com#{src}"
+  file = URI.open(photo_url)
+  user.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
 end
 
 User.create!({

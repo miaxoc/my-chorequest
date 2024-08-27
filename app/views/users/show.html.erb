@@ -4,7 +4,7 @@
   </div>
   <div class="user-show-container">
     <div class="user-show-container-profile">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+      <%= cl_image_path(@user.photo.key) %>
       <div class="user-profile-text">
         <h3 class="mb-3"><strong><%= @user.username %></strong></h3>
         <div class="user-profile-achievements">
