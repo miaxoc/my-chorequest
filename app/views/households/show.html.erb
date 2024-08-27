@@ -30,56 +30,61 @@
 
 
   <!-- Updated Calendar -->
-  <h1 class="mt-2" >Calendar</h1>
-  <div class="household-show-calendar mt-3">
-    <%= month_calendar(events: @all_calendar_tasks, attribute: :deadline) do |date, submissions| %>
-      <div class="day" data-bs-toggle="modal" data-bs-target="#modal-<%= date.to_s%>">
-        <%= date.day %>
 
-         <% if submissions.any? %>
-        <% unique_users = submissions.map(&:user).uniq %>
-        <% unique_users.each do |user| %>
-          <div class="task">
-            <%= user.username %>
-          </div>
-        <% end %>
-      <% end %>
+  <div class="household-show-calendar mt-3" style=" width: 100%; padding-bottom: 16px;">
+  <div class="accordion">
+    <h1 class="mt-2" >Calendar</h1>
+  </div>
+    <div class="panel">
+      <%= month_calendar(events: @all_calendar_tasks, attribute: :deadline) do |date, submissions| %>
+        <div class="day" data-bs-toggle="modal" data-bs-target="#modal-<%= date.to_s%>">
+          <%= date.day %>
 
-      <!-- Modal -->
-      <div class="modal fade" id="modal-<%= date.to_s%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel"><%= date %></h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-            <% if submissions.any? %>
-              <% submissions.group_by(&:user).each do |user, user_submissions| %>
-                <div class="user-tasks">
-                  <strong><%= user.username.capitalize %></strong>
-                  <ul>
-                    <% user_submissions.each do |submission| %>
-                      <li><%= submission.task.title %></li>
-                    <% end %>
-                  </ul>
-                </div>
-              <% end %>
-            <% else %>
-              <p>No tasks for this date.</p>
+          <% if submissions.any? %>
+            <% unique_users = submissions.map(&:user).uniq %>
+            <% unique_users.each do |user| %>
+              <div class="task">
+                <%= user.username %>
+              </div>
             <% end %>
+          <% end %>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="modal-<%= date.to_s%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel"><%= date %></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+
+                <% if submissions.any? %>
+                  <% submissions.group_by(&:user).each do |user, user_submissions| %>
+                    <div class="user-tasks">
+                      <strong><%= user.username.capitalize %></strong>
+                      <ul>
+                        <% user_submissions.each do |submission| %>
+                          <li><%= submission.task.title %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
+                <% else %>
+                  <p>No tasks for this date.</p>
+                <% end %>
 
 
-            </div>
-            <div class="modal-footer">
-              <%# <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style= "border-radius: 32px; border: 1px black solid; margin-bottom: 26px;">Close</button> %>
-              <%= link_to 'See your tasks', tasks_path(current_user.tasks), class: "btn btn-primary", style: "border-radius: 32px; border: 1px black solid; margin-bottom: 26px;" %>
+              </div>
+              <div class="modal-footer">
+                <%# <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style= "border-radius: 32px; border: 1px black solid; margin-bottom: 26px;">Close</button> %>
+                <%= link_to 'See your tasks', tasks_path(current_user.tasks), class: "btn btn-primary", style: "border-radius: 32px; border: 1px black solid; margin-bottom: 26px;" %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 
   <!-- Members -->
@@ -149,8 +154,8 @@
 
 
   <!-- Tasks -->
-  <div class="accordion">
-    <div>
+  <div class="accordion d-flex">
+    <div class="flex-grow-1">
       <h1>Tasks</h1>
 
     </div>
@@ -162,7 +167,7 @@
         Add tasks
       </button>
     </div>
-    <div class="panel">
+    <div class="semi-panel">
       <%= render '/households/add_tasks' %>
     </div>
 
@@ -171,67 +176,8 @@
         View tasks
       </button>
     </div>
-    <div class="panel">
+    <div class="semi-panel">
       <%= render '/households/view_tasks' %>
-    </div>
-
-
-    <div class="tasks">
-      <div class="d-flex justify-content-start">
-        <!-- Make the timetable -->
-        <%= link_to timetable_household_path(current_user.household), data: { turbo_method: :post, turbo_confirm: "Generate now?" }, style:"border-radius: 32px; border: 1px black solid;", class: "btn btn-warning m-3" do %>
-          <i class="fa-regular fa-calendar"></i> Build Timetable
-        <% end %>
-        <!-- Modal Button -->
-        <button type="button" class="btn btn-primary m-3" data-toggle="modal" data-target="#taskModal", style="border-radius: 32px; border: 1px black solid;">
-          <i class="fa-solid fa-circle-plus"></i> Add Task
-        </button>
-      </div>
-      <!-- Modal -->
-      <div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="taskModalLabel">Add New Task</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <%= render 'tasks/form', task: @task %>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <%= render 'tasks/suggested_tasks' %>
-
-      <% @tasks.each do |task| %>
-        <div class="card-product d-flex align-items-center p-3">
-          <img src="https://cdn-icons-png.flaticon.com/512/4345/4345800.png" class="img-fluid" style="width: 50px; height: 50px; margin-right: 15px;" />
-          <div class="card-product-infos flex-grow-1">
-            <h2><%= task.title %></h2>
-            <p><%= task.frequency %></p>
-          </div>
-          <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: "Delete task?" }, class: "btn btn-danger mx-2" do %>
-            <i class="fa-solid fa-trash-can"></i>
-          <% end%>
-        </div>
-
-        <% if task.submissions.first.nil? %>
-          <span class="badge bg-danger rounded-circle p-2 ms-auto">
-            <i class="fa-regular fa-calendar-xmark"></i>
-          </span>
-        <% else %>
-          <span class="badge bg-success rounded-circle p-2 ms-auto">
-            <i class="fa-solid fa-calendar-check"></i>
-          </span>
-        <% end %>
-      <% end %>
     </div>
   </div>
 </div>
