@@ -9,7 +9,7 @@
     <h2>This Month's Tasks</h2>
   <% end %>
 </div>
-<div class="container">
+<div>
   <div class="d-flex justify-content-center">
     <div class="request-filter-bar btn-group btn-group-toggle mb-3">
       <%= link_to "All Tasks", tasks_path(all_tasks: true), class: "btn btn-outline-primary request-filter-buttons #{'active' if params[:all_tasks] == 'true'}" %>
@@ -18,6 +18,17 @@
       <%= link_to "Monthly", tasks_path(frequency: "monthly"), class: "btn btn-outline-primary request-filter-buttons #{'active' if params[:frequency] == 'monthly'}" %>
     </div>
   </div>
+
+  <%# WORKING ON THIS... TRYING TO MAKE TABS WITH 'View my calendar' and 'View my tasks' %>
+  <div class="d-flex justify-content-center">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-primary">My Calendar</button>
+
+      <button type="button" class="btn btn-primary">My Tasks</button>
+    </div>
+  </div>
+  <%# END %>
+
   <div class="d-flex justify-content-center m-3">
     <div style="width: 100%;">
       <%= render 'shared/progress_bar', progress_percentage: @progress_percentage %>
