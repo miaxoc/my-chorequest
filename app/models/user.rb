@@ -9,6 +9,7 @@ class User < ApplicationRecord
   belongs_to :household, optional: true
   has_many :submissions
   has_many :tasks, through: :submissions
+  has_one_attached :photo
 
   def daily_task_submissions_due_today
     submissions.joins(:task).where(tasks: { frequency: 'daily' }).where(deadline: Date.today)

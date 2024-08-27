@@ -90,6 +90,7 @@
             <i class="fa-solid fa-circle-plus" style="font-size: 18px; text-align: center;"></i>
           </button>
         </div>
+
         <!-- Modal -->
         <div class="modal fade mt-3" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -106,16 +107,14 @@
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
-            </div>
-          </div>
-        </div>
-        <div class="members">
-          <div class="household-admin">
-            <div class="card-product">
-              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-              <div class="card-product-infos">
-                <h2 style="color: red;"><%= link_to @household.user.username, user_path(@household.user), style: "color: black;" %> - admin</h2>
-                <p>Product description with <strong>relevant info</strong> only.</p>
+      </div>
+      <div class="members">
+        <div class="household-admin">
+          <div class="card-product">
+            <%= cl_image_tag(@household.user.photo.key) %>
+            <div class="card-product-infos">
+              <h2 style="color: red;"><%= link_to @household.user.username, user_path(@household.user), style: "color: black;" %> - admin</h2>
+              <p>Product description with <strong>relevant info</strong> only.</p>
               </div>
             </div>
           </div>
