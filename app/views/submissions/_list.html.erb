@@ -1,45 +1,57 @@
-<% if submissions.first.nil? %>
-  <h5 style="color: grey;"><em>No <%= params[:frequency] %> tasks to complete.</em></h5>
-<% else %>
-  <% submissions.each do |submission| %>
-    <% task = submission.task %>
-    <div class="card-product mb-3" style="width: 400px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#submissionModal-<%= submission.id %>">
-      <img src="https://static.thenounproject.com/png/1569761-200.png" class="img-fluid" />
-      <div class="card-product-infos">
-        <h2><%= task.title %></h2>
-        <p><%= task.frequency %></p>
-        <p><%= submission.user.username %></p>
-        <p><%= submission.deadline %></p>
-      </div>
-      <div class="btn <%= submission.status == "completed" ? "btn-success" : "btn-warning" %> mx-2">
-        <i class="<%= submission.status == "completed" ? "fa-regular fa-circle-check" : "fa-solid fa-clock" %>"></i>
-      </div>
-    </div>
+<div class="task-index">
+  <% if submissions.first.nil? %>
+    <h5 style="color: grey;"><em>No <%= params[:frequency] %> tasks to complete.</em></h5>
+  <% else %>
+    <% submissions.each do |submission| %>
+      <% task = submission.task %>
+      <div class="task-card-product mb-3" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#submissionModal-<%= submission.id %>">
+        <% if task.category == "Vacuuming" %>
+          <img src="https://attic.sh/v3hg667s9xmxewm56gxwl8r2knaw" class="img-fluid" />
+        <% elsif task.category == "Kitchen" %>
+          <img src="https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/cooking.png" class="img-fluid" />
+        <% elsif task.category == "Shopping" %>
+          <img src="https://i.pinimg.com/originals/e0/a0/c0/e0a0c03ccd029c7a253b04377f4239a5.png" class="img-fluid" />
 
-    <%# Modal for Submission %>
-    <div class="modal fade  modal-ku" id="submissionModal-<%= submission.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Submit picture & complete the task!</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
+        <% else %>
+          <img src="https://static.thenounproject.com/png/1569761-200.png" class="img-fluid" />
+        <% end %>
 
-          <div class="modal-body text-center" data-controller="show-points">
-            <div id="form" data-show-points-target="form">
-              <%= simple_form_for submission do |f| %>
-                <%= f.input :photo, as: :file, label: false %>
-                <div data-action="click->show-points#showPoints">
-                  <%= f.submit 'Complete', class: 'btn btn-success mt-2'%>
-                <% end %>
-              </div>
+        <div class="task-card-product-infos">
+          <h2><%= task.title %></h2>
+          <p><%= task.frequency %></p>
+          <p><%= submission.user.username %></p>
+          <p><%= submission.deadline %></p>
+        </div>
+        <div class="btn <%= submission.status == "completed" ? "btn-success" : "btn-warning" %> mx-2">
+          <i class="<%= submission.status == "completed" ? "fa-regular fa-circle-check" : "fa-solid fa-clock" %>"></i>
+        </div>
+      </div>
+
+      <%# Modal for Submission %>
+      <div class="modal fade  modal-ku" id="submissionModal-<%= submission.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Submit picture & complete the task!</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div data-show-points-target="image" class="d-none">
-              <%= render 'submissions/points'%>
+
+            <div class="modal-body text-center" data-controller="show-points">
+              <div id="form" data-show-points-target="form">
+                <%= simple_form_for submission do |f| %>
+                  <%= f.input :photo, as: :file, label: false %>
+                  <div data-action="click->show-points#showPoints">
+                    <%= f.submit 'Complete', class: 'btn btn-success mt-2'%>
+                  <% end %>
+                </div>
+              </div>
+              <div data-show-points-target="image" class="d-none">
+                <%= render 'submissions/points'%>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>
