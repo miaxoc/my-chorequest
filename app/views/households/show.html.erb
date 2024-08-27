@@ -1,5 +1,4 @@
 <div class="household-show pt-2">
-
   <!-- title -->
   <div class="household-show-title" style=" width: 100%; padding-bottom: 16px;">
     <h1><%= @household.title %>'s</h1>
@@ -10,8 +9,7 @@
       </div>
     </div>
   </div>
-
-<!-- ORIGINAL Calendar -->
+  <!-- ORIGINAL Calendar -->
   <!-- <h1 class="mt-2" >Calendar</h1>
   <div class="household-show-calendar mt-3">
     <%= month_calendar(events: @all_calendar_tasks, attribute: :deadline) do |date, submissions| %>
@@ -27,23 +25,20 @@
     <% end %>
   </div>
 < ORIGINAL Calendar END-->
-
-
   <!-- Updated Calendar -->
-
   <div class="household-show-calendar mt-3" style=" width: 100%; padding-bottom: 16px;">
-  <div class="accordion">
-    <h1 class="mt-2" >Calendar</h1>
-  </div>
+    <div class="accordion">
+      <h1 class="mt-2" >Calendar</h1>
+    </div>
     <div class="panel">
       <%= month_calendar(events: @all_calendar_tasks, attribute: :deadline) do |date, submissions| %>
         <div class="day" data-bs-toggle="modal" data-bs-target="#modal-<%= date.to_s%>">
           <%= date.day %>
-
           <% if submissions.any? %>
             <% unique_users = submissions.map(&:user).uniq %>
             <% unique_users.each do |user| %>
-              <div class="task">
+              <% user_color = "##{Digest::MD5.hexdigest(user.id.to_s)[0..5]}" %>
+              <div class="task" style="background-color: <%= user_color %>; color: #fff;">
                 <%= user.username %>
               </div>
             <% end %>
@@ -58,7 +53,6 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-
                 <% if submissions.any? %>
                   <% submissions.group_by(&:user).each do |user, user_submissions| %>
                     <div class="user-tasks">
@@ -73,8 +67,6 @@
                 <% else %>
                   <p>No tasks for this date.</p>
                 <% end %>
-
-
               </div>
               <div class="modal-footer">
                 <%# <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style= "border-radius: 32px; border: 1px black solid; margin-bottom: 26px;">Close</button> %>
@@ -86,98 +78,85 @@
       <% end %>
     </div>
   </div>
-
   <!-- Members -->
   <div class="household-show-members" style=" width: 100%; padding-bottom: 16px;">
     <!-- Modal Button -->
     <div class="accordion">
       <h1>Members
-    </div>
-    <div class="panel">
-      <div class="d-flex justify-content-between mt-3">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#memberModal", style="width: 100%; border-radius: 32px; border: 1px black solid; align-content: center; margin-left: 8px; margin-right: 8px;">
-          <i class="fa-solid fa-circle-plus" style="font-size: 18px; text-align: center;"></i>
-        </button>
       </div>
-
-
-      <!-- Modal -->
-      <div class="modal fade mt-3" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="memberModalLabel">Add New Member</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <%= render '/users/form' %>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <div class="panel">
+        <div class="d-flex justify-content-between mt-3">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#memberModal", style="width: 100%; border-radius: 32px; border: 1px black solid; align-content: center; margin-left: 8px; margin-right: 8px;">
+            <i class="fa-solid fa-circle-plus" style="font-size: 18px; text-align: center;"></i>
+          </button>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade mt-3" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="memberModalLabel">Add New Member</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= render '/users/form' %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-
-
-      <div class="members">
-
-        <div class="household-admin">
-          <div class="card-product">
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-            <div class="card-product-infos">
-              <h2 style="color: red;"><%= link_to @household.user.username, user_path(@household.user), style: "color: black;" %> - admin</h2>
-              <p>Product description with <strong>relevant info</strong> only.</p>
-            </div>
-          </div>
-        </div>
-        <% @users.each do |user| %>
-          <% if user.username == @household.user.username%>
-          <% else %>
+        <div class="members">
+          <div class="household-admin">
             <div class="card-product">
               <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
               <div class="card-product-infos">
-                <h2><%= link_to user.username, user_path(user) %></h2>
+                <h2 style="color: red;"><%= link_to @household.user.username, user_path(@household.user), style: "color: black;" %> - admin</h2>
                 <p>Product description with <strong>relevant info</strong> only.</p>
               </div>
             </div>
+          </div>
+          <% @users.each do |user| %>
+            <% if user.username == @household.user.username%>
+            <% else %>
+              <div class="card-product">
+                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+                <div class="card-product-infos">
+                  <h2><%= link_to user.username, user_path(user) %></h2>
+                  <p>Product description with <strong>relevant info</strong> only.</p>
+                </div>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
+      </div>
+    </div>
+    <!-- Tasks -->
+    <div class="accordion d-flex">
+      <div class="flex-grow-1">
+        <h1>Tasks</h1>
+      </div>
+    </div>
+    <div class="panel">
+      <!-- RENDER buttons -->
+      <div class="accordion" id="add-task-btn" style="background-color: white;">
+        <button type="button" class="btn m-1", style="border-radius: 8px;; border: 1px black solid; width: 100%;">
+          Add tasks
+        </button>
+      </div>
+      <div class="semi-panel">
+        <%= render '/households/add_tasks' %>
+      </div>
+      <div class="accordion" id="view-task-btn" style="background-color: white;">
+        <button type="button" class="btn m-1", style="border-radius: 8px; border: 1px black solid; width: 100%;">
+          View tasks
+        </button>
+      </div>
+      <div class="semi-panel">
+        <%= render '/households/view_tasks' %>
       </div>
     </div>
   </div>
-
-
-
-
-  <!-- Tasks -->
-  <div class="accordion d-flex">
-    <div class="flex-grow-1">
-      <h1>Tasks</h1>
-
-    </div>
-  </div>
-  <div class="panel">
-    <!-- RENDER buttons -->
-    <div class="accordion" id="add-task-btn" style="background-color: white;">
-      <button type="button" class="btn m-1", style="border-radius: 8px;; border: 1px black solid; width: 100%;">
-        Add tasks
-      </button>
-    </div>
-    <div class="semi-panel">
-      <%= render '/households/add_tasks' %>
-    </div>
-
-    <div class="accordion" id="view-task-btn" style="background-color: white;">
-      <button type="button" class="btn m-1", style="border-radius: 8px; border: 1px black solid; width: 100%;">
-        View tasks
-      </button>
-    </div>
-    <div class="semi-panel">
-      <%= render '/households/view_tasks' %>
-    </div>
-  </div>
-</div>
