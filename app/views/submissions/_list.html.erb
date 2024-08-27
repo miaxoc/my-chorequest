@@ -14,7 +14,6 @@
         <% else %>
           <img src="https://static.thenounproject.com/png/1569761-200.png" class="img-fluid" />
         <% end %>
-
         <div class="task-card-product-infos">
           <h2><%= task.title %></h2>
           <p><%= task.frequency %></p>
@@ -25,7 +24,6 @@
           <i class="<%= submission.status == "completed" ? "fa-regular fa-circle-check" : "fa-solid fa-clock" %>"></i>
         </div>
       </div>
-
       <%# Modal for Submission %>
       <div class="modal fade  modal-ku" id="submissionModal-<%= submission.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -34,13 +32,12 @@
               <h1 class="modal-title fs-5" id="exampleModalLabel">Submit picture & complete the task!</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-
             <div class="modal-body text-center" data-controller="show-points">
               <div id="form" data-show-points-target="form">
                 <%= simple_form_for submission do |f| %>
                   <%= f.input :photo, as: :file, label: false %>
                   <div data-action="click->show-points#showPoints">
-                    <%= f.submit 'Complete', class: 'btn btn-success mt-2'%>
+                    <%= f.submit 'Complete', class: 'btn btn-success mt-2', disabled: submission.status == "completed" %>
                   <% end %>
                 </div>
               </div>
