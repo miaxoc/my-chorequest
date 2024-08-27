@@ -43,3 +43,17 @@
   margin: auto;
   max-height:480px;
 }
+
+
+.task-index {
+  margin-top: 16px;
+  .card-product img {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+  }
+
+  .card-product {
+    padding: 10px;
+  }
+}
