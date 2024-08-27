@@ -19,9 +19,9 @@ end
 Rails.application.reloader.to_prepare do
 
   Merit::Badge.create(
-    id: 1,
-    name: "first-submission",
-    description: "Awarded for making your first task submission. Image: medal_1.png"
+  id: 1,
+  name: "first-submission",
+  description: "Awarded for making your first task submission. Images: bud1.png,bud2.png"
   )
 
   Merit::Badge.create(

@@ -4,7 +4,7 @@
   <% else %>
     <% submissions.each do |submission| %>
       <% task = submission.task %>
-      <div class="task-card-product mb-3" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#submissionModal-<%= submission.id %>">
+      <div class="task-card-product mb-3 d-flex justify-content-between" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#submissionModal-<%= submission.id %>">
         <% if task.category == "Vacuuming" %>
           <img src="https://attic.sh/v3hg667s9xmxewm56gxwl8r2knaw" class="img-fluid" />
         <% elsif task.category == "Kitchen" %>
