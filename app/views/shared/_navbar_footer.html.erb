@@ -1,18 +1,16 @@
 <div class="navbar-footer">
   <!-- Seedling Icon -->
-  <div class="navbar-footer-item <%= 'active' if current_page?('#mygarden') %>">
-    <%= link_to '#mygarden' do %>
+  <div class="navbar-footer-item <%= 'active' if current_page?(user_garden_path(@user)) %>">
+    <%= link_to user_garden_path(@user) do %>
       <i class="fa-solid fa-seedling navbar-footer-btn" style="font-size: 24px;"></i>
     <% end %>
   </div>
-
   <!-- House Icon -->
   <div class="navbar-footer-item <%= 'active' if current_page?(household_path(current_user)) %>">
     <%= link_to household_path(current_user) do %>
       <i class="fa-solid fa-house-user navbar-footer-btn" style="font-size: 24px;"></i>
     <% end %>
   </div>
-
   <!-- Task List Icon -->
   <div class="navbar-footer-item <%= 'active' if current_page?('/tasks') %>">
     <%= link_to '/tasks' do %>
