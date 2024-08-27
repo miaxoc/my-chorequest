@@ -4,7 +4,7 @@
   </div>
   <div class="user-show-container">
     <div class="user-show-container-profile">
-      <%= cl_image_path(@user.photo.key) %>
+      <%= cl_image_tag(@user.photo.key) %>
       <div class="user-profile-text">
         <h3 class="mb-3"><strong><%= @user.username %></strong></h3>
         <div class="user-profile-achievements">
@@ -36,7 +36,7 @@
           <div class="d-flex">
             <div class="user-show-member-profiles">
               <div class="profile-pic-placeholder">
-                <img src="https://th.bing.com/th/id/OIP.52T8HHBWh6b0dwrG6tSpVQHaFe?w=264&h=195&c=7&r=0&o=5&dpr=1.5&pid=1.7" alt="Profile Picture" class="profile-pic">
+                <%= cl_image_tag(user.photo.key, class: "profile-pic") %>
               </div>
               <p><%= user.username %></p>
             </div>

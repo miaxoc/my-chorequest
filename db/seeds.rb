@@ -41,6 +41,11 @@ max = User.create!({
   email: "max@gmail.com",
   password: "maxmaxmax"
 })
+
+photo_url = "https://avatars.githubusercontent.com/u/173657467?s=400&u=6b1857ecafb24cbb532f1e66146a600dc75dbc24&v=4"
+file = URI.open(photo_url)
+max.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+
 puts "do you want to create a household? [y/n]"
 input = gets.chomp.downcase
 house = false
@@ -53,6 +58,7 @@ else
   household = nil
 end
 
+puts "creating fake images..."
 10.times do
   user = User.create({
     username: Faker::Internet.username,
@@ -75,26 +81,39 @@ end
   user.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
 end
 
-User.create!({
+mia = User.create!({
   username: "mia",
   email: "mia@gmail.com",
   password: "miamiamia",
   household: household
 })
 
-User.create!({
+photo_url = "https://avatars.githubusercontent.com/u/117554256?v=4"
+file = URI.open(photo_url)
+mia.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+
+yu = User.create!({
   username: "yu",
   email: "yu@gmail.com",
   password: "yuyuyu",
   household: household
 })
 
-User.create!({
+photo_url = "https://avatars.githubusercontent.com/u/174232198?v=4"
+file = URI.open(photo_url)
+yu.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+
+akitaka = User.create!({
   username: "akitaka",
   email: "akitaka@gmail.com",
   password: "akitaka",
   household: household
 })
+
+photo_url = "https://avatars.githubusercontent.com/u/173691791?v=4"
+file = URI.open(photo_url)
+akitaka.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+
 unless house == false
   puts "do you want to create tasks? [y/n]"
   input = gets.chomp.downcase
