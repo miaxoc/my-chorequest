@@ -9,22 +9,7 @@
       </div>
     </div>
   </div>
-  <!-- ORIGINAL Calendar -->
-  <!-- <h1 class="mt-2" >Calendar</h1>
-  <div class="household-show-calendar mt-3">
-    <%= month_calendar(events: @all_calendar_tasks, attribute: :deadline) do |date, submissions| %>
-      <div class="day">
-        <%= date.day %>
-        <% submissions.each  do |submission| %>
-          <div class="task">
-            <%= submission.task.title %>
-            <%= submission.user.username %>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-< ORIGINAL Calendar END-->
+
   <!-- Updated Calendar -->
   <div class="household-show-calendar mt-3" style=" width: 100%; padding-bottom: 16px;">
     <div class="accordion">
@@ -55,7 +40,7 @@
               <div class="modal-body">
                 <% if submissions.any? %>
                   <% submissions.group_by(&:user).each do |user, user_submissions| %>
-                    <div class="user-tasks">
+                    <div class="user-tasks text-start" style="font-size: 20px">
                       <strong><%= user.username.capitalize %></strong>
                       <ul>
                         <% user_submissions.each do |submission| %>
@@ -125,7 +110,7 @@
             <% if user.username == @household.user.username%>
             <% else %>
               <div class="card-product">
-                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+                <%= cl_image_tag(user.photo.key) %>
                 <div class="card-product-infos">
                   <h2><%= link_to user.username, user_path(user) %></h2>
                   <p>Product description with <strong>relevant info</strong> only.</p>
