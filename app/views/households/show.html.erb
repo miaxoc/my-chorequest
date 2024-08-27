@@ -59,7 +59,9 @@
   </div>
 
   <!-- Tasks -->
+
   <div class="household-show-tasks mt-3" style=" width: 100%; padding-bottom: 16px;">
+    <turbo-frame id="tasks-frame">
     <div class="accordion d-flex text-center">
       <div class="flex-grow-1">
         <h2>Tasks</h2>
@@ -84,6 +86,7 @@
         <%= render '/households/view_tasks' %>
       </div>
     </div>
+    </turbo-frame>
   </div>
 
 
