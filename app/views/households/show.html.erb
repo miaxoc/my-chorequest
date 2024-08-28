@@ -1,14 +1,8 @@
-
 <div class="household-show pt-2">
   <!-- title -->
   <div class="household-show-title" style=" width: 100%; padding-bottom: 16px;">
     <h1><%= @household.title %>'s house <%= link_to '', edit_household_path(current_user.household), class: "fa-solid fa-pen-to-square", style: "font-size: 18px; opacity: 50%;" %></h1>
-
-
-
-
   </div>
-
   <!-- Members section -->
   <div class="household-show-members">
     <%# <div class="section-title"></div> %>
@@ -27,14 +21,12 @@
         <% end %>
       </div>
     </div>
-
     <!-- member add modal button -->
     <div class="d-flex justify-content-center">
       <button type="button" class="btn btn-warning p-1" data-toggle="modal" data-target="#memberModal", style="width: 40%; border-radius: 32px; border: 1px black solid; align-content: center; ">
         <i class="fa-solid fa-plus" style="font-size: 18px; text-align: center;"></i>
       </button>
     </div>
-
     <!-- member add modal form -->
     <div class="modal fade mt-3" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -55,42 +47,37 @@
       </div>
     </div>
   </div>
-
   <!-- Tasks -->
-
   <div class="household-show-tasks mt-3" style=" width: 100%; padding-bottom: 16px;">
     <turbo-frame id="tasks-frame">
-    <div class="accordion d-flex text-center">
-      <div class="flex-grow-1">
-        <h2>Tasks</h2>
-        <i class="fa-solid fa-clipboard-list" style="font-size: 30px"></i>
-        <p><%= @tasks.count %> added...</p>
+      <div class="accordion d-flex text-center">
+        <div class="flex-grow-1">
+          <h2>Tasks</h2>
+          <i class="fa-solid fa-clipboard-list" style="font-size: 30px"></i>
+          <p><%= @tasks.count %> added...</p>
+        </div>
       </div>
-    </div>
-    <div class="panel">
-      <!-- RENDER buttons -->
-      <div class="accordion" id="add-task-btn" style="background-color: white;">
-        <button type="button" class="btn">
-          Add tasks <i class="fa-solid fa-plus mx-2"></i>
-        </button>
+      <div class="panel">
+        <!-- RENDER buttons -->
+        <div class="accordion" id="add-task-btn" style="background-color: white;">
+          <button type="button" class="btn">
+            Add tasks <i class="fa-solid fa-plus mx-2"></i>
+          </button>
+        </div>
+        <div class="semi-panel">
+          <%= render '/households/add_tasks' %>
+        </div>
+        <div class="accordion" id="view-task-btn" style="background-color: white;">
+          <button type="button" class="btn">
+            View tasks <i class="fa-solid fa-eye mx-2"></i>
+          </button>
+        </div>
+        <div class="semi-panel">
+          <%= render '/households/view_tasks' %>
+        </div>
       </div>
-      <div class="semi-panel">
-        <%= render '/households/add_tasks' %>
-      </div>
-      <div class="accordion" id="view-task-btn" style="background-color: white;">
-        <button type="button" class="btn">
-          View tasks <i class="fa-solid fa-eye mx-2"></i>
-        </button>
-      </div>
-      <div class="semi-panel">
-        <%= render '/households/view_tasks' %>
-      </div>
-    </div>
     </turbo-frame>
   </div>
-
-
-
   <!-- Updated Calendar -->
   <div class="household-show-calendar mt-3" style=" width: 100%; padding-bottom: 16px;">
     <div class="accordion text-center">
@@ -145,8 +132,4 @@
       <% end %>
     </div>
   </div>
-
-
-
-
 </div>

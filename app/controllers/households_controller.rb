@@ -6,6 +6,7 @@ class HouseholdsController < ApplicationController
     @tasks = @household.tasks.order(created_at: :desc)
     @task = Task.new
     @members = User.all
+    @completed_submissions = @household.submissions.where(status: "completed")
 
     @my_calendar_tasks = current_user.submissions.where(deadline: Date.today.beginning_of_month..Date.today.next_month.end_of_month)
     @all_calendar_tasks = current_user.household.submissions.where(deadline: Date.today.beginning_of_month..Date.today.next_month.end_of_month)
