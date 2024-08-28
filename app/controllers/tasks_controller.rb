@@ -50,14 +50,15 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to household_path(current_user.household)}
-        format.js   # Handle the AJAX response for the task creation
+        format.turbo_stream { render turbo_stream: turbo_stream.replace('tasks-frame', partial: 'households/tasks') }
+        format.html { redirect_to @task.household, notice: 'Task was successfully created.' }
       else
         format.html { render 'new', status: :unprocessable_entity }
-        format.js   # In case of failure, handle the AJAX response
+        format.turbo_stream { render turbo_stream: turbo_stream.replace('form-errors', partial: 'shared/form_errors', locals: { object: @task }) }
       end
     end
   end
+
 
 
   def edit
