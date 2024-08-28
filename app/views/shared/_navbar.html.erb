@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="user-profile-achievements">
       <div class="user-profile-coins d-flex">
-        <%= image_tag("navbar-droplet.png")%>
+        <%= image_tag("navbar-droplet.png") %>
         <p> Water: <% if current_user.present? && current_user.points.present?  %>
             <%= current_user.points %>
           <% end %>
@@ -21,7 +21,7 @@
 
     <div >
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <%= cl_image_tag(current_user.photo.key, class: "avatar", alt: "dropdown menu")%>
+        <%= cl_image_tag(current_user.photo.key, class: "avatar", alt: "dropdown menu", style: "width: 40px; height: 40px; margin: 0px;")%>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto">
