@@ -6,7 +6,7 @@
     <% end %>
   </div>
   <!-- House Icon -->
-  <div class="navbar-footer-item <%= 'active' if current_page?(household_path(current_user)) %>">
+  <div class="navbar-footer-item <%= 'active' if current_page?(household_path(current_user)) || current_page?(chores_household_path(current_user.household)) %>">
     <%= link_to household_path(current_user) do %>
       <i class="fa-solid fa-house-user navbar-footer-btn" style="font-size: 24px;"></i>
     <% end %>

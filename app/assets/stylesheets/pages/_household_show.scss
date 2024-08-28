@@ -10,6 +10,34 @@
   align-items: center;
   text-align: center;
 
+  .card {
+    width: 70%;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid black ;
+
+
+
+    .img1{
+      width: 80%;
+      height: 80%;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+
+    }
+
+    .card-body {
+
+      h5{
+        text-decoration: underline;
+      }
+    }
+
+  }
+
   .household-show-members {
     width: 100%;
     // border: 1px black solid;

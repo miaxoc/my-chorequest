@@ -52,19 +52,16 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @user = current_user
+    @household = current_user.household
     @task.user = @user
     @task.household = @user.household
 
-    respond_to do |format|
+
       if @task.save
-        # format.turbo_stream { render turbo_stream: turbo_stream.replace('tasks-frame', partial: 'households/tasks') }
-        # format.html { redirect_to @task.household, notice: 'Task was successfully created.' }
-        redirect_to chores_households_path(@household)
+        redirect_to chores_household_path(@household)
       else
-        format.html { render 'new', status: :unprocessable_entity }
-        format.turbo_stream { render turbo_stream: turbo_stream.replace('form-errors', partial: 'shared/form_errors', locals: { object: @task }) }
+        redirect_to chores_household_path(@household)
       end
-    end
   end
 
 
@@ -93,5 +90,4 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:title, :frequency, :category)
   end
-
 end
