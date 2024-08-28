@@ -9,11 +9,13 @@
         <h3 class="mb-3"><strong><%= @user.username %></strong></h3>
         <div class="user-profile-achievements">
           <div class="user-profile-coins">
-            <i class="fa-solid fa-coins" style="color: orange;"></i>
+            <%= image_tag("navbar-droplet.png")%>
+            <%# <i class="fa-solid fa-coins" style="color: orange;"></i> %>
             <p>points: <%= @user.points %></p>
           </div>
           <div class="user-profile-badges">
-            <i class="fa-solid fa-trophy" style="color: red;"></i>
+            <%# <i class="fa-solid fa-trophy" style="color: red;"></i> %>
+            <%= image_tag("navbar-flower.png")%>
             <p>badges: <%= current_user.badges.count  %></p>
           </div>
         </div>

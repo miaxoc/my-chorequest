@@ -44,13 +44,21 @@
         .user-profile-achievements {
 
 
-          .user-profile-coins {
+          .user-profile-coins, .user-profile-badges {
             display: flex;
             margin-bottom: 16px;
 
-            i {
-              margin: auto;
-              font-size: 24px;
+            img {
+              align-content: top;
+              width: 20px;
+              height: 20px;
+              object-fit: contain;
+              margin: 4px;
+
+            }
+
+            p {
+              margin: 0px;
             }
 
             h5 {
@@ -60,20 +68,7 @@
             }
           }
 
-          .user-profile-badges {
-            display: flex;
-            margin-bottom: 16px;
 
-            i {
-              margin: auto;
-              font-size: 24px;
-            }
-
-            h5 {
-              flex-grow: 1;
-              margin: auto 8px;
-            }
-          }
         }
       }
     }
