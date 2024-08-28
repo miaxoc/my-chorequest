@@ -65,7 +65,18 @@
     padding: 16px;
     background-color: $light-gray;
     border-radius: 16px;
+  }
 
+  .chores-box {
+    width: 100%;
+    margin: 16px 0px;
+    padding: 16px;
+    background-color: $light-gray;
+    border-radius: 16px;
+
+    .add-task-categories {
+
+    }
   }
 
 
@@ -198,10 +209,6 @@
     }
 
   }
-}
-
-.add-task-categories {
-  border-top: 1px black solid;
 }
 
 
