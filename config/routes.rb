@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :tasks, only: [:index, :new, :create, :edit, :update, :destroy]
 
   resources :households, only: [:show, :new, :create, :edit, :update, :destroy] do
+    get 'calendar', to: 'calendar#show'
     member do
       post :timetable
     end

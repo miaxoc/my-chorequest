@@ -18,10 +18,9 @@
     <% end %>
   </div>
   <!-- Calendar Icon -->
-  <div class="navbar-footer-item <%= 'active' if current_page?('#') %>">
-    <%= link_to '#' do %>
+  <div class="navbar-footer-item <%= 'active' if current_page?(calendar_page_path(@household)) %>">
+    <%= link_to calendar_page_path(@household) do %>
       <i class="fa-solid fa-calendar navbar-footer-btn" style="font-size: 24px;"></i>
     <% end %>
   </div>
-
 </div>
