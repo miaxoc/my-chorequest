@@ -84,6 +84,7 @@ class HouseholdsController < ApplicationController
     @tasks = @household.tasks.order(created_at: :desc)
     @task = Task.new
     @members = User.all
+    
   end
 
   def view_tasks
