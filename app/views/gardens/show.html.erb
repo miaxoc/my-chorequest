@@ -1,49 +1,3 @@
-<div class="user-show">
-  <div class="garden-page">
-    <img src="<%= asset_path('yellow-living-room-2.webp') %>" alt="room" style="width: 300px">
-  </div>
-  <%#= render 'pages/flower_animation'%>
-  <div class="user-show-container" style="border:none;">
-    <div class="user-show-container-badges">
-      <h3><strong>Your Plants</strong></h3>
-      <div class="user-show-badges-icons d-flex justify-content-center">
-        <% @user.badges.each do |badge| %>
-          <% if badge.name == 'first-submission' %>
-            <!-- Show this block if the user has the 'first-submission' badge -->
-            <div class="badge">
-              <div class="container">
-                <div data-controller="image-animation"
-                  data-image-animation-images="<%= [asset_path('bud1.png'), asset_path('bud2.png')].to_json %>">
-                  <img src="<%= asset_path('bud1.png') %>" data-image-animation-target="image" alt="Flower animation">
-                </div>
-              </div>
-            </div>
-          <% elsif badge.name == 'five-submissions' %>
-            <div class="container">
-              <div data-controller="image-animation"
-                data-image-animation-images="<%= [asset_path('pink1.png'), asset_path('pink2.png'), asset_path('pink1.png'), asset_path('pink3.png')].to_json %>">
-                <img src="<%= asset_path('pink1.png') %>" data-image-animation-target="image" alt="Flower animation">
-              </div>
-            </div>
-          <% else %>
-            <!-- Show a different block or hide it completely if the badge is not 'first-submission' -->
-            <div class="badge">
-              <div class="badge-icon-placeholder">
-                <%= image_tag('bud1.png', class: 'badge-image') %> <!-- Or any other placeholder image -->
-              </div>
-              <p class="badge-name"><%= badge.name %></p>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
 
 <!----- YU WIP ----->
 <h1 class = "text-center">Community garden</h1>
@@ -60,19 +14,19 @@
     <% @user.badges.each do |badge| %>
       <div class="flower-card">
         <% if badge.name == 'first-submission' %>
-          <img src="<%= asset_path('bud1.png') %>" alt="bud" />
+          <img src="<%= asset_path('bud1.png') %>" alt="bud">
           <div class="flower-card-infos">
           <h2><%= badge.name %></h2>
           <button type="button" class="btn btn-success m-2">Water this plant</button>
           </div>
         <% elsif badge.name == 'five-submissions' %>
-          <img src="<%= asset_path('pink1.png') %>" alt="pink flower" />
+          <img src="<%= asset_path('pink1.png') %>" alt="pink flower">
           <div class="flower-card-infos">
            <h2><%= badge.name %></h2>
             <button type="button" class="btn btn-success m-2">Water this plant</button>
           </div>
         <% else %>
-          <img src="<%= asset_path('bud1.png') %>" alt="bud" />
+          <img src="<%= asset_path('bud1.png') %>" alt="bud">
           <div class="flower-card-infos">
             <h2><%= badge.name %></h2>
             <button type="button" class="btn btn-success m-2">Water this plant</button>

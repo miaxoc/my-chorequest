@@ -7,60 +7,52 @@
     height: 100vh;
     width: 100vw;
   }
+
+
   .card-bg {
     background-size: cover;
     background-position: center;
-    height: 66vh;
+    padding-bottom: 48px;
+    width: 43vh;
     display: flex;
+    flex-direction: column;
+    position: relative;
     justify-content: center;
     align-items: center;
     border-radius: 27px;
     border: 1px solid #000;
-    position: relative;
-    padding: -21px;
     margin: 8px;
-    flex-direction: column;
     box-sizing: border-box;
   }
 
-  .card-bg .user1-container {
-    display: grid;
-    grid-auto-flow: column;
-    gap: 5px;
+  .card-bg .block-bg-container  {
+    background-size: cover;
+    background-position: center;
+    height: 18vh;
+    width: 35vh;
+    display: flex;
+    justify-content: center;
     align-items: center;
+    padding: -21px;
+    margin: 8px;
     position: absolute;
-    top: 32px;
-    left: 64px;
+    position: relative;
     }
 
-  .card-bg .user2-container {
+  .block-bg-container .user-container {
     display: grid;
     grid-auto-flow: column;
-    gap: 9px;
+    grid-template-columns: 60px 60px 60px 60px 60px;
+    gap: 3px;
     align-items: center;
     position: absolute;
-    top: 176px;
-    left: 64px;
+    top: 36px;
+    left: 8px;
     }
 
-  .card-bg .user3-container {
-    display: grid;
-    grid-auto-flow: column;
-    gap: 5px;
-    align-items: center;
-    position: absolute;
-    top: 335px;
-    left: 66px;
-    }
-
-  .card-bg .user4-container {
-    display: grid;
-    grid-auto-flow: column;
-    gap: 5px;
-    align-items: center;
-    position: absolute;
-    top: 480px;
-    left: 66px;
+    .user-container img {
+      width: 50px; /* Adjust width as needed */
+      height: auto; /* Maintain aspect ratio */
     }
 
   .user-name {
