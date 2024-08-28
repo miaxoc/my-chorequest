@@ -65,9 +65,11 @@
     <a class="btn btn-primary" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample" data-action="click->collapse#toggleForm">
       Add Custom
     </a>
+    <% if Submission.first.nil? %>
     <a class="btn btn-primary" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample" data-action="click->collapse#toggleSuggested">
       Add Suggested
     </a>
+    <% end %>
   </p>
   <div class="collapse" id="addCustom" data-collapse-target="form">
     <div class="card card-body">
