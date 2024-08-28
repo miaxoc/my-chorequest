@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :tasks, only: [:index, :new, :create, :edit, :update, :destroy]
 
   resources :households, only: [:show, :new, :create, :edit, :update, :destroy] do
+    get 'calendar', to: 'calendars#show'
     member do
       post :timetable
     end
@@ -26,6 +27,8 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show] do
     get 'garden', to: 'gardens#show'
   end
+
+
 
   resources :submissions, only: [:new, :create, :edit, :update,]
 
