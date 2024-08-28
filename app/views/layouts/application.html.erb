@@ -7,12 +7,18 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- PWA stuff -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
+
+    <%= render 'shared/ios_pwa_links' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <!-- Stylesheets -->
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    
+
 
     <!-- JavaScript files -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

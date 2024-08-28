@@ -1,0 +1,17 @@
+{
+  "background_color": "white",
+  "description": "ChoreQuest transforms your daily chores into exciting adventures. Complete tasks, earn rewards, and nurture your virtual garden as you conquer your to-do list in a fun and engaging way. ",
+  "display": "standalone",
+  "name": "ChoreQuest",
+  "icons": [
+    <% files = Dir.entries(Rails.root.join("app/assets/images/icons/")).select {|f| !File.directory? f} %>
+    <% files.each_with_index do |file, index| %>
+      <% match = file.match(/.+-(?<size>\d{2,3}x\d{2,3}).png/) %>
+      {
+        "src": "<%= image_path "icons/#{file}" %>",
+        "sizes": "<%= match && match[:size] %>",
+        "type": "image/png"
+      }<%= "," unless (files.size - 1) == index %>
+    <% end %>
+  ]
+}
