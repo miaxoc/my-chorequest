@@ -38,8 +38,9 @@
             </div>
             <div class="modal-body text-center" data-controller="show-points">
               <div id="form" data-show-points-target="form">
-                <%= simple_form_for submission do |f| %>
+                <%= simple_form_for submission, html: { multipart: true }, local:true do |f| %>
                   <%= f.input :photo, as: :file, label: false %>
+                  <%= f.input :status, input_html: { value: "completed" }, as: :hidden %>
                   <div data-action="click->show-points#showPoints">
                     <%= f.submit 'Complete', class: 'btn btn-success mt-2', disabled: submission.status == "completed" %>
                   <% end %>

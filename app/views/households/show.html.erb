@@ -28,6 +28,12 @@
       </div>
     </div>
 
+    <!-- member add modal button -->
+    <div class="d-flex justify-content-center">
+      <button type="button" class="btn btn-warning p-1" data-toggle="modal" data-target="#memberModal", style="width: 40%; border-radius: 32px; border: 1px black solid; align-content: center; ">
+        <i class="fa-solid fa-plus" style="font-size: 18px; text-align: center;"></i>
+      </button>
+    </div>
 
     <!-- member add modal form -->
     <div class="modal fade mt-3" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel" aria-hidden="true">
@@ -49,6 +55,7 @@
       </div>
     </div>
   </div>
+
   <div class="d-flex justify-content-between align-items-center">
   <h2 class="mb-0"><%= @tasks.count %> Chores</h2>
   <%= link_to chores_household_path(@household), class: "btn btn-primary", style: "border-radius: 32px; border: 1px black solid;" do %>
@@ -66,3 +73,4 @@
   <% else %>
     <p>No tasks completed yet.</p>
   <% end %>
+

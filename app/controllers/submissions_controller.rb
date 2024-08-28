@@ -19,9 +19,9 @@ class SubmissionsController < ApplicationController
       return
     end
 
-    @submission.status = "completed"
 
-    if @submission.save
+
+    if @submission.update(submission_params)
       sleep(1)
       redirect_to tasks_path(frequency: params[:frequency]), notice: 'Submission was successfully created.'
     else
