@@ -1,7 +1,7 @@
 <div class="navbar-footer">
   <!-- Seedling Icon -->
-  <div class="navbar-footer-item <%= 'active' if current_page?(user_garden_path(@user)) %>">
-    <%= link_to user_garden_path(@user) do %>
+  <div class="navbar-footer-item <%= 'active' if current_page?(user_garden_path(current_user)) %>">
+    <%= link_to user_garden_path(current_user) do %>
       <i class="fa-solid fa-seedling navbar-footer-btn" style="font-size: 24px;"></i>
     <% end %>
   </div>
@@ -18,8 +18,8 @@
     <% end %>
   </div>
   <!-- Calendar Icon -->
-  <div class="navbar-footer-item <%= 'active' if current_page?(calendar_page_path(@household)) %>">
-    <%= link_to calendar_page_path(@household) do %>
+  <div class="navbar-footer-item <%= 'active' if current_page?(household_calendar_path(current_user.household)) %>">
+    <%= link_to household_calendar_path(current_user.household) do %>
       <i class="fa-solid fa-calendar navbar-footer-btn" style="font-size: 24px;"></i>
     <% end %>
   </div>

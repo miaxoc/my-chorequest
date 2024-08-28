@@ -1,0 +1,57 @@
+
+<div class="household-show pt-2">
+
+  <div class="household-show-calendar mt-3">
+
+    <!-- Updated Calendar -->
+    <div class="d-flex justify-content-center text-align-center mb-2">
+      <h1 class="" >Calendar</h1>
+      <i class="fa-solid fa-calendar-days mx-2 mt-1" style="font-size: 24px;"></i>
+    </div>
+    <%= month_calendar(events: @all_calendar_tasks, attribute: :deadline) do |date, submissions| %>
+      <div class="day" data-bs-toggle="modal" data-bs-target="#modal-<%= date.to_s%>">
+        <%= date.day %>
+        <% if submissions.any? %>
+          <% unique_users = submissions.map(&:user).uniq %>
+          <% unique_users.each do |user| %>
+            <% user_color = "##{Digest::MD5.hexdigest(user.id.to_s)[0..5]}" %>
+            <div class="task" style="background-color: <%= user_color %>; color: #fff;">
+              <%= user.username %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <!-- Modal -->
+      <div class="modal fade" id="modal-<%= date.to_s%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel"><%= date %></h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <% if submissions.any? %>
+                <% submissions.group_by(&:user).each do |user, user_submissions| %>
+                  <div class="user-tasks text-start" style="font-size: 20px">
+                    <strong><%= user.username.capitalize %></strong>
+                    <ul>
+                      <% user_submissions.each do |submission| %>
+                        <li><%= submission.task.title %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+              <% else %>
+                <p>No tasks for this date.</p>
+              <% end %>
+            </div>
+            <div class="modal-footer">
+              <%# <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style= "border-radius: 32px; border: 1px black solid; margin-bottom: 26px;">Close</button> %>
+              <%= link_to 'See your tasks', tasks_path(current_user.tasks), class: "btn btn-primary", style: "border-radius: 32px; border: 1px black solid; margin-bottom: 26px;" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
