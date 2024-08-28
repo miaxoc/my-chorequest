@@ -22,18 +22,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-
-
-
-  .task-card-product img {
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    // height: 100%;
-    // width: 120px;
-    object-fit: cover;
-  }
+  text-align: start;
 
 
   .task-card-product {
@@ -46,6 +35,25 @@
     border-radius: 8px;
     display: flex;
     // align-items: center;
+
+    img {
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      // height: 100%;
+      // width: 120px;
+      object-fit: cover;
+    }
+
+    .task-text {
+      flex-grow: 3;
+    }
+
+
+
+    .task-card-product .task-card-product-infos {
+
+    }
   }
 
   .task-card-product h2 {
@@ -55,14 +63,17 @@
   }
 
   .task-card-product p {
+    color: gray;
     font-size: 12px;
     line-height: 1.4;
-    opacity: .7;
+
     margin-bottom: 0;
-    margin-top: 8px;
+    margin-top: 4px;
+    margin-right: 8px;
   }
 
-  .task-card-product .task-card-product-infos {
 
-  }
+
+
+
 }
