@@ -13,9 +13,11 @@
   .household-show-members {
     width: 100%;
     // border: 1px black solid;
-    padding: 8px;
+    padding-top: 16px;
+    padding-bottom: 16px;
     background-color: $light-gray;
     border-radius: 16px;
+    margin-top: 8px;
 
     .section-title {
       width: 100%;
@@ -59,7 +61,11 @@
 
   .household-show-tasks {
     width: 100%;
+    margin: 16px 0px;
+    padding: 16px;
+    background-color: $light-gray;
     border-radius: 16px;
+
   }
 
 

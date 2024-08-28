@@ -1,13 +1,10 @@
-<div class="household-show pt-2">
+<div class="household-show">
   <!-- title -->
-  <div class="household-show-title" style=" width: 100%; padding-bottom: 16px;">
+  <div class="household-show-title" style=" width: 100%;">
     <h1><%= @household.title %>'s house <%= link_to '', edit_household_path(current_user.household), class: "fa-solid fa-pen-to-square", style: "font-size: 18px; opacity: 50%;" %></h1>
   </div>
   <!-- Members section -->
   <div class="household-show-members">
-    <%# <div class="section-title"></div> %>
-    <%# <h5 class="section-title">Members</h5> %>
-
     <div class="user-show-members">
       <div class="d-flex">
         <% @users.each do |user|%>
@@ -22,7 +19,7 @@
         <% end %>
         <!-- member add modal button -->
         <div class="d-flex justify-content-center">
-          <button type="button" class="btn" data-toggle="modal" data-target="#memberModal", style="border-radius: 32px; border: 1px black solid; align-content: center; width: 40px; height: 40px; margin-left: 8px; margin-right: 8px;">
+          <button type="button" class="btn" data-toggle="modal" data-target="#memberModal", style="border-radius: 32px; border: 1px solid black; align-content: center; width: 40px; height: 40px; margin-left: 8px; margin-right: 8px;">
             <i class="fa-solid fa-plus" style="font-size: 18px; text-align: center;"></i>
           </button>
         </div>
@@ -50,20 +47,24 @@
     </div>
   </div>
 
-  <div class="d-flex justify-content-between align-items-center">
-  <h2 class="mb-0"><%= @tasks.count %> Chores</h2>
-  <%= link_to chores_household_path(@household), class: "btn btn-primary", style: "border-radius: 32px; border: 1px black solid;" do %>
-  Add
-<% end %>
 
+  <div class="household-show-tasks">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="flex-column text-start">
+        <h2>Chores</h2>
+        <p class="mb-0">currently <%= @tasks.count %> Chores...</p>
+      </div>
+      <%= link_to chores_household_path(@household), class: "btn btn-primary", style: "border-radius: 32px; border: 1px black solid;" do %>
+        Add chores
+      <% end %>
+    </div>
+  </div>
 
-</div>
-
-
-<!-- Feed of completed tasks -->
+  <!-- Feed of completed tasks -->
   <h2>Completed Tasks</h2>
   <% if @completed_submissions.any? %>
     <p>we can see feed here</p>
   <% else %>
     <p>No tasks completed yet.</p>
   <% end %>
+</div>
