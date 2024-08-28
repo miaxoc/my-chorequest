@@ -27,6 +27,9 @@ Rails.application.routes.draw do
     get 'garden', to: 'gardens#show'
   end
 
+  get 'calendar_page', to: 'shared#calendar_page'
+
+
   resources :submissions, only: [:new, :create, :edit, :update,]
 
 
