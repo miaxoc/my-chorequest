@@ -1,0 +1,57 @@
+<% @user.badges.each do |badge| %>
+
+<%end%>
+
+
+
+<div class="card-bg" style="background-image: url(<%= asset_path('garden_bg.png') %>)">
+  <!--USER 1-->
+  <div class="user1-container">
+    <div class="user-name"><p>USER1</p></div>
+    <div>
+      <div data-controller="image-animation"
+        data-image-animation-images="<%= [asset_path('pakkun1.png'), asset_path('pakkun2.png')].to_json %>">
+      <img src="<%= asset_path('pakkun1.png') %>" data-image-animation-target="image" alt="Flower animation" class ="flower_small"></div>
+    </div>
+    <div><p>BADGE2</p></div>
+    <div><p>BADGE3</p></div>
+    <div><p>BADGE4</p></div>
+  </div>
+
+  <!--USER 2-->
+  <div class="user2-container">
+    <div class="user-name"><p>USER2</p></div>
+    <div>
+      <div data-controller="image-animation"
+        data-image-animation-images="<%= [asset_path('bud1.png'), asset_path('bud2.png')].to_json %>">
+        <img src="<%= asset_path('bud1.png') %>" data-image-animation-target="image" alt="Flower animation" class ="flower_small"></div>
+      </div>
+    <div>
+      <div data-controller="image-animation"
+        data-image-animation-images="<%= [asset_path('pink1.png'), asset_path('pink2.png'), asset_path('pink1.png'), asset_path('pink3.png')].to_json %>">
+      <img src="<%= asset_path('pink1.png') %>" data-image-animation-target="image" alt="Flower animation" class ="flower_small"></div>
+    </div>
+    <div><p>BADGE3</p></div>
+    <div><p>BADGE4</p></div>
+  </div>
+
+  <!--USER 3-->
+  <div class="user3-container">
+    <div class="user-name"><p>USER3</p></div>
+    <div><p>BADGE1</p></div>
+    <div><p>BADGE2</p></div>
+    <div><p>BADGE3</p></div>
+    <div><p>BADGE4</p></div>
+  </div>
+
+  <!--USER 4-->
+  <div class="user4-container">
+    <div class="user-name"><p>USER4</p></div>
+    <div><p>BADGE1</p></div>
+    <div><p>BADGE2</p></div>
+    <div><p>BADGE3</p></div>
+    <div><p>BADGE4</p></div>
+  </div>
+
+
+</div>
