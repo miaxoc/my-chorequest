@@ -10,12 +10,41 @@
   align-items: center;
   text-align: center;
 
+
+  .card {
+    width: 100%;
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid black ;
+
+
+
+    .img1{
+      width: 80%;
+      height: 80%;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+
+    }
+
+    .card-body {
+
+      h5{
+        text-decoration: underline;
+      }
+    }
+
+  }
+
   .household-show-members {
     width: 100%;
     // border: 1px black solid;
-    padding: 8px;
+    padding-top: 16px;
+    padding-bottom: 16px;
     background-color: $light-gray;
     border-radius: 16px;
+    margin-top: 8px;
 
     .section-title {
       width: 100%;
@@ -59,8 +88,21 @@
 
   .household-show-tasks {
     width: 100%;
+    margin: 16px 0px;
+    padding: 16px;
+    background-color: $light-gray;
     border-radius: 16px;
   }
+
+  .chores-box {
+    width: 100%;
+    margin: 16px 0px;
+    padding: 16px;
+    background-color: $light-gray;
+    border-radius: 16px;
+  }
+
+
 
 
   .household-show-calendar {
@@ -129,7 +171,6 @@
   .card-product {
     overflow: hidden;
     height: 80px;
-
     background: white;
     border: 1px black solid;
     border-radius: 8px;
@@ -194,10 +235,6 @@
   }
 }
 
-.add-task-categories {
-  border-top: 1px black solid;
-}
-
 
 .suggested-tasks {
   display: flex;
@@ -216,6 +253,7 @@
   border: 2px solid #ccc; /* Light border */
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
   transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition on hover */
+
 
   &:hover {
     background-color: #e0e0e0; /* Darker grey on hover */

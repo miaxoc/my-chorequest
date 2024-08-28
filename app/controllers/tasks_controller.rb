@@ -82,7 +82,7 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    redirect_to household_path(current_user.household), notice: 'Task was successfully deleted.'
+    redirect_to chores_household_path(current_user.household), notice: 'Task was successfully deleted.'
   end
 
   private
