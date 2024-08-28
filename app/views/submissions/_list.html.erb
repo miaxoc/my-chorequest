@@ -7,22 +7,22 @@
       <% task = submission.task %>
       <div class="task-card-product d-flex justify-content-between" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#submissionModal-<%= submission.id %>">
         <% if task.category == "Cleaning" %>
-          <img src="https://attic.sh/v3hg667s9xmxewm56gxwl8r2knaw" class="img-fluid" />
+          <img src="https://attic.sh/v3hg667s9xmxewm56gxwl8r2knaw" class="img-fluid m-1" />
         <% elsif task.category == "Kitchen" %>
-          <img src="https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/cooking.png" class="img-fluid" />
+          <img src="https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/cooking.png" class="img-fluid m-1" />
         <% elsif task.category == "Shopping" %>
-          <img src="https://i.pinimg.com/originals/e0/a0/c0/e0a0c03ccd029c7a253b04377f4239a5.png" class="img-fluid" />
+          <img src="https://i.pinimg.com/originals/e0/a0/c0/e0a0c03ccd029c7a253b04377f4239a5.png" class="img-fluid m-1" />
         <% elsif task.category == "Others" %>
-          <img src="https://em-content.zobj.net/source/apple/76/black-question-mark-ornament_2753.png" class="img-fluid" />
+          <img src="https://em-content.zobj.net/source/apple/76/black-question-mark-ornament_2753.png" class="img-fluid m-1" />
         <% else %>
-          <img src="https://em-content.zobj.net/source/apple/76/black-question-mark-ornament_2753.png" class="img-fluid" />
+          <img src="https://em-content.zobj.net/source/apple/76/black-question-mark-ornament_2753.png" class="img-fluid m-1" />
         <% end %>
-        <div class="task-card-product-infos">
+        <div class="task-card-product-infos flex-grow-1">
           <h2><%= task.title %></h2>
           <div class="d-flex task-text">
             <p><%= task.frequency %></p><p><%= submission.deadline %></p>
           </div>
-          <p><%= submission.user.username %> </p>
+          <p><%# submission.user.username %> </p>
         </div>
         <div class="btn <%= submission.status == "completed" ? "btn-success" : "btn-warning" %> mx-2">
           <i class="<%= submission.status == "completed" ? "fa-regular fa-circle-check" : "fa-solid fa-clock" %>"></i>

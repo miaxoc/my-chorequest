@@ -4,7 +4,7 @@
   <div class="household-show-title" style=" width: 100%;">
     <h1><%= @household.title %>'s house <%= link_to '', edit_household_path(current_user.household), class: "fa-solid fa-pen-to-square", style: "font-size: 18px; opacity: 50%;" %></h1>
   </div>
-  <!-- Members section -->
+
   <!-- Members section -->
   <div class="household-show-members">
     <div class="user-show-members">
@@ -52,7 +52,6 @@
 
 </div>
 
-<%# IS THIS BETTER????  %>
 <div class="household-show pt-2">
   <div class="household-show-calendar mt-3">
 
@@ -86,10 +85,10 @@
               <% if submissions.any? %>
                 <% submissions.group_by(&:user).each do |user, user_submissions| %>
                   <div class="user-tasks text-start" style="font-size: 20px">
-                    <strong><%= user.username.capitalize %></strong>
+                    <strong><%= user.username.capitalize %>'s chores</strong>
                     <ul>
                       <% user_submissions.each do |submission| %>
-                        <li><%= submission.task.title %></li>
+                        <li><%= submission.task.title %>: <%= submission.task.frequency %></li>
                       <% end %>
                     </ul>
                   </div>
