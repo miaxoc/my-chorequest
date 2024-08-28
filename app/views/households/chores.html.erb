@@ -51,22 +51,56 @@
   </div>
   <div class="d-flex justify-content-between align-items-center">
   <h2 class="mb-0"><%= @tasks.count %> Chores</h2>
-  <%= link_to chores_household_path(@household), class: "btn btn-primary", style: "border-radius: 32px; border: 1px black solid;" do %>
-  Add
-<% end %>
-
-
+  <div class="add-task-categories py-3">
+    <%= link_to timetable_household_path(current_user.household), data: { turbo_method: :post, turbo_confirm: "Generate now?" }, style:"border-radius: 32px; border: 1px black solid;", class: "btn btn-warning p-3" do %>
+      <i class="fa-regular fa-calendar"></i> Assign Tasks
+    <% end %>
+  </div>
 </div>
 
+<!-- Add Custom and Add Suggested collapse -->
 
-<!-- Feed of completed tasks -->
-  <h2>Completed Tasks</h2>
-  <% if @completed_submissions.any? %>
-    <div class="completed-tasks-feed">
-      <% @completed_submissions.each do |submission| %>
-        <%= render partial: 'completed_task_card', locals: { submission: submission } %>
-      <% end %>
-    </div>
-  <% else %>
-    <p>No tasks completed yet.</p>
-  <% end %>
+<p class="d-inline-flex gap-1">
+  <a class="btn btn-primary" data-bs-toggle="collapse" href="#addCustom" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Add Custom
+  </a>
+  <a class="btn btn-primary" data-bs-toggle="collapse" href="#addSuggested" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Add Suggested
+  </a>
+</p>
+<div class="collapse" id="addCustom">
+  <div class="card card-body">
+    <%= render 'tasks/form', task: @task %>
+  </div>
+</div>
+<div class="collapse" id="addSuggested">
+  <div class="card card-body">
+    <%= render 'tasks/suggested_tasks' %>
+  </div>
+</div>
+
+<div class="add-task-categories py-3">
+    <h5>Added Tasks</h5>
+    <% @tasks.each do |task| %>
+      <div class="card-product d-flex align-items-center p-3">
+        <% if task.submissions.first.nil? %>
+          <span class="badge bg-danger rounded-circle p-3 ms-auto" style="font-size: 1.5em;">
+            <i class="fa-regular fa-calendar-xmark" style="font-size: 1.2em;"></i>
+          </span>
+        <% else %>
+          <span class="badge bg-success rounded-circle p-3 ms-auto" style="font-size: 1.5em;">
+            <i class="fa-solid fa-calendar-check" style="font-size: 1.2em;"></i>
+          </span>
+        <% end %>
+        <div class="card-product-infos flex-grow-1">
+          <h2><%= task.title %></h2>
+          <p><%= task.frequency %></p>
+        </div>
+        <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: "Delete task?" }, class: "btn btn-danger mx-2" do %>
+          <i class="fa-solid fa-trash-can"></i>
+        <% end%>
+      </div>
+    <% end %>
+  </div>
+
+</div>

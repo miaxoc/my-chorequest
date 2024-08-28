@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :households, only: [:show, :new, :create, :edit, :update, :destroy] do
     member do
       post :timetable
+      get 'chores'
     end
     collection do
       get :search_users
