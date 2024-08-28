@@ -1,38 +1,26 @@
-<div class="card mb-3">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <% if submission.photo.attached? %>
-        <%= cl_image_tag submission.photo.key, class: 'img1', alt: 'Submission Photo' %>
-      <% else %>
-        <p>No photo available</p>
-      <% end %>
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <div class="d-flex align-items-center mb-3">
-          <% if submission.user.photo.attached? %>
-            <%= cl_image_tag submission.user.photo.key, class: 'img-fluid rounded-circle me-3', alt: 'User Photo', style: 'width: 50px; height: 50px;' %>
-          <% else %>
-            <img src="path/to/default-profile-photo.jpg" class="img-fluid rounded-circle me-3" alt="Default User Photo" style="width: 50px; height: 50px;">
-          <% end %>
-          <div>
-            <h5 class="card-title"><%= submission.task.title %></h5>
-            <p class="card-text">
-              <strong>Submitted by:</strong> <%= submission.user.username %><br>
-              <strong>Date:</strong> <%= submission.updated_at.strftime("%d %b %Y %H:%M") %>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class="submission-post">
-  <div class="post-img">
+  <div class="post-top">
+    <% if submission.user.photo.attached? %>
+      <div class="d-flex">
+        <%= cl_image_tag submission.user.photo.key, class: 'img-fluid rounded-circle me-3', alt: 'User Photo', style: 'width: 40px; height: 40px;' %>
+        <h5><%= submission.user.username %></h5>
+      </div>
+    <% else %>
+      <div class="d-flex">
+        <img src="path/to/default-profile-photo.jpg" class="img-fluid rounded-circle me-3" alt="Default User Photo" style="width: 40px; height: 40px;">
+        <h5><%= submission.user.username %></h5>
+      </div>
+    <% end %>
+  </div>
+
   <% if submission.photo.attached? %>
     <%= cl_image_tag submission.photo.key, class: 'img1', alt: 'Submission Photo' %>
   <% else %>
     <p>No photo available</p>
   <% end %>
+
+  <h5 class="post-title">Task: <%= submission.task.title %></h5>
+  <p class="post-text">
+    <strong>Date:</strong> <%= submission.updated_at.strftime("%d %b %Y %H:%M") %>
+  </p>
 </div>
