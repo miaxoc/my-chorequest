@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center">
-  <div class="progress">
+  <div class="progress m-1">
     <div class="progress-bar" role="progressbar" style="width: <%= @progress_percentage %>%;" aria-valuenow="<%= @progress_percentage %>" aria-valuemin="0" aria-valuemax="100">
       <%= @progress_percentage %>
     </div>
@@ -9,16 +9,16 @@
 
 <div class="d-flex justify-content-center">
   <% if @progress_percentage == 0 %>
-    <p>no quests completed so far...</p>
+    <p class="m-0">no quests completed so far...</p>
   <% elsif 0 < @progress_percentage == 1..25 %>
-    <p>You're on the right track...</p>
+    <p class="m-0">You're on the right track...</p>
   <% elsif 0 < @progress_percentage == 26..49 %>
-    <p>You're almost half-way...</p>
+    <p class="m-0">You're almost half-way...</p>
   <% elsif 0 < @progress_percentage == 50..75 %>
-    <p>You're doing well...</p>
+    <p class="m-0">You're doing well...</p>
   <% elsif 0 < @progress_percentage == 76..99 %>
-    <p>You're almost done...</p>
+    <p class="m-0">You're almost done...</p>
   <% elsif @progress_percentage == 100 %>
-    <p>All quests completed... for now</p>
+    <p class="m-0">All quests completed... for now</p>
   <% end %>
 </div>

@@ -5,7 +5,7 @@
   <% else %>
     <% submissions.each do |submission| %>
       <% task = submission.task %>
-      <div class="task-card-product mb-3 d-flex justify-content-between" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#submissionModal-<%= submission.id %>">
+      <div class="task-card-product d-flex justify-content-between" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#submissionModal-<%= submission.id %>">
         <% if task.category == "Cleaning" %>
           <img src="https://attic.sh/v3hg667s9xmxewm56gxwl8r2knaw" class="img-fluid" />
         <% elsif task.category == "Kitchen" %>
@@ -19,9 +19,10 @@
         <% end %>
         <div class="task-card-product-infos">
           <h2><%= task.title %></h2>
-          <p><%= task.frequency %></p>
-          <%# <p><%# submission.user.username </p> %>
-          <p><%= submission.deadline %></p>
+          <div class="d-flex task-text">
+            <p><%= task.frequency %></p><p><%= submission.deadline %></p>
+          </div>
+          <p><%= submission.user.username %> </p>
         </div>
         <div class="btn <%= submission.status == "completed" ? "btn-success" : "btn-warning" %> mx-2">
           <i class="<%= submission.status == "completed" ? "fa-regular fa-circle-check" : "fa-solid fa-clock" %>"></i>
