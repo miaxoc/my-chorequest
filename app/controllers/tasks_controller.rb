@@ -57,8 +57,9 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.turbo_stream { render turbo_stream: turbo_stream.replace('tasks-frame', partial: 'households/tasks') }
-        format.html { redirect_to @task.household, notice: 'Task was successfully created.' }
+        # format.turbo_stream { render turbo_stream: turbo_stream.replace('tasks-frame', partial: 'households/tasks') }
+        # format.html { redirect_to @task.household, notice: 'Task was successfully created.' }
+        redirect_to chores_households_path(@household)
       else
         format.html { render 'new', status: :unprocessable_entity }
         format.turbo_stream { render turbo_stream: turbo_stream.replace('form-errors', partial: 'shared/form_errors', locals: { object: @task }) }
