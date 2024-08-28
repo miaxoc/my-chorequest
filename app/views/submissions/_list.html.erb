@@ -1,18 +1,21 @@
-<div class="task-index">
+<div class="task-index" style="width: 100%;">
+  <h2>My Tasks</h2>
   <% if submissions.first.nil? %>
     <h5 style="color: grey;"><em>No <%= params[:frequency] %> tasks to complete.</em></h5>
   <% else %>
     <% submissions.each do |submission| %>
       <% task = submission.task %>
       <div class="task-card-product mb-3 d-flex justify-content-between" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#submissionModal-<%= submission.id %>">
-        <% if task.category == "Vacuuming" %>
+        <% if task.category == "Cleaning" %>
           <img src="https://attic.sh/v3hg667s9xmxewm56gxwl8r2knaw" class="img-fluid" />
         <% elsif task.category == "Kitchen" %>
           <img src="https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/cooking.png" class="img-fluid" />
         <% elsif task.category == "Shopping" %>
           <img src="https://i.pinimg.com/originals/e0/a0/c0/e0a0c03ccd029c7a253b04377f4239a5.png" class="img-fluid" />
+        <% elsif task.category == "Others" %>
+          <img src="https://em-content.zobj.net/source/apple/76/black-question-mark-ornament_2753.png" class="img-fluid" />
         <% else %>
-          <img src="https://static.thenounproject.com/png/1569761-200.png" class="img-fluid" />
+          <img src="https://em-content.zobj.net/source/apple/76/black-question-mark-ornament_2753.png" class="img-fluid" />
         <% end %>
         <div class="task-card-product-infos">
           <h2><%= task.title %></h2>

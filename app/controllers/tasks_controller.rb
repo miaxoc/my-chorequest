@@ -6,7 +6,14 @@ class TasksController < ApplicationController
     @user_tasks = Task.where(user: @user)
     @my_calendar_tasks = current_user.submissions.where(deadline: Date.today.beginning_of_month..Date.today.next_month.end_of_month)
 
+    # Set default to "My Tasks" if no params are provided
+    if params[:my_tasks].nil? && params[:calendar].nil?
+      params[:my_tasks] = "true"
+    end
+
+
     # Determine which user to show tasks for
+
     if params[:my_tasks] == "true"
       @today = Submission.where(user: @user, deadline: Date.today)
       @this_week = Submission.joins(:task).where(user: @user, deadline: Date.today..Date.today.end_of_week, tasks: { frequency: "weekly" })
