@@ -60,25 +60,26 @@
 
 <!-- Add Custom and Add Suggested collapse -->
 
-<p class="d-inline-flex gap-1">
-  <a class="btn btn-primary" data-bs-toggle="collapse" href="#addCustom" role="button" aria-expanded="false" aria-controls="collapseExample">
-    Add Custom
-  </a>
-  <a class="btn btn-primary" data-bs-toggle="collapse" href="#addSuggested" role="button" aria-expanded="false" aria-controls="collapseExample">
-    Add Suggested
-  </a>
-</p>
-<div class="collapse" id="addCustom">
-  <div class="card card-body">
-    <%= render 'tasks/form', task: @task %>
+<div data-controller = "collapse">
+  <p class="d-inline-flex gap-1">
+    <a class="btn btn-primary" data-bs-toggle="collapse" href="#addCustom" role="button" aria-expanded="false" aria-controls="collapseExample" data-action="click->collapse#toggle">
+      Add Custom
+    </a>
+    <a class="btn btn-primary" data-bs-toggle="collapse" href="#addSuggested" role="button" aria-expanded="false" aria-controls="collapseExample" data-action="click->collapse#toggle">
+      Add Suggested
+    </a>
+  </p>
+  <div class="collapse" id="addCustom" data-collapse-target="form">
+    <div class="card card-body">
+      <%= render 'tasks/form', task: @task %>
+    </div>
+  </div>
+  <div class="collapse" id="addSuggested" data-collapse-target="suggested">
+    <div class="card card-body">
+      <%= render 'tasks/suggested_tasks' %>
+    </div>
   </div>
 </div>
-<div class="collapse" id="addSuggested">
-  <div class="card card-body">
-    <%= render 'tasks/suggested_tasks' %>
-  </div>
-</div>
-
 <div class="add-task-categories py-3">
     <h5>Added Tasks</h5>
     <% @tasks.each do |task| %>
