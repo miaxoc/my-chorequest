@@ -59,7 +59,7 @@ class HouseholdsController < ApplicationController
   def timetable
     @household = Household.find(params[:id])
     TimetableService.new(@household).call
-    redirect_to household_path(@household)
+    redirect_to household_calendar_path(@household)
   end
 
   def search_users
@@ -85,7 +85,7 @@ class HouseholdsController < ApplicationController
     @tasks = @household.tasks.order(created_at: :desc)
     @task = Task.new
     @members = User.all
-    
+
   end
 
   def view_tasks
