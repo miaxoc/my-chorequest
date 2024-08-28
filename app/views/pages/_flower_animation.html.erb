@@ -2,44 +2,44 @@
 <p>app/javascript/controllers/image_animation_controller.js</p> %>
 
 <h1>bud images</h1>
- <img src="<%= asset_path('bud1.png') %>">
+ <img src="<%= asset_path('bud1.png') %>" class ="flower_s">
 
 <div class="container">
   <div data-controller="image-animation"
       data-image-animation-images="<%= [asset_path('bud1.png'), asset_path('bud2.png')].to_json %>">
-    <img src="<%= asset_path('bud1.png') %>" data-image-animation-target="image" alt="Flower animation">
+    <img src="<%= asset_path('bud1.png') %>" data-image-animation-target="image" alt="Flower animation" class ="flower_s">
   </div>
 </div>
 
 <h1>flower 1</h1>
 
-<img src="<%= asset_path('flower1.png') %>">
+<img src="<%= asset_path('flower1.png') %>" class ="flower_s">
 
 <div class="container">
   <div data-controller="image-animation"
       data-image-animation-images="<%= [asset_path('flower1.png'), asset_path('flower2.png'), asset_path('flower1.png'), asset_path('flower3.png')].to_json %>">
-    <img src="<%= asset_path('flower1.png') %>" data-image-animation-target="image" alt="Flower animation">
+    <img src="<%= asset_path('flower1.png') %>" data-image-animation-target="image" alt="Flower animation" class ="flower_s">
   </div>
 </div>
 
 <h1>flower 2</h1>
 
-<img src="<%= asset_path('pink1.png') %>">
+<img src="<%= asset_path('pink1.png') %>" class ="flower_s">
 
 <div class="container">
   <div data-controller="image-animation"
       data-image-animation-images="<%= [asset_path('pink1.png'), asset_path('pink2.png'), asset_path('pink1.png'), asset_path('pink3.png')].to_json %>">
-    <img src="<%= asset_path('pink1.png') %>" data-image-animation-target="image" alt="Flower animation">
+    <img src="<%= asset_path('pink1.png') %>" data-image-animation-target="image" alt="Flower animation" class ="flower_s">
   </div>
 </div>
 
 <h1>Dead</h1>
 
-<img src="<%= asset_path('deadplant1.png') %>">
+<img src="<%= asset_path('deadplant1.png') %>" class ="flower_s">
 
 <div class="container">
   <div data-controller="image-animation"
       data-image-animation-images="<%= [asset_path('deadplant1.png'), asset_path('deadplant2.png'), asset_path('deadplant3.png'), asset_path('deadplant4.png')].to_json %>">
-    <img src="<%= asset_path('deadplant1.png') %>" data-image-animation-target="image" alt="Flower animation">
+    <img src="<%= asset_path('deadplant1.png') %>" data-image-animation-target="image" alt="Flower animation" class ="flower_s">
   </div>
 </div>
