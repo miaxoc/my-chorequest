@@ -27,3 +27,12 @@
     </div>
   </div>
 </div>
+
+<div class="submission-post">
+  <div class="post-img">
+  <% if submission.photo.attached? %>
+    <%= cl_image_tag submission.photo.key, class: 'img1', alt: 'Submission Photo' %>
+  <% else %>
+    <p>No photo available</p>
+  <% end %>
+</div>
