@@ -17,5 +17,10 @@
       <i class="fa-solid fa-list navbar-footer-btn" style="font-size: 24px;"></i>
     <% end %>
   </div>
-
+  <!-- Calendar Icon -->
+  <div class="navbar-footer-item <%= 'active' if current_page?(household_calendar_path(current_user.household)) %>">
+    <%= link_to household_calendar_path(current_user.household) do %>
+      <i class="fa-solid fa-calendar navbar-footer-btn" style="font-size: 24px;"></i>
+    <% end %>
+  </div>
 </div>
