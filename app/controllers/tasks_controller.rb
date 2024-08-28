@@ -6,7 +6,14 @@ class TasksController < ApplicationController
     @user_tasks = Task.where(user: @user)
     @my_calendar_tasks = current_user.submissions.where(deadline: Date.today.beginning_of_month..Date.today.next_month.end_of_month)
 
+    # Set default to "My Tasks" if no params are provided
+    if params[:my_tasks].nil? && params[:calendar].nil?
+      params[:my_tasks] = "true"
+    end
+
+
     # Determine which user to show tasks for
+
     if params[:my_tasks] == "true"
       @today = Submission.where(user: @user, deadline: Date.today)
       @this_week = Submission.joins(:task).where(user: @user, deadline: Date.today..Date.today.end_of_week, tasks: { frequency: "weekly" })
@@ -45,19 +52,18 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @user = current_user
+    @household = current_user.household
     @task.user = @user
     @task.household = @user.household
 
-    respond_to do |format|
+
       if @task.save
-        format.html { redirect_to household_path(current_user.household)}
-        format.js   # Handle the AJAX response for the task creation
+        redirect_to chores_household_path(@household)
       else
-        format.html { render 'new', status: :unprocessable_entity }
-        format.js   # In case of failure, handle the AJAX response
+        redirect_to chores_household_path(@household)
       end
-    end
   end
+
 
 
   def edit
@@ -84,5 +90,4 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:title, :frequency, :category)
   end
-
 end

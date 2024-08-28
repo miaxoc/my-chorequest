@@ -1,24 +1,28 @@
-<div class="task-index">
+<div class="task-index" style="width: 100%;">
+  <h2>My Tasks</h2>
   <% if submissions.first.nil? %>
     <h5 style="color: grey;"><em>No <%= params[:frequency] %> tasks to complete.</em></h5>
   <% else %>
     <% submissions.each do |submission| %>
       <% task = submission.task %>
-      <div class="task-card-product mb-3 d-flex justify-content-between" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#submissionModal-<%= submission.id %>">
-        <% if task.category == "Vacuuming" %>
+      <div class="task-card-product d-flex justify-content-between" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#submissionModal-<%= submission.id %>">
+        <% if task.category == "Cleaning" %>
           <img src="https://attic.sh/v3hg667s9xmxewm56gxwl8r2knaw" class="img-fluid" />
         <% elsif task.category == "Kitchen" %>
           <img src="https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/cooking.png" class="img-fluid" />
         <% elsif task.category == "Shopping" %>
           <img src="https://i.pinimg.com/originals/e0/a0/c0/e0a0c03ccd029c7a253b04377f4239a5.png" class="img-fluid" />
+        <% elsif task.category == "Others" %>
+          <img src="https://em-content.zobj.net/source/apple/76/black-question-mark-ornament_2753.png" class="img-fluid" />
         <% else %>
-          <img src="https://static.thenounproject.com/png/1569761-200.png" class="img-fluid" />
+          <img src="https://em-content.zobj.net/source/apple/76/black-question-mark-ornament_2753.png" class="img-fluid" />
         <% end %>
         <div class="task-card-product-infos">
           <h2><%= task.title %></h2>
-          <p><%= task.frequency %></p>
-          <%# <p><%# submission.user.username </p> %>
-          <p><%= submission.deadline %></p>
+          <div class="d-flex task-text">
+            <p><%= task.frequency %></p><p><%= submission.deadline %></p>
+          </div>
+          <p><%= submission.user.username %> </p>
         </div>
         <div class="btn <%= submission.status == "completed" ? "btn-success" : "btn-warning" %> mx-2">
           <i class="<%= submission.status == "completed" ? "fa-regular fa-circle-check" : "fa-solid fa-clock" %>"></i>
@@ -34,8 +38,9 @@
             </div>
             <div class="modal-body text-center" data-controller="show-points">
               <div id="form" data-show-points-target="form">
-                <%= simple_form_for submission do |f| %>
+                <%= simple_form_for submission, html: { multipart: true }, local:true do |f| %>
                   <%= f.input :photo, as: :file, label: false %>
+                  <%= f.input :status, input_html: { value: "completed" }, as: :hidden %>
                   <div data-action="click->show-points#showPoints">
                     <%= f.submit 'Complete', class: 'btn btn-success mt-2', disabled: submission.status == "completed" %>
                   <% end %>

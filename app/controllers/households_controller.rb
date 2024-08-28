@@ -6,7 +6,9 @@ class HouseholdsController < ApplicationController
     @tasks = @household.tasks.order(created_at: :desc)
     @task = Task.new
     @members = User.all
+    @completed_submissions = @household.submissions.where(status: "completed")
 
+    @completed_submissions = @household.submissions.where(status: "completed")
     @my_calendar_tasks = current_user.submissions.where(deadline: Date.today.beginning_of_month..Date.today.next_month.end_of_month)
     @all_calendar_tasks = current_user.household.submissions.where(deadline: Date.today.beginning_of_month..Date.today.next_month.end_of_month)
   end
@@ -74,6 +76,16 @@ class HouseholdsController < ApplicationController
     respond_to do |format|
       format.json { render json: @users.pluck(:id, :username) }
     end
+  end
+
+  def chores
+    @user = current_user
+    @household = @user.household
+    @users = @household.users || []
+    @tasks = @household.tasks.order(created_at: :desc)
+    @task = Task.new
+    @members = User.all
+    
   end
 
   def view_tasks

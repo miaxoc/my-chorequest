@@ -40,9 +40,14 @@
 
   img {
     align-content: top;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    margin: 4px;
   }
 
 }
+
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
