@@ -12,15 +12,21 @@
       </div>
     <% end %>
   </div>
-
   <% if submission.photo.attached? %>
     <%= cl_image_tag submission.photo.key, class: 'img1', alt: 'Submission Photo' %>
   <% else %>
     <p>No photo available</p>
   <% end %>
-
   <h5 class="post-title">Task: <%= submission.task.title %></h5>
   <p class="post-text">
     <strong>Date:</strong> <%= submission.updated_at.strftime("%d %b %Y %H:%M") %>
   </p>
+  <% if submission.user.badges.any? %>
+    <% most_recent_badge = submission.user.badges.last %>
+    <% if most_recent_badge %>
+      <div>
+        <p style="border: 1px solid black; padding: 10px; border-radius: 7px; width: fit-content;"><%= submission.user.username %> earned the badge: <strong><%= most_recent_badge.name %></strong></p>
+      </div>
+    <% end %>
+  <% end %>
 </div>
