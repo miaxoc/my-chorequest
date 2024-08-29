@@ -22,7 +22,7 @@
                     <img src="<%= asset_path('bud1.png') %>" data-image-animation-target="image" alt="Flower animation">
                   </div>
                 </div>
-              <% elsif badge.name == 'five-submissions' %>
+              <% elsif badge.name == 'first-submissions' %>
                 <div class="badge">
                   <div data-controller="image-animation"
                        data-image-animation-images="<%= [asset_path('pink1.png'), asset_path('pink2.png'), asset_path('pink1.png'), asset_path('pink3.png')].to_json %>">
@@ -35,7 +35,7 @@
                   <div class="badge-icon-placeholder">
                     <%= image_tag('bud1.png', class: 'badge-image') %>
                   </div>
-                  <p class="badge-name"><%= badge.name %></p>
+                  <%# <p class="badge-name"><%= badge.name %></p>
                 </div>
               <% end %>
             </div>
@@ -43,7 +43,7 @@
         <% else %>
           <!-- No badges -->
           <div class="badge-container">
-            <p>No badges yet!</p>
+            <%# <p>No badges yet!</p> %>
           </div>
         <% end %>
       </div>
