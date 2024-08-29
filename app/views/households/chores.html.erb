@@ -98,7 +98,7 @@
 
 
 
-      <% unless @tasks.count == 0 %>
+      <% if @tasks.count > 0 && @tasks.first.submissions.first.nil? %>
       <h3>Un-scheduled Chores</h3>
       <p>Schedule some tasks!</p>
       <% end %>
@@ -137,7 +137,7 @@
 
     <% unless @tasks.first.nil? %>
 
-    <% unless @tasks.first.submissions.first.nil? %>
+    <% unless @household.submissions.first.nil? %>
     <h3 class="mt-4">Scheduled Chores</h3>
     <% end %>
 
