@@ -22,7 +22,6 @@
             <p><%= task.frequency %></p>
             <p><%= submission.deadline %></p>
           </div>
-          <p><%# submission.user.username %> </p>
         </div>
         <div class="btn <%= submission.status == "completed" ? "btn-primary" : "btn-warning" %>" style="padding-top: 8px; margin: 8px;" >
           <i class="<%= submission.status == "completed" ? "fa-regular fa-circle-check" : "fa-solid fa-clock" %>" ></i>
