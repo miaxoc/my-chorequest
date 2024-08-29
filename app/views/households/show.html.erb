@@ -64,7 +64,7 @@
 
 <!-- Feed of completed tasks -->
 <div class="submission-container">
-  <h2 class="text-center" style="margin-top:8px;">Completed Tasks</h2>
+  <h2 class="text-center" style="margin:16px;">Completed Tasks</h2>
   <% if @completed_submissions.any? %>
     <div class="completed-tasks-feed">
       <% @completed_submissions.each do |submission| %>
@@ -72,6 +72,6 @@
       <% end %>
     </div>
   <% else %>
-    <p>No tasks completed yet.</p>
+    <p class="text-center">No tasks completed yet.</p>
   <% end %>
 </div>
