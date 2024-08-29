@@ -108,4 +108,44 @@
     <% end %>
   </div>
 
+
+  <div class="add-task-categories py-3">
+    <h5>Added Chores</h5>
+    <% @tasks.each do |task| %>
+
+
+      <div class="card-product d-flex align-items-center p-3" <% if task.submissions.first.nil? %> style="opacity: 50%;" <% else %> style="opacity: 100%;" <% end %> >
+        <% if task.submissions.first.nil? %>
+
+          <span class="badge bg-primary rounded-circle p-3 ms-auto" style="font-size: 1.5em;">
+            <i class="fa-regular fa-calendar-xmark" style="font-size: 1.2em;"></i>
+          </span>
+        <% else %>
+
+          <span class="badge bg-warning rounded-circle p-3 ms-auto" style="font-size: 1.5em;">
+            <i class="fa-solid fa-calendar-check" style="font-size: 1.2em;"></i>
+          </span>
+        <% end %>
+        <div class="card-product-infos flex-grow-1" >
+          <h2><%= task.title %></h2>
+          <p><%= task.frequency %></p>
+        </div>
+        <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: "Delete task?" }, class: "btn btn-danger mx-2" do %>
+          <i class="fa-solid fa-trash-can"></i>
+        <% end%>
+      </div>
+
+
+    <% end %>
+  </div>
+
+
+
+
+
+
+
+
+
+
 </div>
