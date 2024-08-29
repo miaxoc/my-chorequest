@@ -1,6 +1,8 @@
 <!----- YU WIP ----->
 <div class="badge-container" data-controller="water-plant">
-  <h1 class = "text-center">Community garden</h1>
+  <div class="household-show" style="padding-top: 8px; padding-bottom: 4px;">
+    <h2 class = "text-center" style="font-family: 'Jersey 20'; font-size: 40px; font-style: normal;">Community garden</h2>
+  </div>
   <turbo-frame id="community_garden_frame">
     <div class="garden-page">
       <%= render 'gardens/community_garden', array: @array%>

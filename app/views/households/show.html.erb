@@ -1,7 +1,7 @@
-<div class="household-show" style="border: 3px solid black">
+<div class="household-show">
   <!-- title -->
   <div class="household-show-title" style=" width: 100%;">
-    <h1><%= @household.title %>'s house <%= link_to '', edit_household_path(current_user.household), class: "fa-solid fa-pen-to-square", style:"opacity:50%" %></h1>
+    <h1><%= @household.title %>'s <br> house <%= link_to '', edit_household_path(current_user.household), class: "fa-solid fa-pen-to-square", style:"font-size: 30px; opacity:50%" %></h1>
   </div>
   <!-- Members section -->
   <div class="household-show-members">
@@ -65,8 +65,8 @@
 </div>
 
 <!-- Feed of completed tasks -->
-<div class="submission-container" style="border: 3px solid black">
-  <h2 class="text-center" style="margin:16px;">Completed Chores</h2>
+<div class="submission-container" >
+  <h2 class="text-center" style="margin:16px; font-family: 'Jersey 20'; font-size: 40px; font-style: normal;">Completed Chores</h2>
   <% if @completed_submissions.any? %>
     <div class="completed-tasks-feed">
       <% @completed_submissions.each do |submission| %>
