@@ -1,0 +1,57 @@
+
+
+<div class="card-bg" style="background-image: url(<%= asset_path('sky_bg.png') %>)">
+
+  <!-- Iterate over each user and create a block-bg-container for each -->
+  <% @users.each do |user| %>
+    <div class="block-bg-container" style="background-image: url(<%= asset_path('bg-block.png') %>)">
+      <div class="user-container">
+        <!-- User's Name -->
+        <div class="user-name">
+          <p><%= user.username %></p>
+        </div>
+
+        <!-- Badge Images -->
+        <% if user.badges.any? %>
+          <% user.badges.each do |badge| %>
+            <div class="badge-container">
+              <% if badge.name == 'first-submission' %>
+                <div class="badge">
+                  <div data-controller="image-animation"
+                       data-image-animation-images="<%= [asset_path('bud1.png'), asset_path('bud2.png')].to_json %>">
+                    <img src="<%= asset_path('bud1.png') %>" data-image-animation-target="image" alt="Flower animation">
+                  </div>
+                </div>
+              <% elsif badge.name == 'five-submissions' %>
+                <div class="badge">
+                  <div data-controller="image-animation"
+                       data-image-animation-images="<%= [asset_path('pink1.png'), asset_path('pink2.png'), asset_path('pink1.png'), asset_path('pink3.png')].to_json %>">
+                    <img src="<%= asset_path('pink1.png') %>" data-image-animation-target="image" alt="Flower animation">
+                  </div>
+                </div>
+              <% else %>
+                <!-- Default badge or placeholder -->
+                <div class="badge">
+                  <div class="badge-icon-placeholder">
+                    <%= image_tag('bud1.png', class: 'badge-image') %>
+                  </div>
+                  <p class="badge-name"><%= badge.name %></p>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        <% else %>
+          <!-- No badges -->
+          <div class="badge-container">
+            <p>No badges yet!</p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+</div> <!-- End of card-bg -->
+
+
+
+<!------with Chappy's help END----->
