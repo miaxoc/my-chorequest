@@ -40,6 +40,7 @@
 
                 <!-- Initially displayed bud image -->
                 <div class="badge" data-water-plant-target="bud5">
+
                   <div data-controller="image-animation"
                        data-image-animation-images="<%= [asset_path('bud1.png'), asset_path('bud2.png')].to_json %>">
                     <img src="<%= asset_path('bud1.png') %>" data-image-animation-target="image" alt="Flower animation">
@@ -62,7 +63,7 @@
                   <div class="badge-icon-placeholder">
                     <%= image_tag('bud1.png', class: 'badge-image') %>
                   </div>
-                  <p class="badge-name"><%= badge.name %></p>
+                  <%# <p class="badge-name"><%= badge.name %></p>
                 </div>
               <% end %>
 
@@ -71,7 +72,7 @@
         <% else %>
           <!-- No badges -->
           <div class="badge-container">
-            <p>No badges yet!</p>
+            <%# <p>No badges yet!</p> %>
           </div>
         <% end %>
       </div>

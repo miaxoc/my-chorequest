@@ -42,12 +42,12 @@
   .block-bg-container .user-container {
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: 60px 60px 60px 60px 60px;
+    grid-template-columns: 56px 56px 56px 56px 56px;
     gap: 3px;
     align-items: center;
     position: absolute;
-    top: 36px;
-    left: 8px;
+    top: 31px;
+    left: 2px;
     }
 
     .user-container img {
