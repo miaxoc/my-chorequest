@@ -24,8 +24,11 @@
           </div>
           <p><%# submission.user.username %> </p>
         </div>
-        <div class="btn <%= submission.status == "completed" ? "btn-success" : "btn-warning" %> mx-2">
-          <i class="<%= submission.status == "completed" ? "fa-regular fa-circle-check" : "fa-solid fa-clock" %>"></i>
+        <div class="btn <%= submission.status == "completed" ? "btn-primary" : "btn-warning" %>" style="padding-top: 8px; margin: 8px;" >
+          <i class="<%= submission.status == "completed" ? "fa-regular fa-circle-check" : "fa-solid fa-clock" %>" ></i>
+
+
+
         </div>
       </div>
       <%# Modal for Submission %>
@@ -42,7 +45,7 @@
                   <%= f.input :photo, as: :file, label: false %>
                   <%= f.input :status, input_html: { value: "completed" }, as: :hidden %>
                   <div data-action="click->show-points#showPoints">
-                    <%= f.submit 'Complete', class: 'btn btn-success mt-2', disabled: submission.status == "completed" %>
+                    <%= f.submit 'Complete', class: 'btn btn-primary mt-2', disabled: submission.status == "completed" %>
                   <% end %>
                 </div>
               </div>

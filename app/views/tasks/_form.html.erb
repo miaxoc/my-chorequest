@@ -1,14 +1,14 @@
 
 <div style="background-color: white; border-radius: 16px; ">
-  <h2>List a task</h2>
+  <h2>Create a Chore</h2>
   <%= simple_form_for [@task] do |f| %>
     <%# <%= f.association :user %>
     <%= f.input :title %>
     <%= f.input :description, label: "Comments" %>
     <%= f.input :frequency,  collection: Task.frequencies.keys, prompt: 'Select frequency' %>
-    <%= f.input :category, collection:
+    <%= f.input :category, label: "Icon" , collection:
     Task::CATEGORIES,
-     prompt: 'Select a category' %>
+     prompt: 'Select an Icon' %>
     <div class="text-center">
       <%= f.submit "Submit", class: " btn btn-primary mb-2" %>
     </div>
