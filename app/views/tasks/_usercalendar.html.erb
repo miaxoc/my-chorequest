@@ -1,5 +1,5 @@
 <div class="task-index" style="width: 100%;">
-  <h2>My Calendar</h2>
+
 
   <%= month_calendar(events: @my_calendar_tasks, attribute: :deadline) do |date, submissions| %>
     <div class="day" data-bs-toggle="modal" data-bs-target="#modal-<%= date.to_s%>">

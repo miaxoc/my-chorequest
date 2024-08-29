@@ -75,7 +75,7 @@ body {
     width: 100%;
     background-color: $orange;
     border-top: 1px black solid;
-    height: 56px;
+    height: 66px;
 
     .navbar-footer-item {
       display: flex;
@@ -84,6 +84,7 @@ body {
       width: 33.3%; // Ensures each item takes up equal width
       position: relative;
       padding: 10px 0;
+      margin-bottom: 16px;
 
       // Adds vertical lines between icons
       &:not(:last-child)::after {
