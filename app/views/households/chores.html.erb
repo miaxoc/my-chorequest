@@ -52,13 +52,19 @@
     <div class="d-flex justify-content-between align-items-center">
       <div class="flex-colum text-start">
         <h2>Chores </h2>
-        <p class="mb-0">currently <%= @tasks.count %> Chores...</p>
+
+          <% if @tasks.count == 0 %>
+            <p> No chores scheduled</p>
+          <% else %>
+            <p class="mb-0"><%= @tasks.count %> chores included...</p>
+          <% end %>
+
       </div>
-      <div class="add-task-categories">
+
         <%= link_to timetable_household_path(current_user.household), data: { turbo_method: :post, turbo_confirm: "Generate now?" }, style:"border-radius: 32px; border: 1px black solid;", class: "btn btn-warning" do %>
           <i class="fa-regular fa-calendar"></i> Schedule
         <% end %>
-      </div>
+
     </div>
   </div>
 
@@ -84,68 +90,77 @@
       </div>
     </div>
   </div>
-  <div class="add-task-categories py-3">
-    <h5>Added Chores</h5>
-    <% @tasks.each do |task| %>
-      <div class="card-product d-flex align-items-center p-3">
-        <% if task.submissions.first.nil? %>
-          <span class="badge bg-primary rounded-circle p-3 ms-auto" style="font-size: 1.5em;">
-            <i class="fa-regular fa-calendar-xmark" style="font-size: 1.2em;"></i>
-          </span>
-        <% else %>
-          <span class="badge bg-warning rounded-circle p-3 ms-auto" style="font-size: 1.5em;">
-            <i class="fa-solid fa-calendar-check" style="font-size: 1.2em;"></i>
-          </span>
-        <% end %>
-        <div class="card-product-infos flex-grow-1">
-          <h2><%= task.title %></h2>
-          <p><%= task.frequency %></p>
-        </div>
-        <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: "Delete task?" }, class: "btn btn-danger mx-2" do %>
-          <i class="fa-solid fa-trash-can"></i>
-        <% end%>
-      </div>
-    <% end %>
-  </div>
+
+
+
+
+
+
 
 
   <div class="add-task-categories py-3">
-    <h5>Added Chores</h5>
+
+
+    <h3>Un-scheduled Chores</h3>
+    <p>Schedule some tasks!</p>
+
     <% @tasks.each do |task| %>
 
+      <% if task.submissions.first.nil? %>
 
-      <div class="card-product d-flex align-items-center p-3" <% if task.submissions.first.nil? %> style="opacity: 50%;" <% else %> style="opacity: 100%;" <% end %> >
-        <% if task.submissions.first.nil? %>
+        <div class="card-product d-flex p-2" style="color: gray; border: 1px gray solid; width: 100%;" >
+          <div class="d-flex align-items-center">
+            <span class="badge bg-primary  p-2 m-2" style="font-size: 1em;">
+              <i class="fa-regular fa-calendar-xmark" style="font-size: 1.2em;"></i>
+            </span>
+          </div>
 
-          <span class="badge bg-primary rounded-circle p-3 ms-auto" style="font-size: 1.5em;">
-            <i class="fa-regular fa-calendar-xmark" style="font-size: 1.2em;"></i>
-          </span>
-        <% else %>
+          <div class="card-product-infos flex-grow-1 ms-2" >
+            <h2><%= task.title %></h2>
+            <p><%= task.frequency %></p>
+          </div>
 
-          <span class="badge bg-warning rounded-circle p-3 ms-auto" style="font-size: 1.5em;">
-            <i class="fa-solid fa-calendar-check" style="font-size: 1.2em;"></i>
-          </span>
-        <% end %>
-        <div class="card-product-infos flex-grow-1" >
-          <h2><%= task.title %></h2>
-          <p><%= task.frequency %></p>
+          <div class="d-flex align-items-center">
+            <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: "Delete task?" }, class: "btn mx-2", style: "background-color: #F4F4F4" do %>
+              <i class="fa-solid fa-trash-can",  style="color: gray" ></i>
+            <% end %>
+          </div>
+
         </div>
-        <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: "Delete task?" }, class: "btn btn-danger mx-2" do %>
-          <i class="fa-solid fa-trash-can"></i>
-        <% end%>
-      </div>
 
-
+      <% else %>
+      <% end %>
     <% end %>
+
+
+    <h3 class="mt-4">Scheduled Chores</h3>
+    <% @tasks.each do |task| %>
+      <% if task.submissions.first.nil? == false %>
+
+        <div class="card-product d-flex p-2" style="opacity: 100%; background-color: #FFE795; width: 100%;" >
+          <div class="d-flex align-items-center">
+            <span class="badge bg-warning  p-2 m-2" style="font-size: 1em;">
+              <i class="fa-solid fa-calendar-check" style="font-size: 1.2em;"></i>
+            </span>
+          </div>
+
+          <div class="card-product-infos flex-grow-1 ms-2" >
+            <div style="schedule-tasks">
+              <h2><%= task.title %></h2>
+              <p><%= task.frequency %></p>
+            </div>
+          </div>
+          <div class="d-flex align-items-center">
+            <%= link_to task_path(task), data: { turbo_method: :delete, turbo_confirm: "Delete task?" }, class: "btn mx-2", style: "background-color: #F4F4F4" do %>
+              <i class="fa-solid fa-trash-can", style="color: black"></i>
+            <% end%>
+          </div>
+
+        </div>
+      <% end %>
+    <% end %>
+
   </div>
-
-
-
-
-
-
-
-
 
 
 </div>

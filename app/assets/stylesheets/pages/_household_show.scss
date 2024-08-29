@@ -340,3 +340,35 @@
     }
   }
 }
+
+
+.add-task-categories {
+  // padding: 16px;
+  width: 100%;
+  background-color: white;
+  // border: 1px black solid;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: start;
+
+
+  .card-product {
+    margin: 4px;
+
+    .card-product-infos {
+      padding: 0px;
+    }
+    h2 {
+      margin-top: 8px;
+    }
+
+    p {
+      margin-top: 4px;
+
+    }
+  }
+
+}
