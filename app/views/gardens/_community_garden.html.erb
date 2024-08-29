@@ -19,7 +19,11 @@
               <% if badge.name == 'first-submission' %>
 
                 <!-- Initially displayed bud image -->
+                <% if user == current_user %>
                 <div class="badge" data-water-plant-target="bud1">
+                <% else %>
+                <div class="badge">
+                <% end %>
                   <div data-controller="image-animation"
                        data-image-animation-images="<%= [asset_path('bud1.png'), asset_path('bud2.png')].to_json %>">
                     <img src="<%= asset_path('bud1.png') %>" data-image-animation-target="image" alt="Flower animation">
@@ -27,11 +31,14 @@
                 </div>
 
                 <!-- Initially hidden flower animation -->
+                <% if user == current_user %>
                 <div class="badge d-none" data-water-plant-target="flower1">
+                <% else %>
+                <div class="badge d-none">
+                <% end %>
                   <div data-controller="image-animation"
                        data-image-animation-images="
                        <%= [asset_path(@array[0]), asset_path(@array[1]), asset_path(@array[2]), asset_path(@array[3])].to_json %>">
-
                     <img src="<%= asset_path('pink1.png') %>" data-image-animation-target="image" alt="Flower animation">
                   </div>
                 </div>
@@ -39,8 +46,11 @@
                 <% elsif badge.name == 'five-submissions' %>
 
                 <!-- Initially displayed bud image -->
+                <% if user == current_user %>
                 <div class="badge" data-water-plant-target="bud5">
-
+                <% else %>
+                <div class="badge">
+                <% end %>
                   <div data-controller="image-animation"
                        data-image-animation-images="<%= [asset_path('bud1.png'), asset_path('bud2.png')].to_json %>">
                     <img src="<%= asset_path('bud1.png') %>" data-image-animation-target="image" alt="Flower animation">
@@ -48,7 +58,11 @@
                 </div>
 
                 <!-- Initially hidden flower animation -->
+                <% if user == current_user %>
                 <div class="badge d-none" data-water-plant-target="flower5">
+                <% else %>
+                <div class="badge d-none">
+                <% end %>
                   <div data-controller="image-animation"
                        data-image-animation-images="
                        <%= [asset_path(@array2[0]), asset_path(@array2[1]), asset_path(@array2[2]), asset_path(@array2[3])].to_json %>">

@@ -16,6 +16,7 @@ module Merit
       score 10, on: 'submissions#update' do |submission|
         submission.user
       end
+      # score (-5), on
     end
   end
 end
