@@ -56,7 +56,7 @@
           <% if @tasks.count == 0 %>
             <p> No chores scheduled</p>
           <% else %>
-            <p class="mb-0"><strong><%= tasks_with_submissions_count = @tasks.joins(:submissions).distinct.count %></strong> scheduled!</p>
+            <p class="mb-0"><strong><%= @tasks_with_submissions_count = @tasks.joins(:submissions).distinct.count %></strong> scheduled!</p>
           <% end %>
 
       </div>
@@ -98,10 +98,10 @@
 
 
 
-
+      <% unless @tasks.count == 0 %>
       <h3>Un-scheduled Chores</h3>
       <p>Schedule some tasks!</p>
-      
+      <% end %>
 
   <div class="add-task-categories pt-3">
 
@@ -137,7 +137,10 @@
 
     <% unless @tasks.first.nil? %>
 
+    <% unless @tasks.first.submissions.first.nil? %>
     <h3 class="mt-4">Scheduled Chores</h3>
+    <% end %>
+
     <% @tasks.each do |task| %>
       <% if task.submissions.first.nil? == false %>
 
