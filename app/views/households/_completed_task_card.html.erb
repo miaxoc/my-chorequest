@@ -1,4 +1,4 @@
-<div class="submission-post" >
+<div class="submission-post" style="border-bottom-left-radius: 14px; border-bottom-right-radius: 14px;" >
 
   <div class="post-top">
     <% if submission.user.photo.attached? %>
@@ -17,13 +17,13 @@
   <% if submission.user.badges.any? %>
     <% most_recent_badge = submission.user.badges.last %>
     <% if most_recent_badge %>
-      <div class="d-flex" style="padding: 10px; width: 100%; margin-top: 8px; background-color: #F4F4F4;">
+      <div class="d-flex" style="padding: 10px; width: 100%; margin-top: 8px; background-color: #F4F4F4; border-radius: 16px;">
         <div>
           <img src="<%= asset_path('bud1.png') %>" style="width: 80px; height: 60px; object-fit: cover; object-position: bottom;" alt="bud">
         </div>
         <div>
-          <h5><%= submission.user.username %> earned a flower:</h5>
-          <p style="margin-bottom: 0px;">For completing their chore for the first time</p>
+          <h5>I earned a flower!</h5>
+          <p style="margin-bottom: 0px;">For completing a chore for the first time</p>
         </div>
       </div>
     <% end %>
