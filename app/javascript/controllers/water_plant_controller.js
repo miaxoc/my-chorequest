@@ -11,13 +11,14 @@ export default class extends Controller {
     console.log("Bud Target:", this.budTarget);
     console.log("Flower Target:", this.flowerTarget);
 
+    if (confirm("Spend 5 water?")) {
     // hide bud
     this.bud1Targets.forEach(bud => bud.classList.add('d-none'))
 
     // show flower
     // this.flowerTarget.classList.remove('d-none')
     this.flower1Targets.forEach(flower => flower.classList.remove('d-none'))
-
+    }
 
   }
 

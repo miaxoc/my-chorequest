@@ -1,5 +1,5 @@
 class GardensController < ApplicationController
-  before_action :set_user
+  before_action :set_user, only: [:show]
 
   def show
     @users = current_user.household.users
@@ -34,12 +34,14 @@ class GardensController < ApplicationController
   end
 
   def water
-
-    respond_to do |format|
-      format.turbo_stream do
-        render turbo_stream: turbo_stream.replace('community_garden_frame', partial: 'gardens/community_garden')
-      end
+    if current_user.points > 0
+      current_user.subtract_points(5)
     end
+    # respond_to do |format|
+    #   format.turbo_stream do
+    #     render turbo_stream: turbo_stream.replace('community_garden_frame', partial: 'shared/navbar')
+    #   end
+    # end
   end
 
 
