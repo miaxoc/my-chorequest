@@ -1,5 +1,4 @@
 <div class="task-index" style="width: 100%;">
-
   <% if submissions.first.nil? %>
     <h5 style="color: grey;"><em>No <%= params[:frequency] %> Chores to complete.</em></h5>
   <% else %>
@@ -7,28 +6,26 @@
       <% task = submission.task %>
       <div class="task-card-product d-flex justify-content-between" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#submissionModal-<%= submission.id %>">
         <% if task.category == "Cleaning" %>
-          <img src="https://attic.sh/v3hg667s9xmxewm56gxwl8r2knaw" class="img-fluid m-1" />
+          <img src="https://i.pinimg.com/originals/39/eb/af/39ebaf3843386e9ce7a6be40c83197c6.png" class="img-fluid m-1 " />
         <% elsif task.category == "Kitchen" %>
-          <img src="https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/cooking.png" class="img-fluid m-1" />
+          <img src="https://thumb.ac-illust.com/89/89b87dbee388f25c2c559ec07fbfeb55_t.jpeg" class="img-fluid m-1 " />
         <% elsif task.category == "Shopping" %>
-          <img src="https://i.pinimg.com/originals/e0/a0/c0/e0a0c03ccd029c7a253b04377f4239a5.png" class="img-fluid m-1" />
+          <img src="https://th.bing.com/th/id/OIP.dHVEeUWbSWhuu5L1_mvXWwHaHa?w=194&h=194&c=7&r=0&o=5&dpr=1.5&pid=1.7" class="img-fluid m-1 " />
         <% elsif task.category == "Others" %>
-          <img src="https://images.emojiterra.com/google/android-12l/512px/1f4cb.png" class="img-fluid m-1" />
+          <img src="https://static.vecteezy.com/system/resources/previews/010/968/271/original/paper-sheet-pixel-free-vector.jpg" class="img-fluid m-1 " />
         <% else %>
-          <img src="https://images.emojiterra.com/google/android-12l/512px/1f4cb.png" class="img-fluid m-1" />
+          <img src="https://static.vecteezy.com/system/resources/previews/010/968/271/original/paper-sheet-pixel-free-vector.jpg" class="img-fluid m-1 " />
         <% end %>
         <div class="task-card-product-infos flex-grow-1">
           <h2><%= task.title %></h2>
           <div class="d-flex task-text">
-            <p><%= task.frequency %></p><p><%= submission.deadline %></p>
+            <p><%= task.frequency %></p>
+            <p><%= submission.deadline %></p>
           </div>
           <p><%# submission.user.username %> </p>
         </div>
         <div class="btn <%= submission.status == "completed" ? "btn-primary" : "btn-warning" %>" style="padding-top: 8px; margin: 8px;" >
           <i class="<%= submission.status == "completed" ? "fa-regular fa-circle-check" : "fa-solid fa-clock" %>" ></i>
-
-
-
         </div>
       </div>
       <%# Modal for Submission %>
