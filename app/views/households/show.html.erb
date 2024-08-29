@@ -1,4 +1,4 @@
-<div class="household-show">
+<div class="household-show" style="border: 3px solid black">
   <!-- title -->
   <div class="household-show-title" style=" width: 100%;">
     <h1><%= @household.title %>'s house <%= link_to '', edit_household_path(current_user.household), class: "fa-solid fa-pen-to-square", style:"opacity:50%" %></h1>
@@ -52,10 +52,10 @@
       <div class="flex-column text-start">
         <h2>Chores</h2>
         <% if @tasks.count == 0 %>
-            <p> No chores scheduled</p>
-          <% else %>
-            <p class="mb-0"><%= @tasks.count %> chores included...</p>
-          <% end %>
+          <p> No chores scheduled</p>
+        <% else %>
+          <p class="mb-0"><%= @tasks.count %> chores included...</p>
+        <% end %>
       </div>
       <%= link_to chores_household_path(@household), class: "btn btn-warning", style: "border-radius: 32px; border: 1px black solid;" do %>
         + Add
@@ -65,7 +65,7 @@
 </div>
 
 <!-- Feed of completed tasks -->
-<div class="submission-container">
+<div class="submission-container" style="border: 3px solid black">
   <h2 class="text-center" style="margin:16px;">Completed Chores</h2>
   <% if @completed_submissions.any? %>
     <div class="completed-tasks-feed">

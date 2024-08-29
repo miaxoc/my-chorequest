@@ -1,4 +1,5 @@
-<div class="submission-post" style>
+<div class="submission-post" >
+
   <div class="post-top">
     <% if submission.user.photo.attached? %>
       <div class="d-flex">
@@ -54,6 +55,4 @@
   <p class="post-text">
     <strong>Date:</strong> <%= submission.updated_at.strftime("%d %b %Y %H:%M") %>
   </p>
-
-
 </div>
