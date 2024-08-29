@@ -8,17 +8,23 @@ class GardensController < ApplicationController
     pakkun = ["pakkun1.png", "pakkun2.png", "pakkun1.png", "pakkun2.png"]
 
     @array = [pink, sunflower, pakkun].sample
-    @array2 = [pink, sunflower, pakkun].sample
+
 
     if @array == pink
       @inventory_image = "pink1.png"
+      @array2 = [sunflower, pakkun].sample
     elsif @array == sunflower
       @inventory_image = "flower1.png"
+      @array2 = [pink, pakkun].sample
     elsif @array == pakkun
       @inventory_image = "pakkun1.png"
+      @array2 = [pink, sunflower].sample
     else
       @inventory_image = "bud1.png"
+      @array2 = [pink, sunflower, pakkun].sample
     end
+
+
 
     if @array2 == pink
       @inventory_image2 = "pink1.png"
