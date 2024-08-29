@@ -7,6 +7,7 @@ class GardensController < ApplicationController
     sunflower = ["flower1.png", "flower2.png", "flower1.png", "flower3.png"]
 
     @array = [pink, sunflower].sample
+    @array2 = [pink, sunflower].sample
 
     if @array == pink
       @inventory_image = "pink1.png"
@@ -14,6 +15,14 @@ class GardensController < ApplicationController
       @inventory_image = "flower1.png"
     else
       @inventory_image = "bud1.png"
+    end
+
+    if @array2 == pink
+      @inventory_image2 = "pink1.png"
+    elsif @array == sunflower
+      @inventory_image2 = "flower1.png"
+    else
+      @inventory_image2 = "bud1.png"
     end
   end
 

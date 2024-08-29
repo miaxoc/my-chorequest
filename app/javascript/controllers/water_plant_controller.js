@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
 
-  static targets = ["bud", "flower"]
+  static targets = ["bud1", "flower1", "bud5", "flower5"]
 
   water() {
     console.log("clicked")
@@ -12,10 +12,21 @@ export default class extends Controller {
     console.log("Flower Target:", this.flowerTarget);
 
     // hide bud
-    this.budTargets.forEach(bud => bud.classList.add('d-none'))
+    this.bud1Targets.forEach(bud => bud.classList.add('d-none'))
 
     // show flower
     // this.flowerTarget.classList.remove('d-none')
-    this.flowerTargets.forEach(flower => flower.classList.remove('d-none'))
+    this.flower1Targets.forEach(flower => flower.classList.remove('d-none'))
+
+
+  }
+
+  waterFive() {
+    // hide bud
+    this.bud5Targets.forEach(bud => bud.classList.add('d-none'))
+
+    // show flower
+    // this.flowerTarget.classList.remove('d-none')
+    this.flower5Targets.forEach(flower => flower.classList.remove('d-none'))
   }
 }

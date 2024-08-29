@@ -12,11 +12,21 @@
         <h3><strong>Your Plants</strong></h3>
         <% @user.badges.each do |badge| %>
           <div class="flower-card" data-water-plant-flower-card-target="flowerCard">
-            <img src="<%= asset_path('bud1.png') %>" alt="bud" data-water-plant-target="bud">
-            <img src="<%= asset_path(@inventory_image) %>" alt="flower" data-water-plant-target="flower" class="d-none">
+
+            <% if badge.name == "first-submission" %>
+            <img src="<%= asset_path('bud1.png') %>" alt="bud" data-water-plant-target="bud1">
+            <img src="<%= asset_path(@inventory_image) %>" alt="flower" data-water-plant-target="flower1" class="d-none">
+            <% elsif badge.name == "five-submissions" %>
+            <img src="<%= asset_path('bud1.png') %>" alt="bud" data-water-plant-target="bud5">
+            <img src="<%= asset_path(@inventory_image2) %>" alt="flower" data-water-plant-target="flower5" class="d-none">
+            <% end %>
             <div class="flower-card-infos">
               <h2><%= badge.name %></h2>
+              <% if badge.name == "first-submission" %>
               <button type="button" class="btn btn-success m-2" data-action="click->water-plant#water">Water this plant</button>
+              <% elsif badge.name == "five-submissions" %>
+              <button type="button" class="btn btn-success m-2" data-action="click->water-plant#waterFive">Water this plant</button>
+              <% end %>
             </div>
           </div>
         <% end %>
