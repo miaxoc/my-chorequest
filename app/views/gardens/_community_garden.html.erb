@@ -4,82 +4,74 @@
 
   <!-- Iterate over each user and create a block-bg-container for each -->
   <% @users.each do |user| %>
+
     <div class="block-bg-container" style="background-image: url(<%= asset_path('bg-block.png') %>)">
+
       <div class="user-container">
-        <!-- User's Name -->
-        <div class="user-name">
-          <p><%= user.username %></p>
-        </div>
+
 
         <!-- Badge Images -->
         <% if user.badges.any? %>
           <% user.badges.each do |badge| %>
 
 
-              <% if badge.name == 'first-submission' %>
+            <% if badge.name == 'first-submission' %>
 
-                <!-- Initially displayed bud image -->
-                <% if user == current_user %>
+              <!-- Initially displayed bud image -->
+              <% if user == current_user %>
                 <div class="badge" data-water-plant-target="bud1">
-                <% else %>
-                <div class="badge">
-                <% end %>
-                  <div data-controller="image-animation"
-                       data-image-animation-images="<%= [asset_path('bud1.png'), asset_path('bud2.png')].to_json %>">
-                    <img src="<%= asset_path('bud1.png') %>" data-image-animation-target="image" alt="Flower animation">
-                  </div>
-                </div>
-
-                <!-- Initially hidden flower animation -->
-                <% if user == current_user %>
-                <div class="badge d-none" data-water-plant-target="flower1">
-                <% else %>
-                <div class="badge d-none">
-                <% end %>
-                  <div data-controller="image-animation"
-                       data-image-animation-images="
-                       <%= [asset_path(@array[0]), asset_path(@array[1]), asset_path(@array[2]), asset_path(@array[3])].to_json %>">
-                    <img src="<%= asset_path('pink1.png') %>" data-image-animation-target="image" alt="Flower animation">
-                  </div>
-                </div>
-
-                <% elsif badge.name == 'five-submissions' %>
-
-                <!-- Initially displayed bud image -->
-                <% if user == current_user %>
-                <div class="badge" data-water-plant-target="bud5">
-                <% else %>
-                <div class="badge">
-                <% end %>
-                  <div data-controller="image-animation"
-                       data-image-animation-images="<%= [asset_path('bud1.png'), asset_path('bud2.png')].to_json %>">
-                    <img src="<%= asset_path('bud1.png') %>" data-image-animation-target="image" alt="Flower animation">
-                  </div>
-                </div>
-
-                <!-- Initially hidden flower animation -->
-                <% if user == current_user %>
-                <div class="badge d-none" data-water-plant-target="flower5">
-                <% else %>
-                <div class="badge d-none">
-                <% end %>
-                  <div data-controller="image-animation"
-                       data-image-animation-images="
-                       <%= [asset_path(@array2[0]), asset_path(@array2[1]), asset_path(@array2[2]), asset_path(@array2[3])].to_json %>">
-
-                    <img src="<%= asset_path('pink1.png') %>" data-image-animation-target="image" alt="Flower animation">
-                  </div>
-                </div>
-
               <% else %>
-                <!-- Default badge or placeholder -->
                 <div class="badge">
-                  <div class="badge-icon-placeholder">
-                    <%= image_tag('bud1.png', class: 'badge-image') %>
-                  </div>
-                  <%# <p class="badge-name"><%= badge.name %></p>
-                </div>
               <% end %>
+                  <div data-controller="image-animation" data-image-animation-images="<%= [asset_path('bud1.png'), asset_path('bud2.png')].to_json %>">
+                    <img src="<%= asset_path('bud1.png') %>" data-image-animation-target="image" alt="Flower animation">
+                  </div>
+                </div>
+
+              <!-- Initially hidden flower animation -->
+              <% if user == current_user %>
+                <div class="badge d-none" data-water-plant-target="flower1">
+              <% else %>
+                <div class="badge d-none">
+              <% end %>
+                  <div data-controller="image-animation" data-image-animation-images=" <%= [asset_path(@array[0]), asset_path(@array[1]), asset_path(@array[2]), asset_path(@array[3])].to_json %>">
+                    <img src="<%= asset_path('pink1.png') %>" data-image-animation-target="image" alt="Flower animation">
+                  </div>
+                </div>
+
+            <% elsif badge.name == 'five-submissions' %>
+
+              <!-- Initially displayed bud image -->
+              <% if user == current_user %>
+                <div class="badge" data-water-plant-target="bud5">
+              <% else %>
+                <div class="badge">
+              <% end %>
+                  <div data-controller="image-animation" data-image-animation-images="<%= [asset_path('bud1.png'), asset_path('bud2.png')].to_json %>">
+                    <img src="<%= asset_path('bud1.png') %>" data-image-animation-target="image" alt="Flower animation">
+                  </div>
+                </div>
+
+              <!-- Initially hidden flower animation -->
+              <% if user == current_user %>
+                <div class="badge d-none" data-water-plant-target="flower5">
+              <% else %>
+                <div class="badge d-none">
+              <% end %>
+                  <div data-controller="image-animation" data-image-animation-images="<%= [asset_path(@array2[0]), asset_path(@array2[1]), asset_path(@array2[2]), asset_path(@array2[3])].to_json %>">
+                    <img src="<%= asset_path('pink1.png') %>" data-image-animation-target="image" alt="Flower animation">
+                  </div>
+                </div>
+
+            <% else %>
+              <!-- Default badge or placeholder -->
+              <div class="badge">
+                <div class="badge-icon-placeholder">
+                  <%= image_tag('bud1.png', class: 'badge-image') %>
+                </div>
+                <%# <p class="badge-name"><%= badge.name %></p>
+              </div>
+            <% end %>
 
 
           <% end %>
@@ -90,7 +82,13 @@
           </div>
         <% end %>
       </div>
+
+
     </div>
+    <!-- User's Name -->
+      <div class="user-name">
+        <h5><%= user.username %></h5>
+      </div>
   <% end %>
 
 </div> <!-- End of card-bg -->
