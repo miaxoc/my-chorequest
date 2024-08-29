@@ -61,10 +61,17 @@
 
       </div>
 
+        <div>
         <%= link_to timetable_household_path(current_user.household), data: { turbo_method: :post, turbo_confirm: "Generate now?" }, style:"border-radius: 32px; border: 1px black solid;", class: "btn btn-warning" do %>
           <i class="fa-regular fa-calendar"></i> Schedule
         <% end %>
 
+        <% unless @household.submissions.first.nil? %>
+        <%= link_to household_calendar_path(current_user.household), style:"border-radius: 32px; border: 1px black solid;", class: "btn btn-warning" do %>
+          <i class="fa-regular fa-calendar"></i> Timetable
+        <% end %>
+        <% end %>
+        </div>
     </div>
   </div>
 
