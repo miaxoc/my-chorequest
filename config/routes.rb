@@ -27,6 +27,10 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show] do
     get 'garden', to: 'gardens#show'
+
+    member do
+      post 'garden/water_plant', to: 'gardens#water_plant'
+    end
   end
 
 
