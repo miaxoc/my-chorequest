@@ -99,7 +99,9 @@
 
 
 
-
+      <h3>Un-scheduled Chores</h3>
+      <p>Schedule some tasks!</p>
+      
 
   <div class="add-task-categories pt-3">
 
@@ -107,9 +109,6 @@
     <% @tasks.each do |task| %>
 
       <% if task.submissions.first.nil? %>
-
-      <h3>Un-scheduled Chores</h3>
-      <p>Schedule now!</p>
 
 
         <div class="card-product d-flex p-2" style="color: gray; border: 1px gray solid; width: 100%;" >
@@ -137,6 +136,7 @@
     <% end %>
 
     <% unless @tasks.first.nil? %>
+
     <h3 class="mt-4">Scheduled Chores</h3>
     <% @tasks.each do |task| %>
       <% if task.submissions.first.nil? == false %>
