@@ -14,21 +14,28 @@
         <!-- Badge Images -->
         <% if user.badges.any? %>
           <% user.badges.each do |badge| %>
-            <div class="badge-container">
+
+
               <% if badge.name == 'first-submission' %>
-                <div class="badge">
+
+                <!-- Initially displayed bud image -->
+                <div class="badge" data-water-plant-target="bud">
                   <div data-controller="image-animation"
                        data-image-animation-images="<%= [asset_path('bud1.png'), asset_path('bud2.png')].to_json %>">
                     <img src="<%= asset_path('bud1.png') %>" data-image-animation-target="image" alt="Flower animation">
                   </div>
                 </div>
-              <% elsif badge.name == 'five-submissions' %>
-                <div class="badge">
+
+                <!-- Initially hidden flower animation -->
+                <div class="badge d-none" data-water-plant-target="flower">
                   <div data-controller="image-animation"
-                       data-image-animation-images="<%= [asset_path('pink1.png'), asset_path('pink2.png'), asset_path('pink1.png'), asset_path('pink3.png')].to_json %>">
+                       data-image-animation-images="
+                       <%= [asset_path(@array[0]), asset_path(@array[1]), asset_path(@array[2]), asset_path(@array[3])].to_json %>">
+                       
                     <img src="<%= asset_path('pink1.png') %>" data-image-animation-target="image" alt="Flower animation">
                   </div>
                 </div>
+
               <% else %>
                 <!-- Default badge or placeholder -->
                 <div class="badge">
@@ -38,7 +45,8 @@
                   <p class="badge-name"><%= badge.name %></p>
                 </div>
               <% end %>
-            </div>
+
+
           <% end %>
         <% else %>
           <!-- No badges -->
@@ -51,7 +59,3 @@
   <% end %>
 
 </div> <!-- End of card-bg -->
-
-
-
-<!------with Chappy's help END----->
