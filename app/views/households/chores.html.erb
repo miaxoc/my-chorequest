@@ -89,7 +89,7 @@
     <% @tasks.each do |task| %>
       <div class="card-product d-flex align-items-center p-3">
         <% if task.submissions.first.nil? %>
-          <span class="badge bg-danger rounded-circle p-3 ms-auto" style="font-size: 1.5em;">
+          <span class="badge bg-primary rounded-circle p-3 ms-auto" style="font-size: 1.5em;">
             <i class="fa-regular fa-calendar-xmark" style="font-size: 1.2em;"></i>
           </span>
         <% else %>
