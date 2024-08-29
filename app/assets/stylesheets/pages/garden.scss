@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
 
-
   body {
     // background-image: url('<%= asset_path("yellow-living-room-2.webp") %>')!important;
     background-size: cover;
@@ -62,8 +61,6 @@
         padding: 0px;
         }
 
-
-
       }
 
       .user-name {
@@ -82,63 +79,56 @@
 
       }
 
-
-
-
     }
 
-
   }
+
 }
 
-  .flower-card {
-    overflow: hidden;
-    height: 140px;
-    background: white;
-    display: flex;
-    margin: 12px;
-    align-items: center;
-    border-radius: 23px;
-    border: 1px solid #000;
+.flower-card {
+  overflow: hidden;
+  height: 100px;
+  background: white;
+  display: flex;
+  margin-bottom: 12px;
+  align-items: center;
+  border-radius: 16px;
+  border: 1px solid #000;
+  text-align: start;
 
-    img {
-      height: 100%;
-      width: 99px;
-      object-fit: cover;
-      margin: 0px;
-      padding: 19px;
-    }
-
-    h2 {
-      font-size: 16px;
-      font-weight: bold;
-    }
-
-    p {
-      font-size: 12px;
-      line-height: 1.4;
-      opacity: .7;
-      margin-bottom: 0;
-      margin-top: 8px;
-    }
-
-
-    button {
-      border-radius: 32px;
-      border:1px solid #000
-    }
-
-    .card-product-infos {
-      padding: 16px;
-      margin: 10px;
-
-    }
-
-
-    // needed??
-    .flower-card-info {
-      flex-grow: 1;
-    }
-
+  .card-product-infos {
+    padding: 16px;
+    margin: 10px;
+    align-content: bottom;
 
   }
+
+  img {
+    width: 60px;
+    object-fit: cover;
+    object-position: bottom;
+
+  }
+
+  h2 {
+    font-size: 16px;
+    font-weight: bold;
+
+  }
+
+  p {
+    font-size: 12px;
+    line-height: 1.4;
+    opacity: .7;
+    margin-bottom: 0;
+    margin-top: 8px;
+  }
+
+
+  button {
+    border-radius: 32px;
+    border:1px solid #000000;
+
+  }
+
+}
