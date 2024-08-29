@@ -68,6 +68,9 @@
     </div>
   </div>
 
+  <% if @tasks.first.nil? %>
+    <h5>Add some chores!</h5>
+  <% end %>
   <!-- Add Custom and Add Suggested collapse -->
 
   <div data-controller = "collapse">
@@ -98,14 +101,12 @@
 
 
 
-
-
   <div class="add-task-categories pt-3">
 
-
+    <% unless @tasks.first.nil? %>
     <h3>Un-scheduled Chores</h3>
     <p>Schedule some tasks!</p>
-
+    <% end %>
     <% @tasks.each do |task| %>
 
       <% if task.submissions.first.nil? %>
@@ -134,7 +135,7 @@
       <% end %>
     <% end %>
 
-
+    <% unless @tasks.first.nil? %>
     <h3 class="mt-4">Scheduled Chores</h3>
     <% @tasks.each do |task| %>
       <% if task.submissions.first.nil? == false %>
@@ -161,7 +162,7 @@
         </div>
       <% end %>
     <% end %>
-
+    <% end %>
   </div>
 
 
