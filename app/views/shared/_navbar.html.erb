@@ -13,6 +13,8 @@
         <%= image_tag("navbar-flower.png")%>
         <p> <% if current_user.present? && current_user.badges.present? %>
             <%= current_user.badges.count %> flowers
+            <% else %>
+            0 flowers
           <% end %>
         </p>
       </div>
