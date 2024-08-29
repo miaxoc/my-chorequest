@@ -1,8 +1,12 @@
 <div class = "homebody">
-<div class="container homecard justify-content-center m-5">
-<div class = "align-items-center">
+<div class="container justify-content-center m-3" style="position: relative;">
+<img src="<%= asset_path('grass_bg.png') %>" alt="grass" class="image-back">
+<img src="<%= asset_path('pakkun2.png') %>" alt="red flower" class="image-back-pakkun">
+<img src="<%= asset_path('flower2.png') %>" alt="red flower" class="image-back-sun">
+<div class="homecard align-items-center">
+  <div class = "align-items-center">
     <h1 class ="title strong mt-5">Chore</p>
-    <h1 class ="title strong pt-0 mb-5">Quest</p>
+    <h1 class ="title-bottom strong mb-5">Quest</p>
   </div>
 
   <div class = "text-center">
@@ -23,5 +27,19 @@
     </div>
     <% end %>
   </div>
+</div>
+<!--grass front--->
+<img src="<%= asset_path('grass_front.png') %>" alt="grass" class="image-front">
+<!--big white flower front--->
+  <div data-controller="image-animation"
+    data-image-animation-images="<%= [asset_path('white1.png'), asset_path('white2.png'),asset_path('white3.png'), asset_path('white4.png'),asset_path('white3.png'), asset_path('white2.png')].to_json %>">
+    <img src="<%= asset_path('white4.png') %>" data-image-animation-target="image" alt="Flower animation" class ="flower1-front">
+  </div>
+<!--medium right flower front--->
+  <img src="<%= asset_path('white4.png') %>" alt="grass" class="flower2-front">
+
+<!--medium left flower front--->
+  <img src="<%= asset_path('white4.png') %>" alt="grass" class="flower3-front">
+
 </div>
 </div>
