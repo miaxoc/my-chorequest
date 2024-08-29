@@ -23,11 +23,14 @@ export default class extends Controller {
   }
 
   waterFive() {
+
+    if (confirm("Spend 5 water?")) {
     // hide bud
     this.bud5Targets.forEach(bud => bud.classList.add('d-none'))
 
     // show flower
     // this.flowerTarget.classList.remove('d-none')
     this.flower5Targets.forEach(flower => flower.classList.remove('d-none'))
+    }
   }
 }
