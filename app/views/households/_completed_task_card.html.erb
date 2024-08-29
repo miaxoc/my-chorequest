@@ -24,8 +24,9 @@
   <% if submission.user.badges.any? %>
     <% most_recent_badge = submission.user.badges.last %>
     <% if most_recent_badge %>
-      <div>
-        <p style="border: 1px solid black; padding: 10px; border-radius: 7px; width: fit-content;"><%= submission.user.username %> earned the badge: <strong><%= most_recent_badge.name %></strong></p>
+      <div style="border: 1px solid black; padding: 10px; border-radius: 7px; width: fit-content;">
+        <p><%= submission.user.username %> earned the flower: <strong><%= most_recent_badge.name %></strong></p>
+        <img src="<%= asset_path('bud1.png') %>" style="width: 40px" alt="bud">
       </div>
     <% end %>
   <% end %>
