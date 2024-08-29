@@ -56,7 +56,7 @@
           <% if @tasks.count == 0 %>
             <p> No chores scheduled</p>
           <% else %>
-            <p class="mb-0"><%= tasks_with_submissions_count = @tasks.joins(:submissions).distinct.count %> chores scheduled!</p>
+            <p class="mb-0"><strong><%= tasks_with_submissions_count = @tasks.joins(:submissions).distinct.count %></strong> scheduled!</p>
           <% end %>
 
       </div>
