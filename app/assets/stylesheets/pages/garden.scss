@@ -14,11 +14,9 @@
 
 
   .card-bg {
-
-
     background-size: cover;
     background-position: center;
-    padding-top: 20px;
+    padding-top: 0px;
     padding-bottom: 20px;
     width: 43vh;
     display: flex;
@@ -60,33 +58,36 @@
           height: 80px; /* Maintain aspect ratio */
         }
 
-
         .badge {
         padding: 0px;
+        }
+
+
+
       }
+
+      .user-name {
+        background-color: $warning;
+        border: 1px black solid;
+        border-radius: 8px;
+        padding: 4px 12px;
+        position: relative;
+        top: 25px;
+
+
+        h5 {
+          margin: 0px;
+          font-size: 15px;
+        }
 
       }
 
 
-      .badge {
-        padding: 0px;
-      }
+
 
     }
 
-    .user-name {
-      background-color: $warning;
-      border: 1px black solid;
-      border-radius: 8px;
-      padding: 4px 12px;
 
-
-      h5 {
-        margin: 0px;
-        font-size: 15px;
-      }
-
-    }
   }
 }
 

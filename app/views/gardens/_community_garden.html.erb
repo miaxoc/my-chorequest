@@ -74,21 +74,29 @@
             <% end %>
 
 
+
+
           <% end %>
+
+
+
         <% else %>
           <!-- No badges -->
           <div class="badge-container">
             <%# <p>No badges yet!</p> %>
           </div>
         <% end %>
-      </div>
 
+
+
+      </div>
+      <!-- User's Name -->
+            <div class="user-name">
+              <h5><%= user.username %></h5>
+            </div>
 
     </div>
-    <!-- User's Name -->
-      <div class="user-name">
-        <h5><%= user.username %></h5>
-      </div>
+
   <% end %>
 
 </div> <!-- End of card-bg -->
