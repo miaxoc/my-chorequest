@@ -1,7 +1,7 @@
 <div class="household-show">
   <!-- title -->
   <div class="household-show-title" style=" width: 100%;">
-    <h1 ><%= @household.title %>'s house <%= link_to '', edit_household_path(current_user.household), class: "fa-solid fa-pen-to-square", style:"opacity:50%" %></h1>
+    <h1><%= @household.title %>'s house <%= link_to '', edit_household_path(current_user.household), class: "fa-solid fa-pen-to-square", style:"opacity:50%" %></h1>
   </div>
   <!-- Members section -->
   <div class="household-show-members">
@@ -25,6 +25,7 @@
         </div>
       </div>
     </div>
+
     <!-- member add modal form -->
     <div class="modal fade mt-3" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -62,6 +63,7 @@
     </div>
   </div>
 </div>
+
 <!-- Feed of completed tasks -->
 <div class="submission-container">
   <h2 class="text-center" style="margin:16px;">Completed Chores</h2>

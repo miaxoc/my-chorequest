@@ -141,7 +141,7 @@
   }
 
   .active, .accordion:hover {
-    background-color: $warning;
+    background-color: $primary;
   }
 
   #add-task-btn, #view-task-btn{
@@ -316,8 +316,8 @@
 
 .submission-container {
   border: 1px black solid;
-  background-color: $green;
-  border-radius: 8px;
+  background-color: $primary;
+  border-radius: 16px;
   margin: 8px;
 
   .post-top {

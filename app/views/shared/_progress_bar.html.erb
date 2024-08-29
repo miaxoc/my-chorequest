@@ -10,15 +10,15 @@
 <div class="d-flex justify-content-center">
   <% if @progress_percentage == 0 %>
     <p class="m-0">No chores completed so far...</p>
-  <% elsif @progress_percentage == 1..25 %>
+  <% elsif @progress_percentage <= 25 %>
     <p class="m-0">You're on the right track...</p>
-  <% elsif @progress_percentage == 26..49 %>
+  <% elsif @progress_percentage <= 50 %>
     <p class="m-0">You're almost half-way...</p>
-  <% elsif @progress_percentage == 50..75 %>
+  <% elsif @progress_percentage <= 75 %>
     <p class="m-0">You're doing well...</p>
-  <% elsif @progress_percentage == 76..99 %>
+  <% elsif @progress_percentage <= 99 %>
     <p class="m-0">You're almost done...</p>
-  <% elsif @progress_percentage == 100 %>
+  <% elsif @progress_percentage <= 100 %>
     <p class="m-0">All chores completed... for now</p>
   <% end %>
 </div>
