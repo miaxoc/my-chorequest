@@ -1,7 +1,7 @@
 <div class="task-index" style="width: 100%;">
-  <h2>My Tasks</h2>
+
   <% if submissions.first.nil? %>
-    <h5 style="color: grey;"><em>No <%= params[:frequency] %> tasks to complete.</em></h5>
+    <h5 style="color: grey;"><em>No <%= params[:frequency] %> Chores to complete.</em></h5>
   <% else %>
     <% submissions.each do |submission| %>
       <% task = submission.task %>

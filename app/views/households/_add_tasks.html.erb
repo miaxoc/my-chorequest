@@ -1,21 +1,21 @@
 <div class="p-2">
-  <h1>Add tasks</h1>
+  <h1>Add Chores</h1>
   <div class="add-task-categories py-3">
-    <h5>Suggested Tasks</h5>
+    <h5>Suggested Chores</h5>
     <%= render 'tasks/suggested_tasks' %>
   </div>
   <div class="add-task-categories py-3">
-    <h5>Custom Tasks</h5>
+    <h5>Custom Chores</h5>
     <!-- Modal button -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#taskModal", style="border-radius: 32px; border: 1px black solid; width: 100%;">
-      <i class="fa-solid fa-circle-plus"></i>create custom tasks
+      <i class="fa-solid fa-circle-plus"></i>Create Custom Chores
     </button>
     <!-- Modal  -->
     <div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="taskModalLabel">Add New Task</h5>
+            <h5 class="modal-title" id="taskModalLabel">Add New Chores</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -31,7 +31,7 @@
     </div>
   </div>
   <div class="add-task-categories py-3">
-    <h5>Added Tasks</h5>
+    <h5>Added Chores</h5>
     <% @tasks.each do |task| %>
       <div class="card-product d-flex align-items-center p-3">
         <% if task.submissions.first.nil? %>
@@ -55,7 +55,7 @@
   </div>
   <div class="add-task-categories py-3">
     <%= link_to timetable_household_path(current_user.household), data: { turbo_method: :post, turbo_confirm: "Generate now?" }, style:"border-radius: 32px; border: 1px black solid;", class: "btn btn-warning p-3" do %>
-      <i class="fa-regular fa-calendar"></i> Assign Tasks
+      <i class="fa-regular fa-calendar"></i> Assign Chores
     <% end %>
   </div>
 </div>
