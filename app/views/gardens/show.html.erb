@@ -34,7 +34,9 @@
                   <h2>Done it!</h2>
                   <p>You completed your first chore!</p>
                 </div>
-                <button type="button" class="me-3" style="border: none; font-size: 40px; background: none;" data-action="click->water-plant#waterFive"><i class="fa-solid fa-droplet"></i></button>
+                <%= link_to water_path, class: "me-3", style:"border: none; font-size: 40px; background: none;", data: { action: "click->water-plant#waterFive", turbo_frame: :navbar } do  %>
+                <i class="fa-solid fa-droplet"></i>
+                <% end %>
               <% end %>
             </div>
           <% end %>

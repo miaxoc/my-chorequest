@@ -75,9 +75,11 @@
       <a class="btn btn-primary" style="border-radius: 32px; border: 1px solid black;" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample" data-action="click->collapse#toggleForm">
         + Custom
       </a>
+      <% if @household.submissions.first.nil? %>
       <a class="btn btn-primary" style="border-radius: 32px; border: 1px solid black;" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample" data-action="click->collapse#toggleSuggested">
         + Suggested
       </a>
+      <% end %>
     </p>
     <div class="collapse" id="addCustom" data-collapse-target="form">
       <div class="card card-body">
