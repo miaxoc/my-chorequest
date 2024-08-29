@@ -3,17 +3,29 @@
   <% suggested_tasks = {
     "Vacuum the living room" => "weekly",
     "Wash the dishes" => "daily",
-    "Mow the lawn" => "monthly",
     "Take out the trash" => "weekly",
     "Clean the bathroom" => "weekly",
-    "Do the laundry" => "daily"
+    "Do the laundry" => "daily",
   } %>
-  <% suggested_tasks.each do |title, frequency| %>
+  <% suggested_tasks.each do |title, frequency, category| %>
+    <% if title == "Vacuum the living room" %>
+      <% category = "Cleaning" %>
+    <% elsif title == "Wash the dishes" %>
+      <% category = "Kitchen" %>
+    <% elsif title == "Grocery Shopping" %>
+      <% category = "Shopping" %>
+    <% elsif title == "Clean the bathroom" %>
+      <% category = "Cleaning" %>
+    <% elsif title == "Do the laundry" %>
+      <% category = "Cleaning" %>
+    <% end %>
+
     <% if Task.find_by(title: title).nil? %>
       <%= form_with model: Task.new, url: tasks_path, remote: true, html: { id: "form-#{title.parameterize}" } do |f| %>
         <%= f.hidden_field :title, value: title %>
         <%= f.hidden_field :description, value: "This task is to #{title.downcase}" %>
         <%= f.hidden_field :frequency, value: frequency %>
+        <%= f.hidden_field :category, value: category%>
         <%= f.hidden_field :household_id, value: params[:household_id] %>
 
         <a href="javascript:void(0);" onclick="document.getElementById('form-<%= title.parameterize %>').submit();" class="suggested-task-pill">

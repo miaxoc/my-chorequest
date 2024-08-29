@@ -1,7 +1,7 @@
 
 <div class="household-show pt-2">
   <div class="d-flex justify-content-center">
-    <h1 class="">My Quests</h1>
+    <h1 class="">My To-do list:</h1>
   </div>
 
   <div>
@@ -16,14 +16,17 @@
 
     <div class="d-flex my-3">
       <div style="width: 100%;">
+        <h5 class="">Your progress</h5>
         <%= render 'shared/progress_bar', progress_percentage: @progress_percentage %>
+
+
       </div>
     </div>
   </div>
 </div>
 
-<div class="d-flex justify-content-center" style="min-height: 100vh;">
-  <div class="container d-flex flex-column align-items-center">
+<div style="min-height: 100vh; margin: 8px;">
+  <div class=" d-flex flex-column align-items-center">
     <%# ------Submission Modal Created / List & List copy combined ----- %>
     <% if params[:calendar] == 'true' %>
       <%= render 'tasks/usercalendar' %>

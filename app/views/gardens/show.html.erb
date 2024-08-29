@@ -1,41 +1,36 @@
-
 <!----- YU WIP ----->
-<h1 class = "text-center">Community garden</h1>
-<div class="garden-page">
-  <%= render 'gardens/community_garden'%>
-</div>
+<div class="badge-container" data-controller="water-plant">
+  <h1 class = "text-center">Community garden</h1>
+  <turbo-frame id="community_garden_frame">
+    <div class="garden-page">
+      <%= render 'gardens/community_garden', array: @array%>
+    </div>
+  </turbo-frame>
+  <div class="user-show">
+    <div class="user-show-container" style="border:none;">
+      <div class="user-show-container-badges">
+        <h3><strong>Your Plants</strong></h3>
+        <% @user.badges.each do |badge| %>
+          <div class="flower-card" data-water-plant-flower-card-target="flowerCard">
 
-<div class="user-show">
-  <div class="user-show-container" style="border:none;">
-    <div class="user-show-container-badges">
-      <h3><strong>Your Plants</strong></h3>
-
-    <!---Create Cards with User's Flowers---->
-    <% @user.badges.each do |badge| %>
-      <div class="flower-card">
-        <% if badge.name == 'first-submission' %>
-          <img src="<%= asset_path('bud1.png') %>" alt="bud">
-          <div class="flower-card-infos">
-          <h2><%= badge.name %></h2>
-          <button type="button" class="btn btn-success m-2">Water this plant</button>
-          </div>
-        <% elsif badge.name == 'five-submissions' %>
-          <img src="<%= asset_path('pink1.png') %>" alt="pink flower">
-          <div class="flower-card-infos">
-           <h2><%= badge.name %></h2>
-            <button type="button" class="btn btn-success m-2">Water this plant</button>
-          </div>
-        <% else %>
-          <img src="<%= asset_path('bud1.png') %>" alt="bud">
-          <div class="flower-card-infos">
-            <h2><%= badge.name %></h2>
-            <button type="button" class="btn btn-success m-2">Water this plant</button>
+            <% if badge.name == "first-submission" %>
+            <img src="<%= asset_path('bud1.png') %>" alt="bud" data-water-plant-target="bud1">
+            <img src="<%= asset_path(@inventory_image) %>" alt="flower" data-water-plant-target="flower1" class="d-none">
+            <% elsif badge.name == "five-submissions" %>
+            <img src="<%= asset_path('bud1.png') %>" alt="bud" data-water-plant-target="bud5">
+            <img src="<%= asset_path(@inventory_image2) %>" alt="flower" data-water-plant-target="flower5" class="d-none">
+            <% end %>
+            <div class="flower-card-infos">
+              <h2><%= badge.name %></h2>
+              <% if badge.name == "first-submission" %>
+              <button type="button" class="btn btn-success m-2" data-action="click->water-plant#water">Water this plant</button>
+              <% elsif badge.name == "five-submissions" %>
+              <button type="button" class="btn btn-success m-2" data-action="click->water-plant#waterFive">Water this plant</button>
+              <% end %>
+            </div>
           </div>
         <% end %>
       </div>
-    <% end %>
-    <!---Create Cards with User's Flowers END---->
-
-      </div>
     </div>
   </div>
+</div>
