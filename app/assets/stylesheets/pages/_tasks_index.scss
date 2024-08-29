@@ -15,7 +15,7 @@
 // task-index renders these 'tasks list'
 .task-index {
   padding: 16px;
-
+  width: 100%;
   background-color: white;
   border: 1px black solid;
   border-radius: 16px;
@@ -25,6 +25,9 @@
   align-items: center;
   text-align: start;
 
+  .simple-calendar {
+    width: 100%;
+  }
 
   .task-card-product {
     margin: 8px;
