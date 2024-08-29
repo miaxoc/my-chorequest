@@ -56,14 +56,17 @@
           <% if @tasks.count == 0 %>
             <p> No chores scheduled</p>
           <% else %>
-            <p class="mb-0"><strong><%= tasks_with_submissions_count = @tasks.joins(:submissions).distinct.count %></strong> scheduled!</p>
+            <p class="mb-0"><strong><%= @tasks_with_submissions_count = @tasks.joins(:submissions).distinct.count %></strong> scheduled!</p>
           <% end %>
 
       </div>
 
+
         <%= link_to timetable_household_path(current_user.household), data: { turbo_method: :post, turbo_confirm: "Generate now?" }, style:"border-radius: 32px; border: 1px black solid;", class: "btn btn-warning" do %>
-          <i class="fa-regular fa-calendar"></i> Schedule
+          Schedule
         <% end %>
+
+
 
     </div>
   </div>
@@ -94,12 +97,19 @@
         <%= render 'tasks/suggested_tasks'%>
       </div>
     </div>
+    <% unless @household.submissions.first.nil? %>
+        <%= link_to household_calendar_path(current_user.household), style:"border-radius: 32px; border: 1px black solid;", class: "btn btn-warning" do %>
+          <i class="fa-regular fa-calendar"></i> View Timetable
+        <% end %>
+        <% end %>
   </div>
 
 
 
-
-
+      <% if @tasks.count > 0 && @tasks.first.submissions.first.nil? %>
+      <h3>Un-scheduled Chores</h3>
+      <p>Schedule some tasks!</p>
+      <% end %>
 
   <div class="add-task-categories pt-3">
 
@@ -107,9 +117,6 @@
     <% @tasks.each do |task| %>
 
       <% if task.submissions.first.nil? %>
-
-      <h3>Un-scheduled Chores</h3>
-      <p>Schedule now!</p>
 
 
         <div class="card-product d-flex p-2" style="color: gray; border: 1px gray solid; width: 100%;" >
@@ -137,7 +144,11 @@
     <% end %>
 
     <% unless @tasks.first.nil? %>
+
+    <% unless @household.submissions.first.nil? %>
     <h3 class="mt-4">Scheduled Chores</h3>
+    <% end %>
+
     <% @tasks.each do |task| %>
       <% if task.submissions.first.nil? == false %>
 

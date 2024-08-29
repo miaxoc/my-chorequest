@@ -58,7 +58,7 @@ class HouseholdsController < ApplicationController
   def timetable
     @household = Household.find(params[:id])
     TimetableService.new(@household).call
-    redirect_to household_calendar_path(@household)
+    redirect_to chores_household_path(@household)
   end
 
   def search_users
