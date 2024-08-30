@@ -7,7 +7,7 @@
   <div>
     <div class="d-flex justify-content-center">
       <div class="request-filter-bar btn-group btn-group-toggle m-3">
-        <%= link_to "My Tasks", tasks_path(my_tasks: true), class: "btn btn-outline-primary request-filter-buttons #{'active' if params[:my_tasks] == 'true'}" %>
+        <%= link_to "My Chores", tasks_path(my_tasks: true), class: "btn btn-outline-primary request-filter-buttons #{'active' if params[:my_tasks] == 'true'}" %>
         <%= link_to "My Calendar", tasks_path(calendar: true), class: "btn btn-outline-primary request-filter-buttons #{'active' if params[:calendar] == 'true'}" %>
       </div>
     </div>
