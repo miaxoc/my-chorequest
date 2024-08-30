@@ -6,6 +6,7 @@
     "Take out the trash" => "weekly",
     "Clean the bathroom" => "weekly",
     "Do the laundry" => "daily",
+    "Mow the lawn" => "monthly"
   } %>
   <% suggested_tasks.each do |title, frequency, category| %>
     <% if title == "Vacuum the living room" %>
@@ -18,6 +19,8 @@
       <% category = "Cleaning" %>
     <% elsif title == "Do the laundry" %>
       <% category = "Cleaning" %>
+    <% elsif title == "Mow the lawn" %>
+      <% category = "Others" %>
     <% end %>
 
     <% if Task.find_by(title: title).nil? %>

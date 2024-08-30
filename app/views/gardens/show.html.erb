@@ -13,7 +13,7 @@
       <div class="user-show-container-badges">
         <h3><strong>Your Plants</strong></h3>
         <% if current_user.badges.nil? %>
-          <p>No plants yet! Come back when you've done more tasks!</p>
+          <p>No plants yet! Come back when you've done more chores!</p>
         <% else %>
           <% @user.badges.each do |badge| %>
             <div class="flower-card" data-water-plant-flower-card-target="flowerCard">
