@@ -2,13 +2,13 @@
   <%= simple_form_for @household do |f| %>
     <div class="form-group mb-3">
       <%= f.label :title, "Household Name", style: "font-weight:bold;" %>
-      <%= f.input :title, placeholder: "Enter the household name", class: "form-control" %>
+      <%= f.input :title, placeholder: "Name your house", class: "form-control" %>
     </div>
 
     <div class="form-group">
-      <%= f.label :user_ids, "Add Members", style: "font-weight:bold;" %>
+      <%= f.label :user_ids, "Invite Members", style: "font-weight:bold;" %>
       <div class="dropdown">
-        <input type="text" id="user-search" placeholder="Search for users" class="form-control dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        <input type="text" id="user-search" placeholder="Search for your housemates" class="form-control dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
         <ul id="user-results" class="dropdown-menu mt-2"></ul>
       </div>
       <div id="selected-users" class="mt-2"></div>
@@ -18,7 +18,7 @@
     <%= f.hidden_field :user_ids, value: current_user.id, id: 'user-ids-field', multiple: true %>
 
     <div class="form-group" style="display: flex; justify-content: center;">
-      <%= f.submit "Create Household", class: "btn btn-primary", style: "border-radius: 32px; border: 1px black solid;" %>
+      <%= f.submit "Get started", class: "btn btn-primary", style: "border-radius: 32px; border: 1px black solid;" %>
     </div>
   <% end %>
 </div>

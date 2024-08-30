@@ -17,13 +17,14 @@
   padding: 16px;
   width: 100%;
   background-color: white;
-  border: 1px black solid;
+  border: 3px black solid;
   border-radius: 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: start;
+
 
   .simple-calendar {
     width: 100%;
@@ -55,10 +56,6 @@
     }
 
 
-
-    .task-card-product .task-card-product-infos {
-
-    }
   }
 
   .task-card-product h2 {
@@ -76,8 +73,6 @@
     margin-top: 4px;
     margin-right: 8px;
   }
-
-
 
 
 

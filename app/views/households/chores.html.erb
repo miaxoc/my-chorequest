@@ -1,7 +1,7 @@
 <div class="household-show">
   <!-- title -->
   <div class="household-show-title" style=" width: 100%;">
-    <h1><%= @household.title %>'s house <%= link_to '', edit_household_path(current_user.household), class: "fa-solid fa-pen-to-square", style: "font-size: 18px; opacity: 50%;" %></h1>
+    <h1><%= @household.title %>'s house <%= link_to '', edit_household_path(current_user.household), class: "fa-solid fa-pen-to-square", style: "opacity: 50%;" %></h1>
   </div>
   <!-- Members section -->
   <div class="household-show-members">
@@ -56,18 +56,24 @@
           <% if @tasks.count == 0 %>
             <p> No chores scheduled</p>
           <% else %>
-            <p class="mb-0"><%= @tasks.count %> chores included...</p>
+            <p class="mb-0"><strong><%= @tasks_with_submissions_count = @tasks.joins(:submissions).distinct.count %></strong> scheduled!</p>
           <% end %>
 
       </div>
 
+
         <%= link_to timetable_household_path(current_user.household), data: { turbo_method: :post, turbo_confirm: "Generate now?" }, style:"border-radius: 32px; border: 1px black solid;", class: "btn btn-warning" do %>
-          <i class="fa-regular fa-calendar"></i> Schedule
+          Schedule
         <% end %>
+
+
 
     </div>
   </div>
 
+  <% if @tasks.first.nil? %>
+    <h5>Add some chores!</h5>
+  <% end %>
   <!-- Add Custom and Add Suggested collapse -->
 
   <div data-controller = "collapse">
@@ -75,9 +81,11 @@
       <a class="btn btn-primary" style="border-radius: 32px; border: 1px solid black;" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample" data-action="click->collapse#toggleForm">
         + Custom
       </a>
+      <% if @household.submissions.first.nil? %>
       <a class="btn btn-primary" style="border-radius: 32px; border: 1px solid black;" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample" data-action="click->collapse#toggleSuggested">
         + Suggested
       </a>
+      <% end %>
     </p>
     <div class="collapse" id="addCustom" data-collapse-target="form">
       <div class="card card-body">
@@ -89,24 +97,27 @@
         <%= render 'tasks/suggested_tasks'%>
       </div>
     </div>
+    <% unless @household.submissions.first.nil? %>
+        <%= link_to household_calendar_path(current_user.household), style:"border-radius: 32px; border: 1px black solid;", class: "btn btn-warning" do %>
+          <i class="fa-regular fa-calendar"></i> View Timetable
+        <% end %>
+        <% end %>
   </div>
 
 
 
+      <% if @tasks.count > 0 && @tasks.first.submissions.first.nil? %>
+      <h3>Un-scheduled Chores</h3>
+      <p>Schedule some tasks!</p>
+      <% end %>
 
+  <div class="add-task-categories pt-3">
 
-
-
-
-  <div class="add-task-categories py-3">
-
-
-    <h3>Un-scheduled Chores</h3>
-    <p>Schedule some tasks!</p>
 
     <% @tasks.each do |task| %>
 
       <% if task.submissions.first.nil? %>
+
 
         <div class="card-product d-flex p-2" style="color: gray; border: 1px gray solid; width: 100%;" >
           <div class="d-flex align-items-center">
@@ -132,8 +143,12 @@
       <% end %>
     <% end %>
 
+    <% unless @tasks.first.nil? %>
 
+    <% unless @household.submissions.first.nil? %>
     <h3 class="mt-4">Scheduled Chores</h3>
+    <% end %>
+
     <% @tasks.each do |task| %>
       <% if task.submissions.first.nil? == false %>
 
@@ -159,7 +174,7 @@
         </div>
       <% end %>
     <% end %>
-
+    <% end %>
   </div>
 
 

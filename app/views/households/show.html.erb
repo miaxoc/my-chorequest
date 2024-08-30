@@ -1,7 +1,8 @@
-<div class="household-show">
+<div class="household-show">y
   <!-- title -->
   <div class="household-show-title" style=" width: 100%;">
-    <h1 ><%= @household.title %>'s house <%= link_to '', edit_household_path(current_user.household), class: "fa-solid fa-pen-to-square", style:"opacity:50%" %></h1>
+    <h1><%= @household.title %>'s <br>
+      house <%= link_to '', edit_household_path(current_user.household), class: "fa-solid fa-pen-to-square", style:"font-size: 30px; opacity:50%" %></h1>
   </div>
   <!-- Members section -->
   <div class="household-show-members">
@@ -51,10 +52,10 @@
       <div class="flex-column text-start">
         <h2>Chores</h2>
         <% if @tasks.count == 0 %>
-            <p> No chores scheduled</p>
-          <% else %>
-            <p class="mb-0"><%= @tasks.count %> chores included...</p>
-          <% end %>
+          <p> No chores scheduled</p>
+        <% else %>
+          <p class="mb-0"> <strong><%= tasks_with_submissions_count = @tasks.joins(:submissions).distinct.count  %> </strong> scheduled!</p>
+        <% end %>
       </div>
       <%= link_to chores_household_path(@household), class: "btn btn-warning", style: "border-radius: 32px; border: 1px black solid;" do %>
         + Add
@@ -63,8 +64,8 @@
   </div>
 </div>
 <!-- Feed of completed tasks -->
-<div class="submission-container">
-  <h2 class="text-center" style="margin:16px;">Completed Chores</h2>
+<div class="submission-container" >
+  <h2 class="text-center" style="margin:16px; font-family: 'Jersey 20'; font-size: 40px; font-style: normal;">Completed Chores</h2>
   <% if @completed_submissions.any? %>
     <div class="completed-tasks-feed">
       <% @completed_submissions.each do |submission| %>
