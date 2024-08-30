@@ -20,16 +20,22 @@
     </div>
   <div class = "text-center">
     <% if current_user.nil? %>
-    <%= link_to "Set-up household",new_household_path, class:"btn btn-success homebutton p-2 px-3"%>
-    <div>
-    <%= link_to "Sign Up",new_user_registration_path, class:"btn btn-danger homebutton p-2 px-3 mt-3"%>
-    </div>
-    <% elsif current_user.household.nil?%>
-    <%= link_to "Set-up household",new_household_path, class:"btn btn-success homebutton p-2 px-3"%>
-    <div>
-    <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "btn btn-danger homebutton p-2 px-3 mt-3" %>
-
-    </div>
+      <%= link_to "Add new household",new_household_path, class:"btn btn-success homebutton p-2 px-3"%>
+      <div>
+      <%= link_to "Sign Up",new_user_registration_path, class:"btn btn-danger homebutton p-2 px-3 mt-3"%>
+      </div>
+      <% elsif current_user.household.nil?%>
+      <%= link_to "Add new household",new_household_path, class:"btn btn-success homebutton p-2 px-3"%>
+      <div>
+      <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "btn btn-danger homebutton p-2 px-3 mt-3" %>
+      </div>
+      <% else %>
+      <%= link_to "See your house",chores_household_path(current_user.household), class:"btn btn-success homebutton p-2 px-3"%>
+      <div>
+      <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "btn btn-danger homebutton p-2 px-3 mt-3" %>
+      </div>
+      <% end %>
+  </div>
   </div>
     <!--grass front--->
     <img src="<%= asset_path('grass_front.png') %>" alt="grass" class="image-front">
