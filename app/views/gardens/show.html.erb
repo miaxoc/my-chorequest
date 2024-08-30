@@ -17,6 +17,9 @@
         <% else %>
           <% @user.badges.each do |badge| %>
             <div class="flower-card" data-water-plant-flower-card-target="flowerCard">
+
+
+
               <% if badge.name == "first-submission" %>
                 <img src="<%= asset_path('bud1.png') %>" alt="bud" data-water-plant-target="bud1" style="margin-left: 8px; margin-right: 8px;">
                 <img src="<%= asset_path(@inventory_image) %>" alt="flower" data-water-plant-target="flower1" class="d-none" style="margin-left: 8px; margin-right: 8px;">
@@ -24,9 +27,19 @@
                   <h2> Welcome! </h2>
                   <p>Your first flower for joining ChoreQuest!</p>
                 </div>
-                <%= link_to water_path, class: "", style:"border: none; font-size: 40px; background: none;", data: { action: "click->water-plant#water", turbo_frame: :navbar } do  %>
-                <i class="fa-solid fa-droplet" style="margin: 20px; color: #a0d7f3;"></i>
-                <% end %>
+
+                <div style="background-color: #FFCD20; padding-left: 10px; padding-right: 10px; border-top-right-radius: 16px; border-bottom-right-radius: 16px; margin-top: 0px; margin-bottom: 0px;">
+                  <%= link_to water_path, class: "", style:"border: none; font-size: 40px; background: none;", data: { action: "click->water-plant#waterFive", turbo_frame: :navbar } do  %>
+
+                  <%= image_tag("water-can.webp", style: "width: 50px; margin-top: 10px;" ) %>
+                  <% end %>
+                  <div class="text-center">
+
+                    <p style="opacity: 100%; color: black; margin-bottom: 12px; margin-top: 0px; font-family: 'Jersey 20'; font-size: 16px;">-5 water</p>
+                  </div>
+                </div>
+
+
               <% elsif badge.name == "five-submissions" %>
                 <img src="<%= asset_path('bud1.png') %>" alt="bud" data-water-plant-target="bud5" style="margin-left: 8px; margin-right: 8px;">
                 <img src="<%= asset_path(@inventory_image2) %>" alt="flower" data-water-plant-target="flower5" class="d-none" style="margin-left: 8px; margin-right: 8px;">
@@ -34,9 +47,16 @@
                   <h2>Done it!</h2>
                   <p>You completed your first chore!</p>
                 </div>
-                <%= link_to water_path, class: "", style:"border: none; color: #a0d7f3; font-size: 40px; background: none;", data: { action: "click->water-plant#waterFive", turbo_frame: :navbar } do  %>
-                <i class="fa-solid fa-droplet" style="margin: 20px; color: #a0d7f3;"></i>
-                <% end %>
+                <div style="background-color: #FFCD20; padding-left: 8px; padding-right: 8px; border-top-right-radius: 16px; border-bottom-right-radius: 16px; margin-top: 0px; margin-bottom: 0px;">
+                  <%= link_to water_path, class: "", style:"border: none; font-size: 40px; background: none;", data: { action: "click->water-plant#waterFive", turbo_frame: :navbar } do  %>
+
+                  <%= image_tag("water-can.webp", style: "width: 50px; margin-top: 10px;" ) %>
+                  <% end %>
+                  <div class="text-center">
+
+                    <p style="opacity: 100%; color: black; margin-bottom: 12px; margin-top: 0px; font-family: 'Jersey 20'; font-size: 16px;">-5 water</p>
+                  </div>
+                </div>
               <% end %>
             </div>
           <% end %>
