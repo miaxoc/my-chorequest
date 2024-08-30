@@ -4,10 +4,15 @@
   justify-content: center;
   align-items: center;
   height: 87vh;
-  margin-top: 2vh;
+  margin-top: -1vh;
   margin-bottom: 9vh;
 }
 
+.home-h1{
+  font-family: "jersey 10";
+
+
+}
 .title {
   font-size: 108px;
   font-family: "Jersey 10", sans-serif;
@@ -106,10 +111,10 @@
 
 .flower1-front {
   position: absolute;
-  top: -54px;
-  left: 127px;
-  width: 28%;
-  height: 21%;
+  top: -45px;
+  left: 137px;
+  width: 23%;
+  height: 20%;
   object-fit: cover;
   z-index: 4; /* Places the image above the card content */
   transition: opacity 0.5s ease-in-out;

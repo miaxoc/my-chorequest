@@ -18,14 +18,14 @@
       <h1 class ="title mt-5">Chore</h1>
       <h1 class ="title-bottom mb-3">Quest</h1>
     </div>
-  <div class = "text-center">
-    <% if current_user.nil? %>
-      <%= link_to "Add new household",new_household_path, class:"btn btn-success homebutton p-2 px-3"%>
+      <div class = "text-center">
+      <% if current_user.nil? %>
+      <%= link_to "Set up household",new_household_path, class:"btn btn-success homebutton p-2 px-3"%>
       <div>
       <%= link_to "Sign Up",new_user_registration_path, class:"btn btn-danger homebutton p-2 px-3 mt-3"%>
       </div>
       <% elsif current_user.household.nil?%>
-      <%= link_to "Add new household",new_household_path, class:"btn btn-success homebutton p-2 px-3"%>
+      <%= link_to "Set up household",new_household_path, class:"btn btn-success homebutton p-2 px-3"%>
       <div>
       <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "btn btn-danger homebutton p-2 px-3 mt-3" %>
       </div>
@@ -51,10 +51,10 @@
   </div>
 </div>
 
-<div class = "homebody-2">
+<div class = "homebody-2 mb-5">
   <div class="info-card-wrapper container justify-content-center m-3">
     <div class="info-card align-items-center">
-      <P>Welcome to Chore Quest 🌸<P>
+      <h1 class ="home-h1 mt-2">Welcome to Chore Quest</h1>
       <ul>
       <li>Track & Complete Your Chores
 
