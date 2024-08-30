@@ -18,14 +18,14 @@
       <h1 class ="title mt-5">Chore</h1>
       <h1 class ="title-bottom mb-3">Quest</h1>
     </div>
-  <div class = "text-center">
-    <% if current_user.nil? %>
-      <%= link_to "Add new household",new_household_path, class:"btn btn-success homebutton p-2 px-3"%>
+      <div class = "text-center">
+      <% if current_user.nil? %>
+      <%= link_to "Set up household",new_household_path, class:"btn btn-success homebutton p-2 px-3"%>
       <div>
       <%= link_to "Sign Up",new_user_registration_path, class:"btn btn-danger homebutton p-2 px-3 mt-3"%>
       </div>
       <% elsif current_user.household.nil?%>
-      <%= link_to "Add new household",new_household_path, class:"btn btn-success homebutton p-2 px-3"%>
+      <%= link_to "Set up household",new_household_path, class:"btn btn-success homebutton p-2 px-3"%>
       <div>
       <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "btn btn-danger homebutton p-2 px-3 mt-3" %>
       </div>
@@ -50,3 +50,4 @@
     <img src="<%= asset_path('white4.png') %>" alt="grass" class="flower3-front">
   </div>
 </div>
+

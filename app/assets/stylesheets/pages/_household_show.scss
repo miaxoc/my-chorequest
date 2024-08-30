@@ -316,7 +316,7 @@
 
 .submission-container {
   border: 3px black solid;
-  background-color: $primary;
+  background-color: white;
   border-radius: 16px;
   margin: 8px;
 
@@ -328,7 +328,7 @@
   .submission-post {
     margin: 0px;
     width: 100%;
-    background-color: white;
+
     padding: 16px;
 
     .post-title, .post-text{
