@@ -28,14 +28,14 @@
                   <p>Your first flower for joining ChoreQuest!</p>
                 </div>
 
-                <div style="background-color: #FFCD20; padding-left: 10px; padding-right: 10px; border-top-right-radius: 16px; border-bottom-right-radius: 16px; margin-top: 0px; margin-bottom: 0px;">
-                  <%= link_to water_path, class: "", style:"border: none; font-size: 40px; background: none;", data: { action: "click->water-plant#waterFive", turbo_frame: :navbar } do  %>
+                <div style="background-color: #FFCD20; padding-left: 8px; padding-right: 8px; border-top-right-radius: 16px; border-bottom-right-radius: 16px; margin-top: 0px; margin-bottom: 0px;">
+                  <%= link_to water_path, class: "", style:"border: none; font-size: 40px; background: none;", data: { action: "click->water-plant#water", turbo_frame: :navbar } do  %>
 
                   <%= image_tag("water-can.webp", style: "width: 50px; margin-top: 10px;" ) %>
                   <% end %>
                   <div class="text-center">
 
-                    <p style="opacity: 100%; color: black; margin-bottom: 12px; margin-top: 0px; font-family: 'Jersey 20'; font-size: 16px;">-5 water</p>
+                    <p style="opacity: 100%; color: black; margin-bottom: 12px; margin-top: 0px; font-family: 'Jersey 20'; font-size: 16px;">-5 <br/>water</p>
                   </div>
                 </div>
 
@@ -47,6 +47,8 @@
                   <h2>Done it!</h2>
                   <p>You completed your first chore!</p>
                 </div>
+
+
                 <div style="background-color: #FFCD20; padding-left: 8px; padding-right: 8px; border-top-right-radius: 16px; border-bottom-right-radius: 16px; margin-top: 0px; margin-bottom: 0px;">
                   <%= link_to water_path, class: "", style:"border: none; font-size: 40px; background: none;", data: { action: "click->water-plant#waterFive", turbo_frame: :navbar } do  %>
 
@@ -54,7 +56,7 @@
                   <% end %>
                   <div class="text-center">
 
-                    <p style="opacity: 100%; color: black; margin-bottom: 12px; margin-top: 0px; font-family: 'Jersey 20'; font-size: 16px;">-5 water</p>
+                    <p style="opacity: 100%; color: black; margin-bottom: 12px; margin-top: 0px; font-family: 'Jersey 20'; font-size: 16px;">-5<br/>water</p>
                   </div>
                 </div>
               <% end %>
