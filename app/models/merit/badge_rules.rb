@@ -21,13 +21,13 @@ module Merit
     include Merit::BadgeRulesMethods
 
     def initialize
-      
+
       grant_on 'submissions#update', badge_id: 1, to: :user do |submission|
         submission.user.points + 10 == 10
       end
 
       grant_on 'submissions#update', badge_id: 2, to: :user do |submission|
-        submission.user.points + 10 >= 50
+        submission.user.points + 10 == 10
       end
 
     end

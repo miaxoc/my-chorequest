@@ -1,6 +1,8 @@
 <!----- YU WIP ----->
 <div class="badge-container" data-controller="water-plant">
-  <h1 class = "text-center">Community garden</h1>
+  <div class="household-show" style="padding-top: 8px; padding-bottom: 4px;">
+    <h2 class = "text-center" style="font-family: 'Jersey 20'; font-size: 40px; font-style: normal;">Community garden</h2>
+  </div>
   <turbo-frame id="community_garden_frame">
     <div class="garden-page">
       <%= render 'gardens/community_garden', array: @array%>
@@ -10,25 +12,34 @@
     <div class="user-show-container" style="border:none;">
       <div class="user-show-container-badges">
         <h3><strong>Your Plants</strong></h3>
-        <% @user.badges.each do |badge| %>
-          <div class="flower-card" data-water-plant-flower-card-target="flowerCard">
-
-            <% if badge.name == "first-submission" %>
-            <img src="<%= asset_path('bud1.png') %>" alt="bud" data-water-plant-target="bud1">
-            <img src="<%= asset_path(@inventory_image) %>" alt="flower" data-water-plant-target="flower1" class="d-none">
-            <% elsif badge.name == "five-submissions" %>
-            <img src="<%= asset_path('bud1.png') %>" alt="bud" data-water-plant-target="bud5">
-            <img src="<%= asset_path(@inventory_image2) %>" alt="flower" data-water-plant-target="flower5" class="d-none">
-            <% end %>
-            <div class="flower-card-infos">
-              <h2><%= badge.name %></h2>
+        <% if current_user.badges.nil? %>
+          <p>No plants yet! Come back when you've done more tasks!</p>
+        <% else %>
+          <% @user.badges.each do |badge| %>
+            <div class="flower-card" data-water-plant-flower-card-target="flowerCard">
               <% if badge.name == "first-submission" %>
-              <button type="button" class="btn btn-success m-2" data-action="click->water-plant#water">Water this plant</button>
+                <img src="<%= asset_path('bud1.png') %>" alt="bud" data-water-plant-target="bud1" style="margin-left: 8px; margin-right: 8px;">
+                <img src="<%= asset_path(@inventory_image) %>" alt="flower" data-water-plant-target="flower1" class="d-none" style="margin-left: 8px; margin-right: 8px;">
+                <div class="flower-card-infos flex-grow-1">
+                  <h2> Welcome! </h2>
+                  <p>Your first flower for joining ChoreQuest!</p>
+                </div>
+                <%= link_to water_path, class: "", style:"border: none; font-size: 40px; background: none;", data: { action: "click->water-plant#water", turbo_frame: :navbar } do  %>
+                <i class="fa-solid fa-droplet" style="margin: 20px; color: #a0d7f3;"></i>
+                <% end %>
               <% elsif badge.name == "five-submissions" %>
-              <button type="button" class="btn btn-success m-2" data-action="click->water-plant#waterFive">Water this plant</button>
+                <img src="<%= asset_path('bud1.png') %>" alt="bud" data-water-plant-target="bud5" style="margin-left: 8px; margin-right: 8px;">
+                <img src="<%= asset_path(@inventory_image2) %>" alt="flower" data-water-plant-target="flower5" class="d-none" style="margin-left: 8px; margin-right: 8px;">
+                <div class="flower-card-infos flex-grow-1">
+                  <h2>Done it!</h2>
+                  <p>You completed your first chore!</p>
+                </div>
+                <%= link_to water_path, class: "", style:"border: none; color: #a0d7f3; font-size: 40px; background: none;", data: { action: "click->water-plant#waterFive", turbo_frame: :navbar } do  %>
+                <i class="fa-solid fa-droplet" style="margin: 20px; color: #a0d7f3;"></i>
+                <% end %>
               <% end %>
             </div>
-          </div>
+          <% end %>
         <% end %>
       </div>
     </div>

@@ -29,11 +29,11 @@ Rails.application.routes.draw do
     get 'garden', to: 'gardens#show'
 
     member do
-      post 'garden/water_plant', to: 'gardens#water_plant'
+
     end
   end
 
-
+  get 'gardens/water', to: 'gardens#water', as: :water
 
   resources :submissions, only: [:new, :create, :edit, :update,]
 
