@@ -1,10 +1,23 @@
 <div class = "homebody">
-<div class="container homecard justify-content-center m-5">
-<div class = "align-items-center">
-    <h1 class ="title strong mt-5">Chore</h1>
-    <h1 class ="title strong pt-0 mb-5">Quest</h1>
-  </div>
 
+  <div class="container justify-content-center m-3" style="position: relative;">
+    <img src="<%= asset_path('grass_bg.png') %>" alt="grass" class="image-back">
+
+    <div data-controller="image-animation"
+      data-image-animation-images="<%= [asset_path('pakkun1.png'), asset_path('pakkun2.png')].to_json %>">
+      <img src="<%= asset_path('pakkun1.png') %>" data-image-animation-target="image" alt="Flower animation" class="image-back-pakkun">
+    </div>
+
+    <div data-controller="image-animation"
+      data-image-animation-images="<%= [asset_path('flower1.png'), asset_path('flower2.png'),asset_path('flower1.png'),asset_path('flower3.png')].to_json %>">
+      <img src="<%= asset_path('flower1.png') %>" data-image-animation-target="image" alt="Flower animation" class="image-back-sun">
+    </div>
+
+  <div class="homecard align-items-center">
+    <div class = "align-items-center">
+      <h1 class ="title strong mt-5">Chore</p>
+      <h1 class ="title-bottom strong mb-3">Quest</p>
+    </div>
   <div class = "text-center">
     <% if current_user.nil? %>
     <%= link_to "Set-up household",new_household_path, class:"btn btn-success homebutton p-2 px-3"%>
@@ -15,13 +28,38 @@
     <%= link_to "Set-up household",new_household_path, class:"btn btn-success homebutton p-2 px-3"%>
     <div>
     <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "btn btn-danger homebutton p-2 px-3 mt-3" %>
+
     </div>
-    <% else %>
-    <%= link_to "See your house",chores_household_path(current_user.household), class:"btn btn-success homebutton p-2 px-3"%>
-    <div>
-    <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "btn btn-danger homebutton p-2 px-3 mt-3" %>
+  </div>
+    <!--grass front--->
+    <img src="<%= asset_path('grass_front.png') %>" alt="grass" class="image-front">
+    <!--big white flower front--->
+    <div data-controller="image-animation"
+      data-image-animation-images="<%= [asset_path('white1.png'), asset_path('white2.png'),asset_path('white3.png'), asset_path('white4.png'),asset_path('white3.png'), asset_path('white2.png')].to_json %>">
+      <img src="<%= asset_path('white4.png') %>" data-image-animation-target="image" alt="Flower animation" class ="flower1-front">
     </div>
-    <% end %>
+    <!--medium right flower front--->
+    <img src="<%= asset_path('white4.png') %>" alt="grass" class="flower2-front">
+    <!--medium left flower front--->
+    <img src="<%= asset_path('white4.png') %>" alt="grass" class="flower3-front">
   </div>
 </div>
+
+<div class = "homebody-2">
+  <div class="info-card-wrapper container justify-content-center m-3">
+    <div class="info-card align-items-center">
+      <P>Welcome to Chore Quest 🌸<P>
+      <ul>
+      <li>Track & Complete Your Chores
+
+      <li>Earn Rewards/Complete chores to earn beautiful flowers & water points.
+
+      <li>Grow Your Garden /Use your points to grow and care for your flowers!
+      </ul>
+      <p>Start making chores fun and rewarding today!</p>
+
+    </div>
+     <!--grass front--->
+    <img src="<%= asset_path('header_img.png') %>" alt="header" class="sub-image-front">
+  </div>
 </div>
