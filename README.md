@@ -9,6 +9,7 @@ This is my own version for me to continue working on this app.
 
 
 Screenshots:
+<br>
 <img width="200" alt="Screen Shot 2024-09-03 at 1 28 11 PM" src="https://github.com/user-attachments/assets/7b339b94-97ce-4162-b6e1-aa38a37c182b">
 <img width="200" alt="Screen Shot 2024-09-03 at 1 40 05 PM" src="https://github.com/user-attachments/assets/7ad04e37-a9c8-40bc-80cf-468ef282e424">
 
