@@ -16,7 +16,6 @@ Screenshots:
 
 
 <br>
-App home:()
 
 
 ## Getting Started
